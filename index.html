@@ -111,7 +111,7 @@ ANIMATED SLIDE ELEMENTS
 .aln{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;line-height:1.9;color:var(–anim-text);margin-bottom:4px;max-width:760px;opacity:0;transform:translateY(10px);transition:opacity 1.1s ease,transform 1.1s ease;}
 .aln.vis{opacity:1;transform:translateY(0);}
 .aln.ita{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:30px;color:var(–anim-text);margin-top:22px;margin-bottom:22px;}
-.aln.mut{font-size:18px;color:var(–anim-mute);margin-top:14px;}
+.aln.mut{font-size:18px;color:rgba(255,255,255,.65);margin-top:14px;}
 .aln.acc{color:var(–anim-acc);}
 
 .atag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:12px;letter-spacing:.45em;color:var(–anim-mute);text-transform:uppercase;margin-bottom:14px;opacity:0;transition:opacity 1.2s ease;}
@@ -541,11 +541,11 @@ S14 — STRENGTHS + LIMITATIONS
  <div class="canvas canvas-glow" id="c8">
   <div class="hdr"><div class="lbl">Study Objectives</div><div class="ttl">Research aims</div></div>
   <div class="aims">
-   <div class="aim"><div class="anum">Aim 1</div><div><div class="atit">Total dietary index scores</div><div class="adet">Examine whether <strong>HEI-2020 and DII total scores</strong> are each independently associated with KDM biological age deviation — and whether each contributes unique information the other does not</div></div></div>
+   <div class="aim"><div class="anum">Aim 1</div><div><div class="atit">Total dietary index scores</div><div class="adet">Examine whether <strong>HEI-2020 and DII total scores</strong> are each independently associated with KDM biological age residual — and whether each contributes unique information the other does not</div></div></div>
    <div class="aim"><div class="anum">Aim 2</div><div><div class="atit">Component decomposition</div><div class="adet">Decompose total scores into <strong>individual dietary components (~41 models)</strong> to identify which specific foods and nutrients drive the aging signal across organ systems. FDR correction at q &lt; 0.05.</div></div></div>
    <div class="hyp"><div class="hyp-tag">Hypothesis</div><div class="hyp-text">Both higher diet quality and lower dietary inflammatory potential are independently associated with slower biological aging — but they capture distinct dietary dimensions, with DII more strongly predicting inflammation-mediated aging and HEI capturing broader nutritional adequacy effects.</div></div>
   </div>
-  <div class="fnt">Primary outcome: KDM biological age deviation · NHANES 2007–2012</div>
+  <div class="fnt">Primary outcome: KDM biological age residual · NHANES 2007–2012</div>
  </div>
 </div>
 
@@ -603,7 +603,7 @@ S14 — STRENGTHS + LIMITATIONS
     <div class="erow">Residual from <strong>survey-weighted regression</strong> of KDM biological age on chronological age</div>
     <div class="erow"><strong>Positive</strong> → biology looks older than chronological age</div>
     <div class="erow"><strong>Negative</strong> → biology looks younger</div>
-    <div class="enote">"Deviation" — not "acceleration." This is a point-in-time difference, not a rate of change.</div>
+    <div class="enote">"Residual" — not "acceleration." This is a point-in-time difference, not a rate of change.</div>
    </div>
    <div class="ecol cov">
     <div class="ectag">Covariates</div><div class="edivr"></div>
@@ -666,7 +666,7 @@ S14 — STRENGTHS + LIMITATIONS
   <div class="cols">
    <div class="col cl">
     <div class="ch">Expected findings</div>
-    <div class="res"><div class="rnum">01</div><div><div class="rtit">Independent associations</div><div class="rdet">Both HEI-2020 and DII independently predict <strong>biological age deviation</strong> after full covariate adjustment</div></div></div>
+    <div class="res"><div class="rnum">01</div><div><div class="rtit">Independent associations</div><div class="rdet">Both HEI-2020 and DII independently predict <strong>biological age residual</strong> after full covariate adjustment</div></div></div>
     <div class="res"><div class="rnum">02</div><div><div class="rtit">Complementary, not redundant</div><div class="rdet">Each index contributes <strong>unique predictive information</strong> — combined model fits better than either alone</div></div></div>
     <div class="res"><div class="rnum">03</div><div><div class="rtit">DII — inflammation-mediated pathway</div><div class="rdet">Association persists with <strong>CRP in the BAI</strong> — dietary inflammation acts across systems beyond circulating CRP</div></div></div>
     <div class="res"><div class="rnum">04</div><div><div class="rtit">HEI-2020 — broader nutritional effect</div><div class="rdet">Effects reflect <strong>nutritional adequacy</strong>, not fully explained by inflammatory mechanisms</div></div></div>
@@ -698,7 +698,7 @@ S14 — STRENGTHS + LIMITATIONS
    </div>
    <div class="col cr">
     <div class="ch">Limitations</div>
-    <div class="lim"><div class="ldot"></div><div><div class="ltit">Cross-sectional design</div><div class="ldet">Point-in-time deviation, not a rate of change. <strong>Causal direction cannot be established</strong> — this is why the outcome is "deviation," not "acceleration"</div></div></div>
+    <div class="lim"><div class="ldot"></div><div><div class="ltit">Cross-sectional design</div><div class="ldet">Point-in-time residual — not a rate of change. <strong>Causal direction cannot be established</strong> — this is why the outcome is "residual," not "acceleration"</div></div></div>
     <div class="lim"><div class="ldot"></div><div><div class="ltit">Dietary recall measurement error</div><div class="ldet">Two 24-hour recalls may not fully reflect <strong>long-term dietary patterns</strong> — attenuation bias toward the null is possible</div></div></div>
     <div class="lim"><div class="ldot"></div><div><div class="ltit">BMI as covariate</div><div class="ldet">BMI may <strong>partially mediate</strong> the diet–aging relationship — the cross-sectional design cannot resolve this ambiguity</div></div></div>
     <div class="lim"><div class="ldot"></div><div><div class="ltit">Population scope</div><div class="ldet">NHANES excludes <strong>institutionalized and incarcerated individuals</strong> — populations carrying elevated disease burden</div></div></div>
@@ -821,32 +821,32 @@ function startA2(){
   const lDark='#d0dcec', lMid='#c4d4e8', lDeep='#b8cce0', lBlack='#a8bcd4';
   makeParticles('p2',28);
   T(100,()=>{sv('m2');sv('a2s1');sv('a2l0');bg(s,isLight?lDark:dark,1000);});
-  T(2500,()=>sv('a2l1'));
-  T(5000,()=>sv('a2l2'));
-  T(7800,()=>sv('a2l3'));
-  T(12000,()=>{hide('a2s1');bg(s,isLight?lMid:mid,3000);});
-  T(13500,()=>{sv('a2s2');sv('a2t1');});
-  T(15500,()=>sv('a2l4'));
-  T(17800,()=>sv('a2l5'));
-  T(20000,()=>sv('a2l6'));
-  T(22500,()=>sv('a2l7'));
-  T(26000,()=>sv('a2l8'));
-  T(30000,()=>{hide('a2s2');bg(s,isLight?lDeep:deep,3000);});
-  T(31500,()=>{sv('a2s3');sv('a2t2');sv('a2n1');});
-  T(34000,()=>sv('a2l9'));
-  T(38500,()=>sv('a2l10'));
-  T(43000,()=>sv('a2l11'));
-  T(50000,()=>{hide('a2s3');bg(s,isLight?lBlack:black,3000);});
-  T(52000,()=>{sv('a2s4');sv('a2l12');});
-  T(54500,()=>sv('a2l13'));
-  T(57500,()=>sv('a2l14'));
-  T(61000,()=>sv('a2l15'));
-  T(67000,()=>{hide('a2s4');});
-  T(69000,()=>{sv('a2s5');sv('a2l16');});
-  T(73000,()=>sv('a2l17'));
+  T(1800,()=>sv('a2l1'));
+  T(3500,()=>sv('a2l2'));
+  T(5500,()=>sv('a2l3'));
+  T(8500,()=>{hide('a2s1');bg(s,isLight?lMid:mid,3000);});
+  T(9500,()=>{sv('a2s2');sv('a2t1');});
+  T(11000,()=>sv('a2l4'));
+  T(12800,()=>sv('a2l5'));
+  T(14500,()=>sv('a2l6'));
+  T(16200,()=>sv('a2l7'));
+  T(18500,()=>sv('a2l8'));
+  T(21500,()=>{hide('a2s2');bg(s,isLight?lDeep:deep,3000);});
+  T(23000,()=>{sv('a2s3');sv('a2t2');sv('a2n1');});
+  T(24500,()=>sv('a2l9'));
+  T(27500,()=>sv('a2l10'));
+  T(30500,()=>sv('a2l11'));
+  T(35000,()=>{hide('a2s3');bg(s,isLight?lBlack:black,3000);});
+  T(38000,()=>{sv('a2s4');sv('a2l12');});
+  T(40000,()=>sv('a2l13'));
+  T(42500,()=>sv('a2l14'));
+  T(45000,()=>sv('a2l15'));
+  T(49000,()=>{hide('a2s4');});
+  T(51000,()=>{sv('a2s5');sv('a2l16');});
+  T(54000,()=>sv('a2l17'));
   // depth counter
   let t0=null;
-  function tick(ts){if(!t0)t0=ts;const e=ts-t0;const d=Math.min(Math.round(e/75000*280),280);$('mv2').textContent=d+' m';if(e<75000&&cur===2)requestAnimationFrame(tick);}
+  function tick(ts){if(!t0)t0=ts;const e=ts-t0;const d=Math.min(Math.round(e/56000*280),280);$('mv2').textContent=d+' m';if(e<56000&&cur===2)requestAnimationFrame(tick);}
   requestAnimationFrame(tick);
 }
 
@@ -866,24 +866,24 @@ function startA15(){
   const s=$('slide-15');
   makeParticles('p15',28);
   T(100,()=>{sv('m15');sv('a15s1');sv('a15l0');bg(s,isLight?'#c0d4ea':'#010810',1000);});
-  T(2500,()=>sv('a15l1'));
-  T(6000,()=>sv('a15l2'));
-  T(9500,()=>sv('a15l3'));
-  T(13500,()=>sv('a15l4'));
-  T(24000,()=>{hide('a15s1');bg(s,isLight?'#adc8e0':'#041c30',5000);});
-  T(26000,()=>{sv('a15s2');sv('a15t1');});
-  T(28500,()=>sv('a15l5'));
-  T(32000,()=>sv('a15l6'));
-  T(36000,()=>sv('a15l7'));
-  T(41000,()=>sv('a15l8'));
-  T(50000,()=>{hide('a15s2');bg(s,isLight?'#9abcd8':'#072840',6000);});
-  T(52000,()=>$('sl15').classList.add('vis'));
-  T(53500,()=>{sv('a15s3');sv('a15l9');});
-  T(57000,()=>sv('a15q'));
-  T(64000,()=>sv('a15a'));
+  T(1800,()=>sv('a15l1'));
+  T(4000,()=>sv('a15l2'));
+  T(6500,()=>sv('a15l3'));
+  T(9500,()=>sv('a15l4'));
+  T(16000,()=>{hide('a15s1');bg(s,isLight?'#adc8e0':'#041c30',5000);});
+  T(18500,()=>{sv('a15s2');sv('a15t1');});
+  T(20000,()=>sv('a15l5'));
+  T(22500,()=>sv('a15l6'));
+  T(25500,()=>sv('a15l7'));
+  T(29000,()=>sv('a15l8'));
+  T(35000,()=>{hide('a15s2');bg(s,isLight?'#9abcd8':'#072840',6000);});
+  T(38000,()=>$('sl15').classList.add('vis'));
+  T(38500,()=>{sv('a15s3');sv('a15l9');});
+  T(42000,()=>sv('a15q'));
+  T(48000,()=>sv('a15a'));
   // depth counter 280→0
   let t0=null;
-  function tick(ts){if(!t0)t0=ts;const e=ts-t0;const d=Math.max(Math.round(280*(1-e/75000)),0);$('mv15').textContent=d+' m';if(e<75000&&cur===15)requestAnimationFrame(tick);}
+  function tick(ts){if(!t0)t0=ts;const e=ts-t0;const d=Math.max(Math.round(280*(1-e/56000)),0);$('mv15').textContent=d+' m';if(e<56000&&cur===15)requestAnimationFrame(tick);}
   requestAnimationFrame(tick);
 }
 </script>
