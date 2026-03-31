@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diet Quality, Dietary Inflammation &amp; Biological Aging — NUTR 701</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>/* System fonts — no external requests */</style>
 <style>
 /* ═══════════════════════════════════════
    WCAG AA THEME VARIABLES
@@ -57,343 +56,341 @@
 }
 
 /* ═══════════════════════════════════════
-BASE
+   BASE
 ═══════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:100%;height:100%;background:var(–anim-bg);overflow:hidden;font-family:‘Barlow’,sans-serif;transition:background .4s;}
+html,body{width:100%;height:100%;background:var(--anim-bg);overflow:hidden;font-family:'Barlow',sans-serif;transition:background .4s;}
 
 /* ═══════════════════════════════════════
-SLIDE SYSTEM
+   SLIDE SYSTEM
 ═══════════════════════════════════════ */
-.slide{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:var(–bg);transition:background .4s;}
+.slide{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:var(--bg);transition:background .4s;}
 .slide.active{display:flex;}
-.slide.anim-slide{background:var(–anim-bg);}
+
 .canvas{width:1280px;height:720px;position:relative;overflow:hidden;flex-shrink:0;transform-origin:center center;}
-.canvas-glow::before{content:’’;position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 110%,rgba(8,35,65,0.4) 0%,transparent 60%);pointer-events:none;z-index:0;}
+.canvas-glow::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 110%,rgba(8,35,65,0.4) 0%,transparent 60%);pointer-events:none;z-index:0;}
 .light .canvas-glow::before{background:radial-gradient(ellipse 70% 45% at 50% 110%,rgba(160,200,240,0.25) 0%,transparent 60%);}
 .canvas>*{position:relative;z-index:1;}
 
 /* ═══════════════════════════════════════
-SHARED — upgraded sizes for readability
+   SHARED — upgraded sizes for readability
 ═══════════════════════════════════════ */
-.lbl{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:12px;letter-spacing:.44em;color:var(–text3);text-transform:uppercase;margin-bottom:8px;}
-.ttl{font-family:‘Cormorant Garamond’,serif;font-weight:300;font-size:38px;letter-spacing:.05em;color:var(–text1);line-height:1.2;}
-.ttl em{font-style:italic;color:var(–accent);}
-.hdr{position:absolute;top:44px;left:72px;right:72px;border-bottom:1px solid var(–border2);padding-bottom:16px;}
-.fnt{position:absolute;bottom:18px;left:72px;right:72px;font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.28em;color:var(–text3);text-transform:uppercase;}
+.lbl{font-family:'Barlow',sans-serif;font-weight:300;font-size:12px;letter-spacing:.44em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;}
+.ttl{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:38px;letter-spacing:.05em;color:var(--text1);line-height:1.2;}
+.ttl em{font-style:italic;color:var(--accent);}
+.hdr{position:absolute;top:44px;left:72px;right:72px;border-bottom:1px solid var(--border2);padding-bottom:16px;}
+.fnt{position:absolute;bottom:18px;left:72px;right:72px;font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.28em;color:var(--text3);text-transform:uppercase;}
 
 /* body text upgrade — min 14px everywhere */
-.btext{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;line-height:1.7;color:var(–text2);}
-.btext strong{color:var(–text1);font-weight:400;}
+.btext{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;line-height:1.7;color:var(--text2);}
+.btext strong{color:var(--text1);font-weight:400;}
 
 /* ═══════════════════════════════════════
-NAV
+   NAV
 ═══════════════════════════════════════ */
-#nav{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:9999;background:var(–nav-bg);border:1px solid var(–nav-border);border-radius:40px;padding:8px 20px;backdrop-filter:blur(10px);}
-.nbtn{background:none;border:none;cursor:pointer;color:var(–text2);font-size:16px;padding:4px 10px;transition:color .2s;font-family:‘Barlow’,sans-serif;}
-.nbtn:hover{color:var(–text1);}
-.nbtn:disabled{color:var(–text3);opacity:.4;cursor:default;}
-#ctr{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:12px;letter-spacing:.28em;color:var(–text3);min-width:52px;text-align:center;}
-#toggle{background:none;border:1px solid var(–border);border-radius:20px;cursor:pointer;color:var(–text2);font-size:14px;padding:4px 12px;transition:all .2s;font-family:‘Barlow’,sans-serif;}
-#toggle:hover{color:var(–text1);border-color:var(–accent);}
+#nav{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:9999;background:var(--nav-bg);border:1px solid var(--nav-border);border-radius:40px;padding:8px 20px;backdrop-filter:blur(10px);}
+.nbtn{background:none;border:none;cursor:pointer;color:var(--text2);font-size:16px;padding:4px 10px;transition:color .2s;font-family:'Barlow',sans-serif;}
+.nbtn:hover{color:var(--text1);}
+.nbtn:disabled{color:var(--text3);opacity:.4;cursor:default;}
+#ctr{font-family:'Barlow',sans-serif;font-weight:300;font-size:12px;letter-spacing:.28em;color:var(--text3);min-width:52px;text-align:center;}
+#toggle{background:none;border:1px solid var(--border);border-radius:20px;cursor:pointer;color:var(--text2);font-size:14px;padding:4px 12px;transition:all .2s;font-family:'Barlow',sans-serif;}
+#toggle:hover{color:var(--text1);border-color:var(--accent);}
 
 /* ═══════════════════════════════════════
-ANIMATED SLIDE ELEMENTS
+   ANIMATED SLIDE ELEMENTS
 ═══════════════════════════════════════ */
-.asc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px;opacity:0;text-align:center;transition:opacity 1.8s ease;pointer-events:none;}
-.asc.vis{opacity:1;}
-.asc.fout{opacity:0;transition:opacity 1.5s ease;}
 
-.adl{font-family:‘Cormorant Garamond’,serif;font-size:64px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(–anim-text);margin-bottom:52px;opacity:0;transform:translateY(-6px);transition:opacity 1.4s ease,transform 1.4s ease;}
+
+
+
+
 .adl.vis{opacity:1;transform:translateY(0);}
 
 /* WCAG: animated lines min 20px, high contrast */
-.aln{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;line-height:1.9;color:var(–anim-text);margin-bottom:4px;max-width:760px;opacity:0;transform:translateY(10px);transition:opacity 1.1s ease,transform 1.1s ease;}
-.aln.vis{opacity:1;transform:translateY(0);}
-.aln.ita{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:30px;color:var(–anim-text);margin-top:22px;margin-bottom:22px;}
-.aln.mut{font-size:18px;color:rgba(255,255,255,.65);margin-top:14px;}
-.aln.acc{color:var(–anim-acc);}
 
-.atag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:12px;letter-spacing:.45em;color:var(–anim-mute);text-transform:uppercase;margin-bottom:14px;opacity:0;transition:opacity 1.2s ease;}
-.atag.vis{opacity:1;}
 
-.anote{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:14px;letter-spacing:.15em;color:rgba(255,100,80,.5);margin-bottom:52px;opacity:0;transition:opacity 1.2s ease;}
-.light .anote{color:rgba(180,60,30,.6);}
+
+
+
+
+
+
+
+
+.light 
 .anote.vis{opacity:1;}
 
-.amtr{position:absolute;right:44px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transition:opacity 2s ease;}
-.amtr.vis{opacity:1;}
-.amln{width:1px;height:120px;background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.2),rgba(255,255,255,0));}
-.light .amln{background:linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.15),rgba(0,0,0,0));}
-.amvl{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.22em;color:var(–anim-mute);writing-mode:vertical-rl;transform:rotate(180deg);min-height:28px;}
 
-.aprt{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-.apt{position:absolute;border-radius:50%;animation:prise linear infinite;}
-.light .apt{background:rgba(30,80,140,.12)!important;}
-@keyframes prise{0%{transform:translateY(110vh);opacity:0;}8%{opacity:1;}92%{opacity:.25;}100%{transform:translateY(-40px);opacity:0;}}
 
-.slight{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 120% 45% at 50% 0%,rgba(60,140,200,.15) 0%,transparent 70%);opacity:0;transition:opacity 5s ease;}
-.light .slight{background:radial-gradient(ellipse 120% 45% at 50% 0%,rgba(100,180,240,.2) 0%,transparent 70%);}
-.slight.vis{opacity:1;}
+
+.light 
+
+
+
+
+.light 
+8%{opacity:1;}92%{opacity:.25;}100%{transform:translateY(-40px);opacity:0;}}
+
+
+.light 
+
 
 /* Quote — WCAG large text */
-.aqb{max-width:700px;text-align:center;opacity:0;transform:translateY(12px);transition:opacity 2s ease,transform 2s ease;}
-.aqb.vis{opacity:1;transform:translateY(0);}
-.aqm{font-family:‘Cormorant Garamond’,serif;font-size:80px;font-weight:300;color:var(–anim-mute);opacity:.2;line-height:.6;display:block;margin-bottom:12px;user-select:none;}
-.aqt{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:32px;line-height:1.8;color:var(–anim-text);}
-.aqt strong{font-style:italic;font-weight:400;color:var(–anim-acc);}
-.aatr{margin-top:32px;font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;letter-spacing:.32em;color:var(–anim-mute);text-transform:uppercase;opacity:0;transition:opacity 1.8s ease;}
-.aatr.vis{opacity:1;}
+
+
+
+
+.aqt strong{font-style:italic;font-weight:400;color:var(--anim-acc);}
+
+
 
 /* ═══════════════════════════════════════
-S1 — TITLE
+   S1 — TITLE
 ═══════════════════════════════════════ */
-#c1{background:var(–bg);}
+#c1{background:var(--bg);}
 #c1 .t-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-#c1 .t-eyebrow{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:12px;letter-spacing:.5em;color:var(–text3);text-transform:uppercase;margin-bottom:28px;}
-#c1 .t-main{font-family:‘Cormorant Garamond’,serif;font-weight:300;font-size:54px;letter-spacing:.06em;color:var(–text1);text-align:center;line-height:1.25;max-width:900px;margin-bottom:18px;}
-#c1 .t-sub{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:26px;color:var(–accent);letter-spacing:.04em;text-align:center;margin-bottom:52px;}
-#c1 .t-rule{width:60px;height:1px;background:var(–border);margin:0 auto 44px;}
-#c1 .t-name{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:22px;color:var(–text1);letter-spacing:.06em;margin-bottom:10px;}
-#c1 .t-inst{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;letter-spacing:.28em;color:var(–text3);text-transform:uppercase;}
+#c1 .t-eyebrow{font-family:'Barlow',sans-serif;font-weight:300;font-size:12px;letter-spacing:.5em;color:var(--text3);text-transform:uppercase;margin-bottom:28px;}
+#c1 .t-main{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:54px;letter-spacing:.06em;color:var(--text1);text-align:center;line-height:1.25;max-width:900px;margin-bottom:18px;}
+#c1 .t-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:26px;color:var(--accent);letter-spacing:.04em;text-align:center;margin-bottom:52px;}
+#c1 .t-rule{width:60px;height:1px;background:var(--border);margin:0 auto 44px;}
+#c1 .t-name{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px;color:var(--text1);letter-spacing:.06em;margin-bottom:10px;}
+#c1 .t-inst{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;letter-spacing:.28em;color:var(--text3);text-transform:uppercase;}
 
 /* ═══════════════════════════════════════
-S3 — OUTLINE
+   S3 — OUTLINE
 ═══════════════════════════════════════ */
 #c3 .flow{position:absolute;top:152px;bottom:56px;left:56px;right:56px;display:flex;align-items:stretch;}
 #c3 .oarr{width:38px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding-bottom:20px;}
-#c3 .ocard{flex:1;background:var(–bg2);border:1px solid var(–border2);border-radius:2px;padding:26px 20px 22px;position:relative;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;}
-#c3 .ocard::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;}
-#c3 .ocard:nth-child(1)::before{background:var(–rule);opacity:1.0;}
-#c3 .ocard:nth-child(3)::before{background:var(–rule);opacity:.85;}
-#c3 .ocard:nth-child(5)::before{background:var(–rule);opacity:.7;}
-#c3 .ocard:nth-child(7)::before{background:var(–rule);opacity:.55;}
-#c3 .ocard:nth-child(9)::before{background:var(–rule);opacity:.4;}
-#c3 .onum{position:absolute;bottom:10px;right:14px;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:72px;font-weight:300;color:var(–ghost);line-height:1;user-select:none;opacity:3;}
-#c3 .ostag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.38em;color:var(–text3);text-transform:uppercase;margin-bottom:12px;}
-#c3 .otitle{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:19px;color:var(–text1);line-height:1.4;margin-bottom:16px;}
-#c3 .odiv{width:30px;height:1px;background:var(–border2);margin-bottom:16px;flex-shrink:0;}
+#c3 .ocard{flex:1;background:var(--bg2);border:1px solid var(--border2);border-radius:2px;padding:26px 20px 22px;position:relative;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;}
+#c3 .ocard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+#c3 .ocard:nth-child(1)::before{background:var(--rule);opacity:1.0;}
+#c3 .ocard:nth-child(3)::before{background:var(--rule);opacity:.85;}
+#c3 .ocard:nth-child(5)::before{background:var(--rule);opacity:.7;}
+#c3 .ocard:nth-child(7)::before{background:var(--rule);opacity:.55;}
+#c3 .ocard:nth-child(9)::before{background:var(--rule);opacity:.4;}
+#c3 .onum{position:absolute;bottom:10px;right:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:72px;font-weight:300;color:var(--ghost);line-height:1;user-select:none;opacity:3;}
+#c3 .ostag{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;margin-bottom:12px;}
+#c3 .otitle{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:19px;color:var(--text1);line-height:1.4;margin-bottom:16px;}
+#c3 .odiv{width:30px;height:1px;background:var(--border2);margin-bottom:16px;flex-shrink:0;}
 #c3 ul{list-style:none;width:100%;}
-#c3 ul li{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.7;padding-left:14px;position:relative;margin-bottom:3px;}
-#c3 ul li::before{content:’–’;position:absolute;left:0;color:var(–text3);}
+#c3 ul li{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.7;padding-left:14px;position:relative;margin-bottom:3px;}
+#c3 ul li::before{content:'–';position:absolute;left:0;color:var(--text3);}
 
 /* ═══════════════════════════════════════
-S4 — BIO AGE
+   S4 — BIO AGE
 ═══════════════════════════════════════ */
 #c4 .body{position:absolute;top:158px;bottom:52px;left:72px;right:72px;display:flex;gap:48px;}
 #c4 .lft{width:330px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;}
 #c4 .avis{position:relative;height:290px;display:flex;flex-direction:column;justify-content:space-between;}
-#c4 .atrk{position:absolute;left:22px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(–border) 20%,var(–border) 80%,transparent);}
+#c4 .atrk{position:absolute;left:22px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border) 20%,var(--border) 80%,transparent);}
 #c4 .arow{display:flex;align-items:center;gap:20px;}
 #c4 .adot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-left:17px;}
-#c4 .dc{background:var(–accent2);border:1px solid var(–accent);}
+#c4 .dc{background:var(--accent2);border:1px solid var(--accent);}
 #c4 .db{background:rgba(200,130,80,.6);border:1px solid rgba(220,160,100,.8);}
-#c4 .dg{background:transparent;border:1px dashed var(–border);}
-#c4 .atyp{font-family:‘Barlow’,sans-serif;font-weight:400;font-size:13px;letter-spacing:.18em;text-transform:uppercase;}
-#c4 .tc{color:var(–accent);}
+#c4 .dg{background:transparent;border:1px dashed var(--border);}
+#c4 .atyp{font-family:'Barlow',sans-serif;font-weight:400;font-size:13px;letter-spacing:.18em;text-transform:uppercase;}
+#c4 .tc{color:var(--accent);}
 #c4 .tb{color:#c8905a;}
 .light #c4 .tb{color:#a06030;}
-#c4 .tg{color:var(–text3);}
-#c4 .adsc{font-family:‘Cormorant Garamond’,serif;font-weight:300;font-style:italic;font-size:16px;color:var(–text2);line-height:1.4;}
-#c4 .anote{margin-top:22px;font-family:‘Barlow’,sans-serif;font-weight:300;font-size:12px;color:var(–text3);letter-spacing:.06em;line-height:1.6;border-left:1px solid var(–border2);padding-left:14px;}
+#c4 .tg{color:var(--text3);}
+#c4 .adsc{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:16px;color:var(--text2);line-height:1.4;}
+#c4 
 #c4 .rgt{flex:1;display:flex;flex-direction:column;justify-content:center;}
-#c4 .pt{display:flex;gap:24px;padding:20px 0;border-bottom:1px solid var(–border2);align-items:flex-start;}
-#c4 .pt:first-child{border-top:1px solid var(–border2);}
-#c4 .pn{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:36px;color:var(–border);line-height:1;flex-shrink:0;width:36px;padding-top:2px;}
-#c4 .ptit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:20px;color:var(–text1);margin-bottom:7px;line-height:1.3;}
-#c4 .pdet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text2);line-height:1.65;}
-#c4 .pdet strong{color:var(–text1);font-weight:400;}
+#c4 .pt{display:flex;gap:24px;padding:20px 0;border-bottom:1px solid var(--border2);align-items:flex-start;}
+#c4 .pt:first-child{border-top:1px solid var(--border2);}
+#c4 .pn{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:36px;color:var(--border);line-height:1;flex-shrink:0;width:36px;padding-top:2px;}
+#c4 .ptit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:20px;color:var(--text1);margin-bottom:7px;line-height:1.3;}
+#c4 .pdet{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text2);line-height:1.65;}
+#c4 .pdet strong{color:var(--text1);font-weight:400;}
 #c4 .opills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-#c4 .opl{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(–text2);border:1px solid var(–border);border-radius:2px;padding:4px 10px;}
+#c4 .opl{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text2);border:1px solid var(--border);border-radius:2px;padding:4px 10px;}
 
 /* ═══════════════════════════════════════
-S5 — WHY KDM
+   S5 — WHY KDM
 ═══════════════════════════════════════ */
 #c5 .cols{position:absolute;top:152px;bottom:52px;left:72px;right:72px;display:flex;gap:24px;}
-#c5 .kcol{flex:1;border:1px solid var(–border2);border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:12px;background:var(–bg2);}
-#c5 .kcol.hl{background:var(–bg3);border-top:2px solid var(–accent);}
+#c5 .kcol{flex:1;border:1px solid var(--border2);border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:12px;background:var(--bg2);}
+#c5 .kcol.hl{background:var(--bg3);border-top:2px solid var(--accent);}
 #c5 .kcol.dim{opacity:.75;}
-#c5 .kh{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:20px;color:var(–text1);margin-bottom:6px;}
-#c5 .kdiv{width:28px;height:1px;background:var(–border2);margin-bottom:6px;}
-#c5 .krow{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(–border2);}
-#c5 .krow:first-of-type{border-top:1px solid var(–border2);}
-#c5 .kicon{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text3);flex-shrink:0;padding-top:1px;}
-#c5 .kt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text2);line-height:1.65;}
-#c5 .kt strong{color:var(–text1);font-weight:400;}
-#c5 .kt.good{color:var(–text2);}
-#c5 .kt strong.good{color:var(–text1);}
+#c5 .kh{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:20px;color:var(--text1);margin-bottom:6px;}
+#c5 .kdiv{width:28px;height:1px;background:var(--border2);margin-bottom:6px;}
+#c5 .krow{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border2);}
+#c5 .krow:first-of-type{border-top:1px solid var(--border2);}
+#c5 .kicon{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text3);flex-shrink:0;padding-top:1px;}
+#c5 .kt{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text2);line-height:1.65;}
+#c5 .kt strong{color:var(--text1);font-weight:400;}
+#c5 .kt.good{color:var(--text2);}
+#c5 .kt strong.good{color:var(--text1);}
 
 /* ═══════════════════════════════════════
-S6 — DIETARY LENSES
+   S6 — DIETARY LENSES
 ═══════════════════════════════════════ */
 #c6 .cols{position:absolute;top:152px;bottom:88px;left:72px;right:72px;display:flex;gap:32px;}
-#c6 .dcol{flex:1;background:var(–bg2);border:1px solid var(–border2);border-radius:2px;padding:28px 24px;}
-#c6 .dcol.hei{border-top:2px solid var(–accent);}
+#c6 .dcol{flex:1;background:var(--bg2);border:1px solid var(--border2);border-radius:2px;padding:28px 24px;}
+#c6 .dcol.hei{border-top:2px solid var(--accent);}
 #c6 .dcol.dii{border-top:2px solid rgba(200,100,80,.5);}
 .light #c6 .dcol.dii{border-top:2px solid rgba(160,60,30,.5);}
-#c6 .dctag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.42em;color:var(–text3);text-transform:uppercase;margin-bottom:6px;}
-#c6 .dch{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:28px;color:var(–text1);margin-bottom:4px;}
-#c6 .dcsh{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:17px;color:var(–text2);margin-bottom:20px;}
-#c6 .dcdiv{width:32px;height:1px;background:var(–border2);margin-bottom:18px;}
-#c6 .dcd{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text2);line-height:1.7;margin-bottom:12px;}
-#c6 .dcd strong{color:var(–text1);font-weight:400;}
-#c6 .dbt{position:absolute;bottom:62px;left:72px;right:72px;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:19px;color:var(–text2);text-align:center;line-height:1.6;}
+#c6 .dctag{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.42em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;}
+#c6 .dch{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:28px;color:var(--text1);margin-bottom:4px;}
+#c6 .dcsh{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:17px;color:var(--text2);margin-bottom:20px;}
+#c6 .dcdiv{width:32px;height:1px;background:var(--border2);margin-bottom:18px;}
+#c6 .dcd{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:12px;}
+#c6 .dcd strong{color:var(--text1);font-weight:400;}
+#c6 .dbt{position:absolute;bottom:62px;left:72px;right:72px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;color:var(--text2);text-align:center;line-height:1.6;}
 
 /* ═══════════════════════════════════════
-S7 — LIT GAP
+   S7 — LIT GAP
 ═══════════════════════════════════════ */
 #c7 .studies{position:absolute;top:150px;left:72px;right:72px;display:flex;flex-direction:column;}
-#c7 .srow{display:flex;gap:28px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(–border2);}
-#c7 .srow:first-child{border-top:1px solid var(–border2);}
-#c7 .scite{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:16px;color:var(–text2);white-space:nowrap;flex-shrink:0;width:185px;padding-top:2px;}
-#c7 .sdesc{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text2);line-height:1.65;}
-#c7 .sdesc strong{color:var(–text1);font-weight:400;}
-#c7 .gap-box{position:absolute;bottom:58px;left:72px;right:72px;background:var(–bg2);border:1px solid var(–border);border-left:3px solid var(–accent);border-radius:2px;padding:18px 24px;}
-#c7 .gap-text{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:21px;color:var(–text1);line-height:1.55;}
-#c7 .gap-text em{font-style:italic;color:var(–accent);}
+#c7 .srow{display:flex;gap:28px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--border2);}
+#c7 .srow:first-child{border-top:1px solid var(--border2);}
+#c7 .scite{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:16px;color:var(--text2);white-space:nowrap;flex-shrink:0;width:185px;padding-top:2px;}
+#c7 .sdesc{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text2);line-height:1.65;}
+#c7 .sdesc strong{color:var(--text1);font-weight:400;}
+#c7 .gap-box{position:absolute;bottom:58px;left:72px;right:72px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:18px 24px;}
+#c7 .gap-text{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;color:var(--text1);line-height:1.55;}
+#c7 .gap-text em{font-style:italic;color:var(--accent);}
 
 /* ═══════════════════════════════════════
-S8 — AIMS
+   S8 — AIMS
 ═══════════════════════════════════════ */
 #c8 .aims{position:absolute;top:150px;bottom:52px;left:72px;right:72px;display:flex;flex-direction:column;}
-#c8 .aim{display:flex;gap:28px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(–border2);}
-#c8 .aim:first-child{border-top:1px solid var(–border2);}
-#c8 .anum{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.22em;color:var(–text3);text-transform:uppercase;flex-shrink:0;width:56px;padding-top:5px;}
-#c8 .atit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:20px;color:var(–text1);margin-bottom:7px;line-height:1.35;}
-#c8 .adet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text2);line-height:1.65;}
-#c8 .adet strong{color:var(–text1);font-weight:400;}
-#c8 .hyp{margin-top:22px;background:var(–bg2);border:1px solid var(–border);border-left:3px solid var(–accent);border-radius:2px;padding:18px 22px;}
-#c8 .hyp-tag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.4em;color:var(–text3);text-transform:uppercase;margin-bottom:8px;}
-#c8 .hyp-text{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:18px;color:var(–text1);line-height:1.65;}
+#c8 .aim{display:flex;gap:28px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--border2);}
+#c8 .aim:first-child{border-top:1px solid var(--border2);}
+#c8 .anum{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.22em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:56px;padding-top:5px;}
+#c8 .atit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:20px;color:var(--text1);margin-bottom:7px;line-height:1.35;}
+#c8 .adet{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text2);line-height:1.65;}
+#c8 .adet strong{color:var(--text1);font-weight:400;}
+#c8 .hyp{margin-top:22px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:18px 22px;}
+#c8 .hyp-tag{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.4em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;}
+#c8 .hyp-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:18px;color:var(--text1);line-height:1.65;}
 
 /* ═══════════════════════════════════════
-S9 — NHANES + ETHICS
+   S9 — NHANES + ETHICS
 ═══════════════════════════════════════ */
 #c9 .body{position:absolute;top:150px;bottom:50px;left:72px;right:72px;display:flex;gap:36px;}
 #c9 .ctl{width:200px;flex-shrink:0;display:flex;flex-direction:column;padding-top:8px;position:relative;}
-#c9 .cllbl{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;color:var(–text3);text-transform:uppercase;margin-bottom:18px;}
-#c9 .ttrk{position:absolute;left:10px;top:40px;bottom:80px;width:1px;background:linear-gradient(to bottom,var(–accent),transparent);}
+#c9 .cllbl{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;color:var(--text3);text-transform:uppercase;margin-bottom:18px;}
+#c9 .ttrk{position:absolute;left:10px;top:40px;bottom:80px;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
 #c9 .cyc{display:flex;align-items:center;gap:18px;margin-bottom:22px;}
-#c9 .cdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-left:6px;background:var(–border);border:1px solid var(–text3);}
-#c9 .cdot.on{background:var(–accent);border-color:var(–accent);box-shadow:0 0 6px rgba(90,158,200,.4);}
-#c9 .ctxt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text2);line-height:1.4;}
-#c9 .ctxt strong{color:var(–text1);font-weight:400;}
-#c9 .cnote{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;color:var(–text3);margin-top:2px;}
-#c9 .fevn{margin-top:10px;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:14px;color:var(–text2);border-left:1px solid var(–border2);padding-left:12px;line-height:1.6;}
+#c9 .cdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-left:6px;background:var(--border);border:1px solid var(--text3);}
+#c9 .cdot.on{background:var(--accent);border-color:var(--accent);box-shadow:0 0 6px rgba(90,158,200,.4);}
+#c9 .ctxt{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text2);line-height:1.4;}
+#c9 .ctxt strong{color:var(--text1);font-weight:400;}
+#c9 .cnote{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;color:var(--text3);margin-top:2px;}
+#c9 .fevn{margin-top:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:14px;color:var(--text2);border-left:1px solid var(--border2);padding-left:12px;line-height:1.6;}
 #c9 .cmid{flex:1;display:flex;flex-direction:column;padding-top:8px;}
-#c9 .dblk{padding:12px 0;border-bottom:1px solid var(–border2);}
-#c9 .dblk:first-child{border-top:1px solid var(–border2);}
-#c9 .dtag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.34em;color:var(–text3);text-transform:uppercase;margin-bottom:5px;}
-#c9 .dtxt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.65;}
-#c9 .dtxt strong{color:var(–text1);font-weight:400;}
-#c9 .ceth{width:278px;flex-shrink:0;background:var(–bg2);border:1px solid var(–border);border-top:2px solid var(–accent);border-radius:2px;padding:20px 20px 18px;display:flex;flex-direction:column;}
-#c9 .etit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:18px;color:var(–text1);margin-bottom:14px;line-height:1.3;}
-#c9 .ediv{width:28px;height:1px;background:var(–border2);margin-bottom:14px;}
+#c9 .dblk{padding:12px 0;border-bottom:1px solid var(--border2);}
+#c9 .dblk:first-child{border-top:1px solid var(--border2);}
+#c9 .dtag{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.34em;color:var(--text3);text-transform:uppercase;margin-bottom:5px;}
+#c9 .dtxt{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.65;}
+#c9 .dtxt strong{color:var(--text1);font-weight:400;}
+#c9 .ceth{width:278px;flex-shrink:0;background:var(--bg2);border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:2px;padding:20px 20px 18px;display:flex;flex-direction:column;}
+#c9 .etit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:18px;color:var(--text1);margin-bottom:14px;line-height:1.3;}
+#c9 .ediv{width:28px;height:1px;background:var(--border2);margin-bottom:14px;}
 #c9 .eit{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px;}
-#c9 .edot{width:6px;height:6px;border-radius:50%;background:var(–accent2);border:1px solid var(–accent);flex-shrink:0;margin-top:6px;}
-#c9 .etxt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.65;}
-#c9 .etxt strong{color:var(–text1);font-weight:400;}
+#c9 .edot{width:6px;height:6px;border-radius:50%;background:var(--accent2);border:1px solid var(--accent);flex-shrink:0;margin-top:6px;}
+#c9 .etxt{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.65;}
+#c9 .etxt strong{color:var(--text1);font-weight:400;}
 
 /* ═══════════════════════════════════════
-S10 — EXPOSURES
+   S10 — EXPOSURES
 ═══════════════════════════════════════ */
 #c10 .cols{position:absolute;top:150px;bottom:50px;left:72px;right:72px;display:flex;gap:28px;}
-#c10 .ecol{flex:1;background:var(–bg2);border:1px solid var(–border2);border-radius:2px;padding:24px 20px;}
-#c10 .ecol.exp{border-top:2px solid var(–accent);}
+#c10 .ecol{flex:1;background:var(--bg2);border:1px solid var(--border2);border-radius:2px;padding:24px 20px;}
+#c10 .ecol.exp{border-top:2px solid var(--accent);}
 #c10 .ecol.out{border-top:2px solid rgba(200,160,80,.5);}
 .light #c10 .ecol.out{border-top:2px solid rgba(140,100,20,.5);}
 #c10 .ecol.cov{border-top:2px solid rgba(80,160,100,.4);}
-#c10 .ectag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;color:var(–text3);text-transform:uppercase;margin-bottom:10px;}
-#c10 .ech{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:20px;color:var(–text1);margin-bottom:14px;line-height:1.3;}
-#c10 .edivr{width:28px;height:1px;background:var(–border2);margin-bottom:14px;}
-#c10 .erow{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.7;padding:8px 0;border-bottom:1px solid var(–border2);}
-#c10 .erow:first-of-type{border-top:1px solid var(–border2);}
-#c10 .erow strong{color:var(–text1);font-weight:400;}
-#c10 .enote{margin-top:14px;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:15px;color:var(–text2);line-height:1.6;}
-#c10 .covlist{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.9;}
+#c10 .ectag{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;}
+#c10 .ech{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:20px;color:var(--text1);margin-bottom:14px;line-height:1.3;}
+#c10 .edivr{width:28px;height:1px;background:var(--border2);margin-bottom:14px;}
+#c10 .erow{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.7;padding:8px 0;border-bottom:1px solid var(--border2);}
+#c10 .erow:first-of-type{border-top:1px solid var(--border2);}
+#c10 .erow strong{color:var(--text1);font-weight:400;}
+#c10 .enote{margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:15px;color:var(--text2);line-height:1.6;}
+#c10 .covlist{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.9;}
 #c10 .covlist span{display:block;}
 
 /* ═══════════════════════════════════════
-S11 — ANALYSIS
+   S11 — ANALYSIS
 ═══════════════════════════════════════ */
 #c11 .steps{position:absolute;top:150px;bottom:70px;left:72px;right:72px;display:flex;flex-direction:column;}
-#c11 .step{display:flex;gap:24px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(–border2);}
-#c11 .step:first-child{border-top:1px solid var(–border2);}
-#c11 .sn{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:42px;color:var(–border);line-height:1;flex-shrink:0;width:46px;}
-#c11 .stit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:19px;color:var(–text1);margin-bottom:5px;line-height:1.3;}
-#c11 .sdet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text2);line-height:1.65;}
-#c11 .sdet strong{color:var(–text1);font-weight:400;}
+#c11 .step{display:flex;gap:24px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--border2);}
+#c11 .step:first-child{border-top:1px solid var(--border2);}
+#c11 .sn{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:42px;color:var(--border);line-height:1;flex-shrink:0;width:46px;}
+#c11 .stit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:19px;color:var(--text1);margin-bottom:5px;line-height:1.3;}
+#c11 .sdet{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text2);line-height:1.65;}
+#c11 .sdet strong{color:var(--text1);font-weight:400;}
 #c11 .sw-bar{position:absolute;bottom:44px;left:72px;right:72px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
-#c11 .sw-item{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.26em;color:var(–text2);text-transform:uppercase;border:1px solid var(–border);padding:5px 12px;border-radius:2px;}
+#c11 .sw-item{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.26em;color:var(--text2);text-transform:uppercase;border:1px solid var(--border);padding:5px 12px;border-radius:2px;}
 
 /* ═══════════════════════════════════════
-S12 — SENSITIVITY
+   S12 — SENSITIVITY
 ═══════════════════════════════════════ */
 #c12 .cols{position:absolute;top:150px;bottom:94px;left:72px;right:72px;display:flex;gap:32px;}
-#c12 .scol{flex:1;border:1px solid var(–border2);border-radius:2px;padding:26px 22px;background:var(–bg2);}
-#c12 .scol.pri{border-top:2px solid var(–accent);}
+#c12 .scol{flex:1;border:1px solid var(--border2);border-radius:2px;padding:26px 22px;background:var(--bg2);}
+#c12 .scol.pri{border-top:2px solid var(--accent);}
 #c12 .scol.sen{border-top:2px solid rgba(200,160,80,.5);}
 .light #c12 .scol.sen{border-top:2px solid rgba(140,100,20,.5);}
-#c12 .sctag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;color:var(–text3);text-transform:uppercase;margin-bottom:8px;}
-#c12 .sch{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:21px;color:var(–text1);margin-bottom:16px;}
-#c12 .sdivr{width:28px;height:1px;background:var(–border2);margin-bottom:16px;}
+#c12 .sctag{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;}
+#c12 .sch{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:21px;color:var(--text1);margin-bottom:16px;}
+#c12 .sdivr{width:28px;height:1px;background:var(--border2);margin-bottom:16px;}
 #c12 .sblk{margin-bottom:15px;}
-#c12 .sbtag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.34em;color:var(–text3);text-transform:uppercase;margin-bottom:4px;}
-#c12 .sbtxt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;color:var(–text2);line-height:1.65;}
-#c12 .sbtxt strong{color:var(–text1);font-weight:400;}
-#c12 .conc{position:absolute;bottom:48px;left:72px;right:72px;background:var(–bg2);border:1px solid var(–border);border-left:3px solid var(–accent);border-radius:2px;padding:16px 22px;}
-#c12 .conc-text{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:19px;color:var(–text1);line-height:1.6;}
+#c12 .sbtag{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.34em;color:var(--text3);text-transform:uppercase;margin-bottom:4px;}
+#c12 .sbtxt{font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;color:var(--text2);line-height:1.65;}
+#c12 .sbtxt strong{color:var(--text1);font-weight:400;}
+#c12 .conc{position:absolute;bottom:48px;left:72px;right:72px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:16px 22px;}
+#c12 .conc-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:19px;color:var(--text1);line-height:1.6;}
 
 /* ═══════════════════════════════════════
-S13 — RESULTS + IMPLICATIONS
+   S13 — RESULTS + IMPLICATIONS
 ═══════════════════════════════════════ */
-#c13 .crule{position:absolute;top:148px;bottom:48px;left:50%;width:1px;background:linear-gradient(to bottom,transparent,var(–border2) 15%,var(–border2) 85%,transparent);}
+#c13 .crule{position:absolute;top:148px;bottom:48px;left:50%;width:1px;background:linear-gradient(to bottom,transparent,var(--border2) 15%,var(--border2) 85%,transparent);}
 #c13 .cols{position:absolute;top:150px;bottom:50px;left:72px;right:72px;display:flex;}
 #c13 .col{flex:1;display:flex;flex-direction:column;padding-top:14px;}
 #c13 .cl{padding-right:40px;}
 #c13 .cr{padding-left:40px;}
-#c13 .ch{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;text-transform:uppercase;margin-bottom:16px;color:var(–text3);}
-#c13 .res{display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(–border2);}
-#c13 .res:first-of-type{border-top:1px solid var(–border2);}
-#c13 .rnum{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:30px;color:var(–border);line-height:1;flex-shrink:0;width:28px;padding-top:1px;}
-#c13 .rtit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:17px;color:var(–text1);margin-bottom:4px;line-height:1.35;}
-#c13 .rdet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.65;}
-#c13 .rdet strong{color:var(–text1);font-weight:400;}
-#c13 .imp{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(–border2);}
-#c13 .imp:first-of-type{border-top:1px solid var(–border2);}
-#c13 .idot{width:7px;height:7px;border-radius:50%;background:var(–accent2);border:1px solid var(–accent);flex-shrink:0;margin-top:7px;}
-#c13 .itit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:17px;color:var(–text1);margin-bottom:4px;line-height:1.35;}
-#c13 .idet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.65;}
-#c13 .idet strong{color:var(–text1);font-weight:400;}
+#c13 .ch{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;text-transform:uppercase;margin-bottom:16px;color:var(--text3);}
+#c13 .res{display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--border2);}
+#c13 .res:first-of-type{border-top:1px solid var(--border2);}
+#c13 .rnum{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:30px;color:var(--border);line-height:1;flex-shrink:0;width:28px;padding-top:1px;}
+#c13 .rtit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:17px;color:var(--text1);margin-bottom:4px;line-height:1.35;}
+#c13 .rdet{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.65;}
+#c13 .rdet strong{color:var(--text1);font-weight:400;}
+#c13 .imp{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--border2);}
+#c13 .imp:first-of-type{border-top:1px solid var(--border2);}
+#c13 .idot{width:7px;height:7px;border-radius:50%;background:var(--accent2);border:1px solid var(--accent);flex-shrink:0;margin-top:7px;}
+#c13 .itit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:17px;color:var(--text1);margin-bottom:4px;line-height:1.35;}
+#c13 .idet{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.65;}
+#c13 .idet strong{color:var(--text1);font-weight:400;}
 
 /* ═══════════════════════════════════════
-S14 — STRENGTHS + LIMITATIONS
+   S14 — STRENGTHS + LIMITATIONS
 ═══════════════════════════════════════ */
-#c14 .crule{position:absolute;top:148px;bottom:48px;left:50%;width:1px;background:linear-gradient(to bottom,transparent,var(–border2) 15%,var(–border2) 85%,transparent);}
+#c14 .crule{position:absolute;top:148px;bottom:48px;left:50%;width:1px;background:linear-gradient(to bottom,transparent,var(--border2) 15%,var(--border2) 85%,transparent);}
 #c14 .cols{position:absolute;top:150px;bottom:50px;left:72px;right:72px;display:flex;}
 #c14 .col{flex:1;display:flex;flex-direction:column;padding-top:14px;}
 #c14 .cl{padding-right:40px;}
 #c14 .cr{padding-left:40px;}
-#c14 .ch{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;text-transform:uppercase;margin-bottom:16px;color:var(–text3);}
-#c14 .str{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(–border2);}
-#c14 .str:first-of-type{border-top:1px solid var(–border2);}
+#c14 .ch{font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;letter-spacing:.40em;text-transform:uppercase;margin-bottom:16px;color:var(--text3);}
+#c14 .str{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--border2);}
+#c14 .str:first-of-type{border-top:1px solid var(--border2);}
 #c14 .sdot{width:7px;height:7px;border-radius:50%;background:rgba(60,160,80,.6);border:1px solid rgba(80,200,100,.6);flex-shrink:0;margin-top:6px;}
-#c14 .stit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:17px;color:var(–text1);margin-bottom:4px;line-height:1.3;}
-#c14 .sdet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.65;}
-#c14 .sdet strong{color:var(–text1);font-weight:400;}
-#c14 .lim{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(–border2);}
-#c14 .lim:first-of-type{border-top:1px solid var(–border2);}
+#c14 .stit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:17px;color:var(--text1);margin-bottom:4px;line-height:1.3;}
+#c14 .sdet{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.65;}
+#c14 .sdet strong{color:var(--text1);font-weight:400;}
+#c14 .lim{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--border2);}
+#c14 .lim:first-of-type{border-top:1px solid var(--border2);}
 #c14 .ldot{width:7px;height:7px;border-radius:50%;background:rgba(200,100,60,.5);border:1px solid rgba(220,130,80,.5);flex-shrink:0;margin-top:6px;}
-#c14 .ltit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:17px;color:var(–text1);margin-bottom:4px;line-height:1.3;}
-#c14 .ldet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:13px;color:var(–text2);line-height:1.65;}
-#c14 .ldet strong{color:var(–text1);font-weight:400;}
+#c14 .ltit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:17px;color:var(--text1);margin-bottom:4px;line-height:1.3;}
+#c14 .ldet{font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;color:var(--text2);line-height:1.65;}
+#c14 .ldet strong{color:var(--text1);font-weight:400;}
 </style>
-
 </head>
 <body>
 
 <!-- ══ S1 TITLE ══ -->
-
 <div class="slide" id="slide-1">
  <div class="canvas" id="c1">
   <div class="t-wrap">
@@ -401,33 +398,48 @@ S14 — STRENGTHS + LIMITATIONS
    <div class="t-main">Diet Quality, Dietary Inflammation,<br>and Biological Aging</div>
    <div class="t-sub">Are they aging the same systems through the same pathways?</div>
    <div class="t-rule"></div>
-   <div class="t-name">Adrienne</div>
+   <div class="t-name">Adrienne Dunlevy, RDN</div>
    <div class="t-inst">Nutritional Sciences · School of Public Health</div>
   </div>
  </div>
 </div>
 
-<!-- ══ S2 MARIA OPENER ══ -->
-
-<div class="slide anim-slide" id="slide-2">
- <div class="aprt" id="p2"></div>
- <div class="amtr" id="m2"><div class="amln"></div><div class="amvl" id="mv2">0 m</div><div class="amln"></div></div>
- <div class="asc" id="a2s1"><div class="adl" id="a2l0">Surface</div><div class="aln" id="a2l1">The calendar says Maria is 52.</div><div class="aln" id="a2l2">Her cells are experiencing 61.</div><div class="aln" id="a2l3">No one has ever told her the rate<br>is something she can change.</div></div>
- <div class="asc" id="a2s2"><div class="atag" id="a2t1">— 100 meters —</div><div class="aln" id="a2l4">The cardiologist says cut sodium.</div><div class="aln" id="a2l5">The endocrinologist says manage carbs.</div><div class="aln" id="a2l6">The nephrologist says watch protein.</div><div class="aln ita" id="a2l7">Each one is correct. For their fire.</div><div class="aln mut" id="a2l8">No one is holding all of her fires at the same time.</div></div>
- <div class="asc" id="a2s3"><div class="atag" id="a2t2">— 200 meters —</div><div class="anote" id="a2n1">red light disappears here</div><div class="aln" id="a2l9">Her corner store has three aisles of soda<br>and half a shelf of produce.</div><div class="aln" id="a2l10">The "healthy" foods on the pamphlet<br>don't account for the disease inside her body.</div><div class="aln" id="a2l11">She has never been shown what her own blood<br>is actually telling her.</div></div>
- <div class="asc" id="a2s4"><div class="adl" id="a2l12">Deep Water</div><div class="aln" id="a2l13">What if a tool could read her existing blood work —</div><div class="aln" id="a2l14">and show her that time is moving differently inside her body?</div><div class="aln ita" id="a2l15">What if it held all of her fires at once?</div></div>
- <div class="asc" id="a2s5"><div class="aln acc" id="a2l16" style="font-size:28px;max-width:680px;">That tool exists.</div><div class="aln ita" id="a2l17">This study is how we validate it.</div></div>
+<!-- ══ S2 CLINICAL MOTIVATION ══ -->
+<div class="slide" id="slide-2">
+ <div class="canvas canvas-glow" id="c2">
+  <div class="hdr"><div class="lbl">Background</div><div class="ttl">Aging is the shared risk factor. Chronological age is a poor predictor.</div></div>
+  <div style="position:absolute;top:152px;bottom:52px;left:72px;right:72px;display:flex;gap:40px;align-items:stretch;">
+   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;">
+    <div style="padding:16px 0;border-bottom:1px solid var(--border2);display:flex;gap:20px;align-items:flex-start;">
+     <div style="font-family:Georgia,serif;font-style:italic;font-size:34px;color:var(--border);flex-shrink:0;width:36px;">1</div>
+     <div><div style="font-family:Georgia,serif;font-size:19px;color:var(--text1);margin-bottom:6px;">Chronic disease burden is rising with age</div><div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text2);line-height:1.7;">Heart disease, cancer, type 2 diabetes, and Alzheimer's share aging as their biggest underlying risk factor. Healthcare costs tied to these conditions rise as the population gets older.</div></div>
+    </div>
+    <div style="padding:16px 0;border-bottom:1px solid var(--border2);display:flex;gap:20px;align-items:flex-start;">
+     <div style="font-family:Georgia,serif;font-style:italic;font-size:34px;color:var(--border);flex-shrink:0;width:36px;">2</div>
+     <div><div style="font-family:Georgia,serif;font-size:19px;color:var(--text1);margin-bottom:6px;">Chronological age does not predict who develops disease</div><div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text2);line-height:1.7;">Biological aging research asks what is speeding up or slowing down physiological decline — independent of the calendar. The focus shifts from treating individual diseases to measuring the aging process itself.</div></div>
+    </div>
+    <div style="padding:16px 0;display:flex;gap:20px;align-items:flex-start;">
+     <div style="font-family:Georgia,serif;font-style:italic;font-size:34px;color:var(--border);flex-shrink:0;width:36px;">3</div>
+     <div><div style="font-family:Georgia,serif;font-size:19px;color:var(--text1);margin-bottom:6px;">Diet is the logical exposure</div><div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text2);line-height:1.7;">People eat every day. Dietary patterns can be changed. Evidence links nutrition to specific disease outcomes. The question is whether diet affects aging across multiple organ systems at once rather than one condition at a time.</div></div>
+    </div>
+   </div>
+   <div style="width:290px;flex-shrink:0;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:28px 24px;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.4em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Research question</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:19px;color:var(--text1);line-height:1.75;">Are diet quality and dietary inflammatory potential independently associated with biological age residuals across multiple organ systems? Do they capture distinct dietary dimensions of aging?</div>
+   </div>
+  </div>
+  <div class="fnt">Cross-sectional design — association, not causation</div>
+ </div>
 </div>
 
 <!-- ══ S3 OUTLINE ══ -->
-
 <div class="slide" id="slide-3">
  <div class="canvas canvas-glow" id="c3">
-  <div class="hdr"><div class="lbl">NUTR 701 · MS Thesis Proposal</div><div class="ttl" style="font-size:44px">Outline</div></div>
+  <div class="hdr"><div class="lbl">NUTR 701 · MS Thesis Proposal</div><div class="ttl" style="font-size:44px">Presentation outline</div></div>
   <div class="flow">
    <div class="ocard"><div class="onum">01</div><div class="ostag">Section 01</div><div class="otitle">Background<br>&amp; Literature</div><div class="odiv"></div><ul><li>Why biological age matters</li><li>KDM vs. prior tools</li><li>HEI-2020 &amp; DII</li><li>Where the literature stops</li></ul></div>
    <div class="oarr"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-   <div class="ocard"><div class="onum">02</div><div class="ostag">Section 02</div><div class="otitle">Study<br>Objectives</div><div class="odiv"></div><ul><li>Aim 1 — total index scores</li><li>Aim 2 — component decomposition</li><li>Hypothesis</li><li>Public health relevance</li></ul></div>
+   <div class="ocard"><div class="onum">02</div><div class="ostag">Section 02</div><div class="otitle">Study<br>Objectives</div><div class="odiv"></div><ul><li>Aim 1 — total index scores</li><li>Sensitivity analysis — CRP pathway</li><li>Hypothesis</li><li>Public health relevance</li></ul></div>
    <div class="oarr"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
    <div class="ocard"><div class="onum">03</div><div class="ostag">Section 03</div><div class="otitle">Methods</div><div class="odiv"></div><ul><li>NHANES 2007–2012</li><li>Study population &amp; exclusions</li><li>Exposures, outcome, covariates</li><li>Ethical considerations</li></ul></div>
    <div class="oarr"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -440,64 +452,223 @@ S14 — STRENGTHS + LIMITATIONS
 </div>
 
 <!-- ══ S4 BIO AGE ══ -->
-
 <div class="slide" id="slide-4">
- <div class="canvas canvas-glow" id="c4">
-  <div class="hdr"><div class="lbl">Background</div><div class="ttl">Two people. Same age. <em>Different bodies.</em></div></div>
-  <div class="body">
-   <div class="lft">
-    <div class="avis">
-     <div class="atrk"></div>
-     <div class="arow"><div class="adot dc"></div><div><div class="atyp tc">Chronological age</div><div class="adsc">your position on the time axis —<br>fixed, irreversible</div></div></div>
-     <div class="arow"><div class="adot db"></div><div><div class="atyp tb">Biological age</div><div class="adsc">what your physiological slice<br>actually looks like right now</div></div></div>
-     <div class="arow"><div class="adot dg"></div><div><div class="atyp tg">The gap between them</div><div class="adsc">what this study measures —<br>and what diet may be shaping</div></div></div>
+<style>
+#s4-wrap {
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bg);
+}
+
+/* TIME AXIS LINE */
+#s4-axis {
+  position:absolute;
+  bottom:220px;
+  left:120px;right:120px;
+  height:1px;
+  background:rgba(90,158,200,0);
+  transition:background 1.2s ease;
+}
+#s4-axis.vis { background:rgba(90,158,200,0.25); }
+#s4-axis-label {
+  position:absolute;
+  right:-10px;
+  top:10px;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  font-size:11px;
+  letter-spacing:.28em;
+  color:rgba(90,158,200,0);
+  text-transform:uppercase;
+  transition:color 1s ease;
+  white-space:nowrap;
+}
+#s4-axis-label.vis { color:rgba(90,158,200,0.5); }
+
+/* SLICES — vertical planes stacked along time axis */
+#s4-slices {
+  position:absolute;
+  bottom:190px;
+  left:130px;right:130px;
+  height:180px;
+  display:flex;
+  align-items:flex-end;
+  gap:18px;
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+#s4-slices.vis { opacity:1; }
+
+.s4-page {
+  flex:1;
+  height:100%;
+  border:1px solid rgba(90,158,200,0.12);
+  background:linear-gradient(to top, rgba(90,158,200,0.04), rgba(90,158,200,0.10));
+  border-radius:1px;
+  opacity:0;
+  transform:scaleY(0.3);
+  transform-origin:bottom center;
+  transition:opacity 0.5s ease, transform 0.6s cubic-bezier(.22,1,.36,1);
+}
+.s4-page.vis {
+  opacity:1;
+  transform:scaleY(1);
+}
+
+/* HIGHLIGHTED SLICE */
+.s4-page.highlight {
+  background:linear-gradient(to top, rgba(90,158,200,0.18), rgba(90,158,200,0.38));
+  border-color:rgba(90,158,200,0.7);
+  box-shadow:0 0 20px rgba(90,158,200,0.18);
+}
+
+/* YOU ARE HERE marker */
+#s4-marker {
+  position:absolute;
+  bottom:375px;
+  opacity:0;
+  transition:opacity 0.8s ease;
+  text-align:center;
+  pointer-events:none;
+}
+#s4-marker.vis { opacity:1; }
+#s4-marker-line {
+  width:1px;height:30px;
+  background:rgba(90,158,200,0.5);
+  margin:0 auto;
+}
+#s4-marker-text {
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:.3em;
+  color:rgba(90,158,200,0.8);
+  text-transform:uppercase;
+  white-space:nowrap;
+  margin-top:6px;
+}
+
+/* FINAL EXPLANATION */
+#s4-explain {
+  position:absolute;inset:0;
+  opacity:0;
+  transition:opacity 1.2s ease;
+  pointer-events:none;
+}
+#s4-explain.vis { opacity:1; pointer-events:auto; }
+</style>
+
+<div id="s4-wrap">
+  <div id="s4-axis"><div id="s4-axis-label">Time axis →</div></div>
+
+  <div id="s4-slices">
+    <div class="s4-page" id="s4p1"></div>
+    <div class="s4-page" id="s4p2"></div>
+    <div class="s4-page" id="s4p3"></div>
+    <div class="s4-page" id="s4p4"></div>
+    <div class="s4-page" id="s4p5"></div>
+    <div class="s4-page" id="s4p6"></div>
+    <div class="s4-page" id="s4p7"></div>
+    <div class="s4-page" id="s4p8" style="position:relative;">
+      <div id="s4-marker"><div id="s4-marker-line"></div><div id="s4-marker-text">now</div></div>
     </div>
-    <div class="anote">Block universe model — time axis concept<br>(adapted from BigThink, YouTube)</div>
-   </div>
-   <div class="rgt">
-    <div class="pt"><div class="pn">1</div><div><div class="ptit">Predicts what chronological age cannot</div><div class="pdet">Independently predicts <strong>morbidity, disability, and mortality</strong> after controlling for chronological age</div></div></div>
-    <div class="pt"><div class="pn">2</div><div><div class="ptit">Captures multi-system decline simultaneously</div><div class="opills"><span class="opl">Lungs</span><span class="opl">Kidneys</span><span class="opl">Liver</span><span class="opl">Metabolism</span><span class="opl">Cardiovascular</span><span class="opl">Inflammation</span></div><div class="pdet" style="margin-top:8px">one score — six systems visible</div></div></div>
-    <div class="pt"><div class="pn">3</div><div><div class="ptit">Changes the clinical conversation</div><div class="pdet">A patient who is <strong>55 chronologically but biologically 63</strong> needs a different set of targets than standard of care provides</div></div></div>
-   </div>
+    <div class="s4-page" id="s4p9" style="opacity:0.3;"></div>
+    <div class="s4-page" id="s4p10" style="opacity:0.15;"></div>
   </div>
+</div>
+
+<!-- final explanation -->
+<div id="s4-explain">
+ <div class="canvas canvas-glow" id="c4">
+  <div class="hdr"><div class="lbl">Background — Conceptual Framework</div><div class="ttl">Chronological age versus biological age</div></div>
+
+  <div style="position:absolute;top:160px;bottom:60px;left:72px;right:72px;display:flex;flex-direction:column;justify-content:center;gap:0;max-width:780px;">
+
+   <div style="padding:22px 0;border-bottom:1px solid var(--border2);display:flex;gap:24px;align-items:center;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.36em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:140px;">Chronological age</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--text2);line-height:1.6;">Your position on the time axis. Fixed. Two people born the same year occupy the same slice.</div>
+   </div>
+
+   <div style="padding:22px 0;border-bottom:1px solid var(--border2);display:flex;gap:24px;align-items:center;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.36em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:140px;">Biological age</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--text2);line-height:1.6;">The physiological state of that slice. Two people on the same slice can look very different biologically.</div>
+   </div>
+
+   <div style="padding:22px 0;display:flex;gap:24px;align-items:center;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.36em;color:var(--accent);text-transform:uppercase;flex-shrink:0;width:140px;">The residual</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;color:var(--text1);line-height:1.6;font-weight:400;">The difference between position on the time axis and the physiological state of the slice. This is what the study measures.</div>
+   </div>
+
+  </div>
+
   <div class="fnt">Klemera &amp; Doubal, 2006 · Levine, 2013 · Miner et al., 2023</div>
  </div>
 </div>
 
-<!-- ══ S5 WHY KDM ══ -->
+</div>
 
+<!-- ══ S5 WHY KDM ══ -->
 <div class="slide" id="slide-5">
  <div class="canvas canvas-glow" id="c5">
-  <div class="hdr"><div class="lbl">Background — Biological Age Methods</div><div class="ttl">Why KDM — <em>not PhenoAge, not epigenetic clocks</em></div></div>
-  <div class="cols">
-   <div class="kcol dim">
-    <div class="kh">Epigenetic Clocks</div><div class="kdiv"></div>
-    <div class="krow"><div class="kicon">×</div><div class="kt">DNA methylation assays — <strong>not collected in NHANES</strong></div></div>
-    <div class="krow"><div class="kicon">×</div><div class="kt">Population-level application limited without specialized lab data</div></div>
-    <div class="krow"><div class="kicon">×</div><div class="kt">Predicts mortality well — but requires infrastructure most surveys lack</div></div>
-   </div>
-   <div class="kcol dim">
-    <div class="kh">PhenoAge</div><div class="kdiv"></div>
-    <div class="krow"><div class="kicon">✓</div><div class="kt">Routine lab-based — <strong>widely used in NHANES diet studies</strong></div></div>
-    <div class="krow"><div class="kicon">×</div><div class="kt"><strong>Collapses to one number</strong> — cannot distinguish hepatic from pulmonary or metabolic aging</div></div>
-    <div class="krow"><div class="kicon">×</div><div class="kt">A clinician looking at that score cannot tell where the problem is</div></div>
-   </div>
-   <div class="kcol hl">
-    <div class="kh">KDM-based BAI</div><div class="kdiv"></div>
-    <div class="krow"><div class="kicon">✓</div><div class="kt good">Regression-weighted by how tightly each biomarker tracks chronological age</div></div>
-    <div class="krow"><div class="kicon">✓</div><div class="kt good"><strong class="good">Each system stays visible</strong> — hepatic, renal, pulmonary, metabolic contributions remain interpretable</div></div>
-    <div class="krow"><div class="kicon">✓</div><div class="kt good">If HbA1c and CRP drive the score, <strong class="good">the dietary targets look different</strong> than if FEV1 does</div></div>
-   </div>
+  <div class="hdr"><div class="lbl">Background — Biological Age Methods</div><div class="ttl">Rationale for the KDM-based Biological Age Index</div></div>
+  <!-- Two-panel layout: rejected left, selected right -->
+  <div style="position:absolute;top:152px;bottom:52px;left:72px;right:72px;display:flex;gap:24px;align-items:stretch;">
+
+    <!-- LEFT: rejected methods stacked -->
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;justify-content:center;">
+
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:.42em;color:rgba(180,70,70,.7);text-transform:uppercase;margin-bottom:4px;">Not used in this study</div>
+
+      <!-- Epigenetic clocks — greyed, crossed out feel -->
+      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:18px 20px;opacity:.55;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:12px;right:14px;font-size:28px;color:rgba(180,60,60,.4);line-height:1;">✗</div>
+        <div style="font-family:Georgia,serif;font-size:17px;color:var(--text2);margin-bottom:10px;">Epigenetic Clocks</div>
+        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--text3);line-height:1.65;">DNA methylation assays not collected in NHANES. Requires specialized infrastructure. Cannot be applied to this dataset.</div>
+      </div>
+
+      <!-- PhenoAge — greyed, crossed out feel -->
+      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:18px 20px;opacity:.55;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:12px;right:14px;font-size:28px;color:rgba(180,60,60,.4);line-height:1;">✗</div>
+        <div style="font-family:Georgia,serif;font-size:17px;color:var(--text2);margin-bottom:10px;">PhenoAge</div>
+        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--text3);line-height:1.65;">Collapses to one composite score. Individual system contributions — hepatic, pulmonary, metabolic — are not visible or interpretable.</div>
+      </div>
+
+    </div>
+
+    <!-- Vertical divider -->
+    <div style="width:1px;background:linear-gradient(to bottom,transparent,var(--border) 20%,var(--border) 80%,transparent);flex-shrink:0;"></div>
+
+    <!-- RIGHT: KDM — dominant, bright, selected -->
+    <div style="flex:1.4;display:flex;flex-direction:column;justify-content:center;">
+
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:.42em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;">This study</div>
+
+      <div style="font-family:Georgia,serif;font-size:28px;color:var(--text1);margin-bottom:6px;">KDM-based Biological Age Index</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--text2);margin-bottom:24px;">Klemera &amp; Doubal, 2006 — applied to NHANES by Levine, 2013</div>
+
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="padding:14px 0;border-bottom:1px solid var(--border2);display:flex;gap:14px;align-items:flex-start;">
+          <div style="color:var(--accent);font-size:16px;flex-shrink:0;margin-top:1px;">✓</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text1);line-height:1.65;"><strong>Constructed from routine clinical biomarkers available in NHANES</strong> — no specialized assays required</div>
+        </div>
+        <div style="padding:14px 0;border-bottom:1px solid var(--border2);display:flex;gap:14px;align-items:flex-start;">
+          <div style="color:var(--accent);font-size:16px;flex-shrink:0;margin-top:1px;">✓</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text1);line-height:1.65;"><strong>Individual biomarker weights remain visible</strong> across six physiological systems. Miner et al. (2023) used 10 biomarkers; this study uses 8, excluding CMV IgG and CRP from the primary analysis</div>
+        </div>
+        <div style="padding:14px 0;display:flex;gap:14px;align-items:flex-start;">
+          <div style="color:var(--accent);font-size:16px;flex-shrink:0;margin-top:1px;">✓</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text1);line-height:1.65;"><strong>Predicts mortality independently of chronological age</strong> — Levine, 2013; Miner et al., 2023</div>
+        </div>
+      </div>
+
+    </div>
   </div>
   <div class="fnt">Klemera &amp; Doubal, 2006 · Levine, 2013 · Levine et al., 2018 (PhenoAge) · Miner et al., 2023</div>
  </div>
 </div>
 
 <!-- ══ S6 DIETARY LENSES ══ -->
-
 <div class="slide" id="slide-6">
  <div class="canvas canvas-glow" id="c6">
-  <div class="hdr"><div class="lbl">Background — Dietary Indices</div><div class="ttl">Two dietary lenses — <em>related, but not the same</em></div></div>
+  <div class="hdr"><div class="lbl">Background — Dietary Indices</div><div class="ttl">Dietary exposure variables: HEI-2020 and DII</div></div>
   <div class="cols">
    <div class="dcol hei">
     <div class="dctag">Exposure 01</div><div class="dch">HEI-2020</div><div class="dcsh">Healthy Eating Index</div><div class="dcdiv"></div>
@@ -508,49 +679,85 @@ S14 — STRENGTHS + LIMITATIONS
    </div>
    <div class="dcol dii">
     <div class="dctag">Exposure 02</div><div class="dch">DII</div><div class="dcsh">Dietary Inflammatory Index</div><div class="dcdiv"></div>
-    <div class="dcd">Scores the inflammatory potential of the diet based on <strong>45 food parameters</strong></div>
+    <div class="dcd">Scores the inflammatory potential of the diet based on up to <strong>45 food parameters</strong>; 28 are available in NHANES dietary recall data</div>
     <div class="dcd"><strong>Higher score = more pro-inflammatory</strong>; negative = anti-inflammatory</div>
     <div class="dcd">Directly tied to <strong>IL-6, CRP, and TNF-α</strong></div>
     <div class="dcd">Does not score broad nutritional adequacy</div>
    </div>
   </div>
-  <div class="dbt">A person can score well on one and poorly on the other —<br>that's the whole argument for testing them together.</div>
+  <div class="dbt">A person can score well on one index and poorly on the other. Examining both in the same model tests whether they capture redundant or distinct information about biological aging.</div>
   <div class="fnt">Krebs-Smith et al., 2018 (HEI-2020) · Shivappa et al., 2014 (DII)</div>
  </div>
 </div>
 
 <!-- ══ S7 LIT GAP ══ -->
-
 <div class="slide" id="slide-7">
  <div class="canvas canvas-glow" id="c7">
-  <div class="hdr"><div class="lbl">Background — Literature Review</div><div class="ttl">What the literature tells us — <em>and where it stops</em></div></div>
+  <div class="hdr"><div class="lbl">Background — Literature Review</div><div class="ttl">Existing literature and the methodological gap</div></div>
   <div class="studies">
-   <div class="srow"><div class="scite">Xie et al., 2023</div><div class="sdesc">DII vs. biological age and PhenoAge — NHANES 1999–2018. Found <strong>0.07-year increase in biological age</strong> per DII unit. Outcome: PhenoAge, not KDM.</div></div>
+   <div class="srow"><div class="scite">Xie et al., 2023</div><div class="sdesc">DII vs. biological age and PhenoAge — NHANES 1999–2018. Found <strong>0.07-year increase in biological age</strong> and a 0.42-year increase in phenotypic age per DII unit. Outcome: PhenoAge, not KDM.</div></div>
    <div class="srow"><div class="scite">Xu et al., 2025</div><div class="sdesc">DII vs. PhenoAge — NHANES. <strong>DII associated with accelerated PhenoAge</strong> after full adjustment. Outcome: PhenoAge, not KDM.</div></div>
    <div class="srow"><div class="scite">Kresovich et al., 2022</div><div class="sdesc">Four healthy eating indices vs. four epigenetic clocks — Sister Study. <strong>Associations depended on which clock was used.</strong> Outcome: epigenetic clocks, not KDM.</div></div>
    <div class="srow"><div class="scite">Chen et al., 2024</div><div class="sdesc">HEI, DASH, Mediterranean vs. DunedinPACE — WHI (n ≈ 4,500). <strong>Diet quality associated with slower aging.</strong> Outcome: DunedinPACE, not KDM. HEI and DII not in the same model.</div></div>
   </div>
-  <div class="gap-box"><div class="gap-text">None used <em>KDM-based biological age</em> as the outcome. None put <em>HEI-2020 and DII in the same model</em> against the same outcome.</div></div>
+  <div class="gap-box"><div class="gap-text">The existing literature has not used KDM-based biological age as an outcome, and has not placed HEI-2020 and DII in the same model against the same biological age measure.</div></div>
   <div class="fnt">Xie et al., 2023 · Xu et al., 2025 · Kresovich et al., 2022 · Chen et al., 2024</div>
  </div>
 </div>
 
 <!-- ══ S8 AIMS ══ -->
-
 <div class="slide" id="slide-8">
  <div class="canvas canvas-glow" id="c8">
-  <div class="hdr"><div class="lbl">Study Objectives</div><div class="ttl">Research aims</div></div>
-  <div class="aims">
-   <div class="aim"><div class="anum">Aim 1</div><div><div class="atit">Total dietary index scores</div><div class="adet">Examine whether <strong>HEI-2020 and DII total scores</strong> are each independently associated with KDM biological age residual — and whether each contributes unique information the other does not</div></div></div>
-   <div class="aim"><div class="anum">Aim 2</div><div><div class="atit">Component decomposition</div><div class="adet">Decompose total scores into <strong>individual dietary components (~41 models)</strong> to identify which specific foods and nutrients drive the aging signal across organ systems. FDR correction at q &lt; 0.05.</div></div></div>
-   <div class="hyp"><div class="hyp-tag">Hypothesis</div><div class="hyp-text">Both higher diet quality and lower dietary inflammatory potential are independently associated with slower biological aging — but they capture distinct dietary dimensions, with DII more strongly predicting inflammation-mediated aging and HEI capturing broader nutritional adequacy effects.</div></div>
+  <div class="hdr"><div class="lbl">Study Objectives</div><div class="ttl">Specific Aim 1</div></div>
+
+  <div style="position:absolute;top:152px;bottom:52px;left:72px;right:72px;display:flex;gap:32px;align-items:stretch;">
+
+   <!-- LEFT: the aim -->
+   <div style="flex:1.1;display:flex;flex-direction:column;justify-content:center;gap:22px;">
+
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--text2);line-height:1.75;border-left:3px solid var(--accent);padding-left:18px;">
+     This study tests whether <strong style="color:var(--text1)">HEI-2020 and DII</strong> are each independently associated with KDM biological age residuals in U.S. adults, and whether they capture distinct dietary dimensions of aging.
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:0;">
+     <div style="padding:13px 0;border-bottom:1px solid var(--border2);">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.36em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;">The reasoning</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--text2);line-height:1.7;">A high HEI-2020 score reflects nutritional adequacy. It does not mean biological age will be lower if the diet is also pro-inflammatory.</div>
+     </div>
+     <div style="padding:13px 0;border-bottom:1px solid var(--border2);">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--text2);line-height:1.7;">A low DII score reflects low inflammatory potential. It does not mean biological age will be lower if the diet is nutritionally inadequate.</div>
+     </div>
+     <div style="padding:13px 0;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--text2);line-height:1.7;">The <strong style="color:var(--text1)">inflammaging framework</strong> supports this rationale. Chronic, low-grade inflammation driven by diet can cause organ deterioration regardless of whether dietary guidelines are met.</div>
+     </div>
+    </div>
+
+   </div>
+
+   <!-- Divider -->
+   <div style="width:1px;background:linear-gradient(to bottom,transparent,var(--border2) 20%,var(--border2) 80%,transparent);flex-shrink:0;"></div>
+
+   <!-- RIGHT: measurement + hypothesis -->
+   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;">
+
+    <div>
+     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.36em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;">Measurement</div>
+     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--text2);line-height:1.7;">Both indices calculated from <strong style="color:var(--text1)">two 24-hour dietary recalls on nonconsecutive days</strong>, averaged before scoring. HEI-2020 scored using the population ratio method. DII derived from 28 dietary parameters available in NHANES.</div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:18px 20px;">
+     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.36em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;">Hypothesis</div>
+     <div style="font-family:Georgia,serif;font-style:italic;font-size:15px;color:var(--text1);line-height:1.75;">Both higher diet quality and lower dietary inflammatory potential are independently associated with lower biological age residuals. These indices capture distinct dietary dimensions. DII more strongly predicts inflammation-mediated aging; HEI captures broader nutritional adequacy effects.</div>
+    </div>
+
+   </div>
   </div>
-  <div class="fnt">Primary outcome: KDM biological age residual · NHANES 2007–2012</div>
+
+  <div class="fnt">Primary outcome: KDM biological age residual · NHANES 2007–2012 · Shivappa et al., 2014 (DII) · Krebs-Smith et al., 2018 (HEI-2020)</div>
  </div>
 </div>
 
 <!-- ══ S9 NHANES + ETHICS ══ -->
-
 <div class="slide" id="slide-9">
  <div class="canvas canvas-glow" id="c9">
   <div class="hdr"><div class="lbl">Methods — Data Source</div><div class="ttl">NHANES 2007–2012: three cycles, <em>one binding constraint</em></div></div>
@@ -561,12 +768,12 @@ S14 — STRENGTHS + LIMITATIONS
     <div class="cyc"><div class="cdot on"></div><div><div class="ctxt"><strong>2009–10</strong></div><div class="cnote">FEV1 ✓ · CRP ✓</div></div></div>
     <div class="cyc"><div class="cdot on"></div><div><div class="ctxt"><strong>2011–12</strong></div><div class="cnote">FEV1 ✓ · CRP —</div></div></div>
     <div class="cyc"><div class="cdot"></div><div><div class="ctxt" style="color:var(--text3)">2013–14 →</div><div class="cnote">Spirometry discontinued</div></div></div>
-    <div class="fevn">FEV1 is the non-negotiable boundary of this design</div>
+    <div class="fevn">FEV1 is required to calculate KDM biological age. Spirometry was discontinued after the 2011–2012 cycle. These three cycles are the only ones where all eight biomarkers co-exist.</div>
    </div>
    <div class="cmid">
     <div class="cllbl">Design details</div>
     <div class="dblk"><div class="dtag">Survey design</div><div class="dtxt">Multistage probability sample · nationally representative · <strong>6-year pooled examination weights</strong> (2-yr weights ÷ 3)</div></div>
-    <div class="dblk"><div class="dtag">Study population</div><div class="dtxt">Non-pregnant adults <strong>aged 30–75</strong> · complete data for all 8 KDM biomarkers, two dietary recalls, and covariates</div></div>
+    <div class="dblk"><div class="dtag">Study population</div><div class="dtxt">Non-pregnant adults <strong>aged 30–75</strong> · complete data for all 8 KDM biomarkers, two dietary recalls, and covariates · morning mobile exam center participants with a valid 6-year pooled examination weight</div></div>
     <div class="dblk"><div class="dtag">Dietary data</div><div class="dtxt">Two 24-hour dietary recalls on <strong>nonconsecutive days</strong>, averaged before scoring</div></div>
     <div class="dblk"><div class="dtag">8 KDM biomarkers</div><div class="dtxt">Albumin · ALP · BUN · Creatinine · HbA1c · Total cholesterol · SBP · <strong>FEV1</strong></div></div>
    </div>
@@ -583,7 +790,6 @@ S14 — STRENGTHS + LIMITATIONS
 </div>
 
 <!-- ══ S10 EXPOSURES ══ -->
-
 <div class="slide" id="slide-10">
  <div class="canvas canvas-glow" id="c10">
   <div class="hdr"><div class="lbl">Methods — Variables</div><div class="ttl">Exposures, outcome, and covariates</div></div>
@@ -599,7 +805,7 @@ S14 — STRENGTHS + LIMITATIONS
    </div>
    <div class="ecol out">
     <div class="ectag">Outcome</div><div class="edivr"></div>
-    <div class="ech">KDM Biological Age Deviation</div>
+    <div class="ech">KDM Biological Age Residual</div>
     <div class="erow">Residual from <strong>survey-weighted regression</strong> of KDM biological age on chronological age</div>
     <div class="erow"><strong>Positive</strong> → biology looks older than chronological age</div>
     <div class="erow"><strong>Negative</strong> → biology looks younger</div>
@@ -618,15 +824,14 @@ S14 — STRENGTHS + LIMITATIONS
 </div>
 
 <!-- ══ S11 ANALYSIS ══ -->
-
 <div class="slide" id="slide-11">
  <div class="canvas canvas-glow" id="c11">
   <div class="hdr"><div class="lbl">Methods — Statistical Analysis</div><div class="ttl">Analytical approach</div></div>
   <div class="steps">
-   <div class="step"><div class="sn">1</div><div><div class="stit">Separate models</div><div class="sdet">HEI-2020 vs. BAI deviation, fully adjusted. Then DII vs. BAI deviation, fully adjusted. Establishes independent associations before entering both indices together.</div></div></div>
-   <div class="step"><div class="sn">2</div><div><div class="stit">Mutually adjusted model — the core test of Aim 1</div><div class="sdet">Both indices enter the same model. Does each predict aging <strong>beyond what the other accounts for?</strong> This is the head-to-head comparison.</div></div></div>
-   <div class="step"><div class="sn">3</div><div><div class="stit">VIF check for multicollinearity</div><div class="sdet">Variance inflation factors assessed when both indices are in the same model. Addresses the concern that HEI-2020 and DII may be collinear.</div></div></div>
-   <div class="step"><div class="sn">4</div><div><div class="stit">Component decomposition — Aim 2</div><div class="sdet"><strong>~41 models</strong> replacing total scores with individual dietary components. Which specific foods and nutrients drive the aging signal? <strong>FDR correction at q &lt; 0.05.</strong></div></div></div>
+   <div class="step"><div class="sn">1</div><div><div class="stit">Descriptive statistics</div><div class="sdet">Weighted means and standard errors for continuous variables; weighted proportions for categorical variables. Distribution of KDM biological age residuals checked for normality; log transformation applied if needed.</div></div></div>
+   <div class="step"><div class="sn">2</div><div><div class="stit">Bivariate analysis</div><div class="sdet">Differences in participant characteristics across dietary index tertiles assessed using <strong>Rao-Scott chi-square</strong> tests for categorical variables and survey-weighted F-tests for continuous variables.</div></div></div>
+   <div class="step"><div class="sn">3</div><div><div class="stit">Separate models — HEI-2020 and DII independently</div><div class="sdet">Each index tested against KDM biological age residuals in a fully adjusted model. Establishes independent associations before both indices enter together.</div></div></div>
+   <div class="step"><div class="sn">4</div><div><div class="stit">Mutually adjusted model</div><div class="sdet">Both indices in the same model. Does each predict biological age residuals <strong>beyond what the other accounts for?</strong> VIF assessed for multicollinearity.</div></div></div>
   </div>
   <div class="sw-bar"><div class="sw-item">SAS 9.4</div><div class="sw-item">PROC SURVEYREG</div><div class="sw-item">SDMVSTRA + SDMVPSU</div><div class="sw-item">WTMEC6YR</div><div class="sw-item">α = 0.05</div></div>
   <div class="fnt">All analyses survey-weighted · standard errors account for multistage sampling design</div>
@@ -634,10 +839,9 @@ S14 — STRENGTHS + LIMITATIONS
 </div>
 
 <!-- ══ S12 SENSITIVITY ══ -->
-
 <div class="slide" id="slide-12">
  <div class="canvas canvas-glow" id="c12">
-  <div class="hdr"><div class="lbl">Methods — Sensitivity Analysis</div><div class="ttl">What CRP tells us</div></div>
+  <div class="hdr"><div class="lbl">Methods — Sensitivity Analysis</div><div class="ttl">Sensitivity analysis: 8-biomarker versus 9-biomarker KDM</div></div>
   <div class="cols">
    <div class="scol pri">
     <div class="sctag">Primary model</div><div class="sch">8-biomarker KDM</div><div class="sdivr"></div>
@@ -658,10 +862,9 @@ S14 — STRENGTHS + LIMITATIONS
 </div>
 
 <!-- ══ S13 RESULTS + IMPLICATIONS ══ -->
-
 <div class="slide" id="slide-13">
  <div class="canvas canvas-glow" id="c13">
-  <div class="hdr"><div class="lbl">Expected Results &amp; Implications</div><div class="ttl">Not <em>"eat better."</em> Which dimension of diet is driving the aging signal.</div></div>
+  <div class="hdr"><div class="lbl">Expected Results &amp; Implications</div><div class="ttl">Expected results and implications</div></div>
   <div class="crule"></div>
   <div class="cols">
    <div class="col cl">
@@ -673,7 +876,7 @@ S14 — STRENGTHS + LIMITATIONS
    </div>
    <div class="col cr">
     <div class="ch">If the findings hold</div>
-    <div class="imp"><div class="idot"></div><div><div class="itit">Dietary Guidelines alone aren't enough</div><div class="idet">Following current guidelines does <strong>not slow biological aging</strong> if the inflammatory burden is not also addressed</div></div></div>
+    <div class="imp"><div class="idot"></div><div><div class="itit">Independent associations suggest distinct dietary pathways</div><div class="idet">If HEI-2020 and DII each independently predict biological age residuals, they are capturing different aspects of diet-aging associations that neither index captures alone</div></div></div>
     <div class="imp"><div class="idot"></div><div><div class="itit">Dietary inflammation works across multiple organ systems</div><div class="idet">Beyond what <strong>circulating CRP alone</strong> captures — stronger case for targeted anti-inflammatory interventions</div></div></div>
     <div class="imp"><div class="idot"></div><div><div class="itit">Consequences greatest where inequity is concentrated</div><div class="idet">Population-level findings have the most direct consequence for patients <strong>already at nutritional risk</strong></div></div></div>
    </div>
@@ -683,7 +886,6 @@ S14 — STRENGTHS + LIMITATIONS
 </div>
 
 <!-- ══ S14 STRENGTHS + LIMITATIONS ══ -->
-
 <div class="slide" id="slide-14">
  <div class="canvas canvas-glow" id="c14">
   <div class="hdr"><div class="lbl">Appraisal</div><div class="ttl">Strengths &amp; Limitations</div></div>
@@ -692,7 +894,7 @@ S14 — STRENGTHS + LIMITATIONS
    <div class="col cl">
     <div class="ch">Strengths</div>
     <div class="str"><div class="sdot"></div><div><div class="stit">Nationally representative sample</div><div class="sdet">NHANES complex survey design with <strong>pooled 6-year weights</strong> — findings generalize to the U.S. civilian noninstitutionalized population</div></div></div>
-    <div class="str"><div class="sdot"></div><div><div class="stit">Novel exposure-outcome combination</div><div class="sdet">First study to test <strong>HEI-2020 and DII together</strong> against a KDM-based biological age outcome — fills a specific gap</div></div></div>
+    <div class="str"><div class="sdot"></div><div><div class="stit">Novel exposure-outcome combination</div><div class="sdet">HEI-2020 and DII have not previously been examined together against a KDM-based biological age outcome in the same model</div></div></div>
     <div class="str"><div class="sdot"></div><div><div class="stit">Multi-system outcome visibility</div><div class="sdet">KDM keeps <strong>individual biomarker weights visible</strong> — hepatic, renal, pulmonary, and metabolic contributions remain interpretable</div></div></div>
     <div class="str"><div class="sdot"></div><div><div class="stit">Analytically meaningful sensitivity design</div><div class="sdet">8 vs. 9-biomarker comparison <strong>isolates the CRP-mediated inflammatory pathway</strong> — a mechanistic test, not just a robustness check</div></div></div>
    </div>
@@ -708,19 +910,33 @@ S14 — STRENGTHS + LIMITATIONS
  </div>
 </div>
 
-<!-- ══ S15 CLOSING ══ -->
-
-<div class="slide anim-slide" id="slide-15">
- <div class="aprt" id="p15"></div>
- <div class="slight" id="sl15"></div>
- <div class="amtr" id="m15"><div class="amln"></div><div class="amvl" id="mv15">280 m</div><div class="amln"></div></div>
- <div class="asc" id="a15s1"><div class="adl" id="a15l0">Deep Water</div><div class="aln acc" id="a15l1">Chronological age tells you where you are on the time axis.</div><div class="aln" id="a15l2">This study asks whether what you eat is shaping what your slice looks like —</div><div class="aln" id="a15l3">and whether diet quality and dietary inflammation</div><div class="aln ita" id="a15l4">are each doing something distinct to that slice.</div></div>
- <div class="asc" id="a15s2"><div class="atag" id="a15t1">— ascending —</div><div class="aln" id="a15l5">The answer has direct consequences</div><div class="aln" id="a15l6">for how we counsel the patients who need</div><div class="aln ita" id="a15l7">the most precise guidance.</div><div class="aln mut" id="a15l8">Not "eat better." Which lever to pull — and why.</div></div>
- <div class="asc" id="a15s3"><div class="adl" id="a15l9">Surface</div><div class="aqb" id="a15q"><span class="aqm">"</span><div class="aqt">For the first time, someone explained<br><strong>why I need to eat differently —</strong><br>and it made sense.</div></div><div class="aatr" id="a15a">— Maria &nbsp;·&nbsp; the patient this study is for</div></div>
+<!-- ══ S15 CONTRIBUTION STATEMENT ══ -->
+<div class="slide" id="slide-15">
+ <div class="canvas canvas-glow" id="c15">
+  <div class="hdr"><div class="lbl">Summary</div><div class="ttl">Study contribution and scope</div></div>
+  <div style="position:absolute;top:152px;bottom:52px;left:72px;right:72px;display:flex;flex-direction:column;justify-content:center;gap:0;">
+   <div style="padding:18px 0;border-bottom:1px solid var(--border2);display:flex;gap:28px;align-items:flex-start;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:130px;padding-top:3px;">What this study does</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text2);line-height:1.7;">Examines the independent and combined cross-sectional associations of HEI-2020 and DII with KDM-based biological age residuals in a nationally representative sample of U.S. adults aged 30–75, using pooled NHANES 2007–2012 data.</div>
+   </div>
+   <div style="padding:18px 0;border-bottom:1px solid var(--border2);display:flex;gap:28px;align-items:flex-start;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:130px;padding-top:3px;">What it does not do</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text2);line-height:1.7;">This is a cross-sectional design. It cannot establish causal direction, distinguish whether poor diet quality accelerates aging or biological age influences dietary behavior, or rule out unmeasured confounding. Findings are descriptive and associative.</div>
+   </div>
+   <div style="padding:18px 0;border-bottom:1px solid var(--border2);display:flex;gap:28px;align-items:flex-start;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:130px;padding-top:3px;">Methodological gap addressed</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text2);line-height:1.7;">Existing literature uses PhenoAge, DunedinPACE, or epigenetic clocks as outcomes. KDM-based biological age preserves individual biomarker contributions across six physiological systems. HEI-2020 and DII have not been examined together against this outcome in the same model.</div>
+   </div>
+   <div style="padding:18px 0;display:flex;gap:28px;align-items:flex-start;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:130px;padding-top:3px;">Next steps warranted</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:var(--text2);line-height:1.7;">If HEI-2020 and DII show differential associations with biological age residuals, this would provide descriptive evidence supporting the rationale for longitudinal investigation — tracking whether dietary change produces corresponding changes in KDM-based biological age over time.</div>
+   </div>
+  </div>
+  <div class="fnt">NHANES 2007–2012 · Cross-sectional · Descriptive and hypothesis-generating</div>
+ </div>
 </div>
 
 <!-- ══ NAV ══ -->
-
 <div id="nav">
  <button class="nbtn" id="bp">&#8592;</button>
  <div id="ctr">1 / 15</div>
@@ -729,7 +945,7 @@ S14 — STRENGTHS + LIMITATIONS
 </div>
 
 <script>
-/* ══ SCALING ══ */
+/* SCALING */
 function scaleAll(){
   const r=Math.min(window.innerWidth/1280,window.innerHeight/720)*0.96;
   document.querySelectorAll('.canvas').forEach(c=>c.style.transform=`scale(${r})`);
@@ -737,41 +953,87 @@ function scaleAll(){
 scaleAll();
 window.addEventListener('resize',scaleAll);
 
-/* ══ LIGHT / DARK TOGGLE ══ */
+/* LIGHT / DARK TOGGLE */
 let isLight=false;
 document.getElementById('toggle').addEventListener('click',()=>{
   isLight=!isLight;
   document.body.classList.toggle('light',isLight);
   document.querySelectorAll('.slide').forEach(s=>s.classList.toggle('light',isLight));
   document.getElementById('toggle').textContent=isLight?'☾ Dark':'☀ Light';
-  // re-tint particles
-  document.querySelectorAll('.apt').forEach(p=>{
-    p.style.background=isLight?'rgba(20,60,120,.1)':'rgba(255,255,255,.12)';
-  });
 });
 
-/* ══ NAV STATE ══ */
+/* SLIDE 4 ANIMATION */
+function resetA4(){
+  // Reset axis
+  const axis = document.getElementById('s4-axis');
+  const axlbl = document.getElementById('s4-axis-label');
+  if(axis) axis.classList.remove('vis');
+  if(axlbl) axlbl.classList.remove('vis');
+  // Reset slices container
+  const slices = document.getElementById('s4-slices');
+  if(slices) slices.classList.remove('vis');
+  // Reset individual pages
+  ['s4p1','s4p2','s4p3','s4p4','s4p5','s4p6','s4p7','s4p8'].forEach(id=>{
+    const e=document.getElementById(id);
+    if(e){ e.classList.remove('vis','highlight'); }
+  });
+  // Reset marker
+  const marker = document.getElementById('s4-marker');
+  if(marker) marker.classList.remove('vis');
+  // Reset explanation
+  const exp = document.getElementById('s4-explain');
+  if(exp) exp.classList.remove('vis');
+  const wrap = document.getElementById('s4-wrap');
+  if(wrap){ wrap.style.transition='none'; wrap.style.opacity='1'; }
+}
+
+function startA4(){
+  const G = id => document.getElementById(id);
+  const V = id => { const e=G(id); if(e) e.classList.add('vis'); };
+
+  // 0.3s — time axis appears
+  setTimeout(()=>{ V('s4-axis'); V('s4-axis-label'); }, 300);
+
+  // 0.9s — slices container visible, pages build left to right
+  setTimeout(()=>{ V('s4-slices'); }, 900);
+  setTimeout(()=>{ V('s4p1'); }, 1100);
+  setTimeout(()=>{ V('s4p2'); }, 1500);
+  setTimeout(()=>{ V('s4p3'); }, 1900);
+  setTimeout(()=>{ V('s4p4'); }, 2300);
+  setTimeout(()=>{ V('s4p5'); }, 2700);
+  setTimeout(()=>{ V('s4p6'); }, 3100);
+  setTimeout(()=>{ V('s4p7'); }, 3500);
+  setTimeout(()=>{ V('s4p8'); }, 3900);
+
+  // 4.6s — highlight the "now" slice and show marker
+  setTimeout(()=>{
+    const p8 = G('s4p8');
+    if(p8) p8.classList.add('highlight');
+    V('s4-marker');
+  }, 4600);
+
+  // 6.2s — animation fades out, explanation fades in
+  setTimeout(()=>{
+    const wrap = document.getElementById('s4-wrap');
+    if(wrap){ wrap.style.transition='opacity 1.2s ease'; wrap.style.opacity='0'; }
+    V('s4-explain');
+  }, 6200);
+}
+
 let cur=1;
 const TOTAL=15;
-let timers=[];
-const T=(ms,fn)=>timers.push(setTimeout(fn,ms));
-function clearT(){timers.forEach(clearTimeout);timers=[];}
-
 function showSlide(n){
-  clearT();
-  document.getElementById(`slide-${cur}`).classList.remove('active');
+  document.getElementById('slide-'+cur).classList.remove('active');
   cur=n;
-  const s=document.getElementById(`slide-${cur}`);
+  const s=document.getElementById('slide-'+cur);
   s.classList.add('active');
   if(isLight) s.classList.add('light');
-  document.getElementById('ctr').textContent=`${cur} / ${TOTAL}`;
+  document.getElementById('ctr').textContent=cur+' / '+TOTAL;
   document.getElementById('bp').disabled=(cur===1);
   document.getElementById('bn').disabled=(cur===TOTAL);
   scaleAll();
-  if(cur===2){resetA2();startA2();}
-  if(cur===15){resetA15();startA15();}
+  if(cur===4){ resetA4(); startA4(); }
 }
-
 document.getElementById('bp').addEventListener('click',()=>{if(cur>1)showSlide(cur-1);});
 document.getElementById('bn').addEventListener('click',()=>{if(cur<TOTAL)showSlide(cur+1);});
 document.addEventListener('keydown',e=>{
@@ -780,113 +1042,6 @@ document.addEventListener('keydown',e=>{
 });
 document.getElementById('slide-1').classList.add('active');
 document.getElementById('bp').disabled=true;
-
-/* ══ PARTICLES ══ */
-function makeParticles(wrapId,count){
-  const w=document.getElementById(wrapId);
-  w.innerHTML='';
-  for(let i=0;i<count;i++){
-    const p=document.createElement('div');
-    p.className='apt';
-    const sz=1+Math.random()*2.5;
-    p.style.cssText=`left:${Math.random()*100}%;width:${sz}px;height:${sz}px;
-      animation-duration:${14+Math.random()*22}s;
-      animation-delay:${Math.random()*24}s;
-      opacity:${0.06+Math.random()*0.18};
-      background:${isLight?'rgba(20,60,120,.1)':'rgba(255,255,255,.12)'};`;
-    w.appendChild(p);
-  }
-}
-
-const $=id=>document.getElementById(id);
-const sv=id=>{const e=$(id);if(e)e.classList.add('vis');};
-const hide=id=>{const e=$(id);if(e){e.classList.add('fout');setTimeout(()=>e.classList.remove('vis','fout'),1600);}};
-function bg(el,col,ms){el.style.transitionDuration=ms+'ms';el.style.backgroundColor=col;}
-
-/* ══ SLIDE 2 — timing ~1.6× slower ══ */
-function resetA2(){
-  const s=$('slide-2');
-  s.style.backgroundColor=isLight?'#d0dcec':'#010810';
-  s.style.transitionDuration='0ms';
-  ['a2s1','a2s2','a2s3','a2s4','a2s5',
-   'a2l0','a2l1','a2l2','a2l3','a2l4','a2l5','a2l6','a2l7','a2l8',
-   'a2l9','a2l10','a2l11','a2l12','a2l13','a2l14','a2l15','a2l16','a2l17',
-   'a2t1','a2t2','a2n1','m2'].forEach(id=>{
-    const e=$(id);if(e)e.classList.remove('vis','fout');
-  });
-}
-function startA2(){
-  const s=$('slide-2');
-  const dark='#010810', mid='#040f1a', deep='#03090f', black='#000';
-  const lDark='#d0dcec', lMid='#c4d4e8', lDeep='#b8cce0', lBlack='#a8bcd4';
-  makeParticles('p2',28);
-  T(100,()=>{sv('m2');sv('a2s1');sv('a2l0');bg(s,isLight?lDark:dark,1000);});
-  T(1800,()=>sv('a2l1'));
-  T(3500,()=>sv('a2l2'));
-  T(5500,()=>sv('a2l3'));
-  T(8500,()=>{hide('a2s1');bg(s,isLight?lMid:mid,3000);});
-  T(9500,()=>{sv('a2s2');sv('a2t1');});
-  T(11000,()=>sv('a2l4'));
-  T(12800,()=>sv('a2l5'));
-  T(14500,()=>sv('a2l6'));
-  T(16200,()=>sv('a2l7'));
-  T(18500,()=>sv('a2l8'));
-  T(21500,()=>{hide('a2s2');bg(s,isLight?lDeep:deep,3000);});
-  T(23000,()=>{sv('a2s3');sv('a2t2');sv('a2n1');});
-  T(24500,()=>sv('a2l9'));
-  T(27500,()=>sv('a2l10'));
-  T(30500,()=>sv('a2l11'));
-  T(35000,()=>{hide('a2s3');bg(s,isLight?lBlack:black,3000);});
-  T(38000,()=>{sv('a2s4');sv('a2l12');});
-  T(40000,()=>sv('a2l13'));
-  T(42500,()=>sv('a2l14'));
-  T(45000,()=>sv('a2l15'));
-  T(49000,()=>{hide('a2s4');});
-  T(51000,()=>{sv('a2s5');sv('a2l16');});
-  T(54000,()=>sv('a2l17'));
-  // depth counter
-  let t0=null;
-  function tick(ts){if(!t0)t0=ts;const e=ts-t0;const d=Math.min(Math.round(e/56000*280),280);$('mv2').textContent=d+' m';if(e<56000&&cur===2)requestAnimationFrame(tick);}
-  requestAnimationFrame(tick);
-}
-
-/* ══ SLIDE 15 — timing ~1.6× slower ══ */
-function resetA15(){
-  const s=$('slide-15');
-  s.style.backgroundColor=isLight?'#c0d4ea':'#010810';
-  s.style.transitionDuration='0ms';
-  $('sl15').classList.remove('vis');
-  ['a15s1','a15s2','a15s3',
-   'a15l0','a15l1','a15l2','a15l3','a15l4','a15l5','a15l6','a15l7','a15l8','a15l9',
-   'a15t1','a15q','a15a','m15'].forEach(id=>{
-    const e=$(id);if(e)e.classList.remove('vis','fout');
-  });
-}
-function startA15(){
-  const s=$('slide-15');
-  makeParticles('p15',28);
-  T(100,()=>{sv('m15');sv('a15s1');sv('a15l0');bg(s,isLight?'#c0d4ea':'#010810',1000);});
-  T(1800,()=>sv('a15l1'));
-  T(4000,()=>sv('a15l2'));
-  T(6500,()=>sv('a15l3'));
-  T(9500,()=>sv('a15l4'));
-  T(16000,()=>{hide('a15s1');bg(s,isLight?'#adc8e0':'#041c30',5000);});
-  T(18500,()=>{sv('a15s2');sv('a15t1');});
-  T(20000,()=>sv('a15l5'));
-  T(22500,()=>sv('a15l6'));
-  T(25500,()=>sv('a15l7'));
-  T(29000,()=>sv('a15l8'));
-  T(35000,()=>{hide('a15s2');bg(s,isLight?'#9abcd8':'#072840',6000);});
-  T(38000,()=>$('sl15').classList.add('vis'));
-  T(38500,()=>{sv('a15s3');sv('a15l9');});
-  T(42000,()=>sv('a15q'));
-  T(48000,()=>sv('a15a'));
-  // depth counter 280→0
-  let t0=null;
-  function tick(ts){if(!t0)t0=ts;const e=ts-t0;const d=Math.max(Math.round(280*(1-e/56000)),0);$('mv15').textContent=d+' m';if(e<56000&&cur===15)requestAnimationFrame(tick);}
-  requestAnimationFrame(tick);
-}
 </script>
-
 </body>
 </html>
