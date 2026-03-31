@@ -59,12 +59,12 @@
    BASE
 ═══════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:100%;height:100%;background:var(--anim-bg);overflow:hidden;font-family:'Barlow',sans-serif;transition:background .4s;}
+html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;background:var(--anim-bg);overflow:hidden;font-family:'Barlow',sans-serif;transition:background .4s;display:flex;align-items:center;justify-content:center;margin:0;padding:0;}
 
 /* ═══════════════════════════════════════
    SLIDE SYSTEM
 ═══════════════════════════════════════ */
-.slide{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:var(--bg);transition:background .4s;}
+.slide{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:var(--bg);transition:background .4s;}
 .slide.active{display:flex;}
 
 .canvas{width:1280px;height:720px;position:relative;overflow:hidden;flex-shrink:0;transform-origin:center center;}
@@ -443,7 +443,7 @@ html,body{width:100%;height:100%;background:var(--anim-bg);overflow:hidden;font-
    <div class="oarr"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
    <div class="ocard"><div class="onum">03</div><div class="ostag">Section 03</div><div class="otitle">Methods</div><div class="odiv"></div><ul><li>NHANES 2007–2012</li><li>Study population &amp; exclusions</li><li>Exposures, outcome, covariates</li><li>Ethical considerations</li></ul></div>
    <div class="oarr"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-   <div class="ocard"><div class="onum">04</div><div class="ostag">Section 04</div><div class="otitle">Analytical<br>Approach</div><div class="odiv"></div><ul><li>Separate &amp; mutually adjusted models</li><li>VIF / multicollinearity</li><li>~41-model decomposition</li><li>Sensitivity — 9-biomarker + CRP</li></ul></div>
+   <div class="ocard"><div class="onum">04</div><div class="ostag">Section 04</div><div class="otitle">Analytical<br>Approach</div><div class="odiv"></div><ul><li>Separate &amp; mutually adjusted models</li><li>VIF / multicollinearity check</li><li>Sensitivity — 9-biomarker + CRP</li></ul></div>
    <div class="oarr"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
    <div class="ocard"><div class="onum">05</div><div class="ostag">Section 05</div><div class="otitle">Results,<br>Implications<br>&amp; Limitations</div><div class="odiv"></div><ul><li>Expected findings</li><li>Practice consequences</li><li>Strengths</li><li>Constraints &amp; scope</li></ul></div>
   </div>
@@ -857,7 +857,7 @@ html,body{width:100%;height:100%;background:var(--anim-bg);overflow:hidden;font-
    </div>
   </div>
   <div class="conc"><div class="conc-text">If associations shift when CRP enters → <em>inflammation-mediated pathway.</em> If they hold → <em>broader multi-system aging beyond CRP.</em></div></div>
-  <div class="fnt">All 41 component models repeated in 2007–2010 subsample · beta coefficients compared directly</div>
+  <div class="fnt">Primary models repeated in 2007–2010 subsample using 9-biomarker KDM · beta coefficients compared directly</div>
  </div>
 </div>
 
