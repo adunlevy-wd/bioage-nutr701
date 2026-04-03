@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -56,341 +57,317 @@
 }
 
 /* ═══════════════════════════════════════
-   BASE
+BASE
 ═══════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box;}
-html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;background:var(--anim-bg);overflow:hidden;font-family:'Barlow',sans-serif;transition:background .4s;margin:0;padding:0;}
+html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;background:var(–anim-bg);overflow:hidden;font-family:‘Barlow’,sans-serif;transition:background .4s;margin:0;padding:0;}
 
 /* ═══════════════════════════════════════
-   SLIDE SYSTEM
+SLIDE SYSTEM
 ═══════════════════════════════════════ */
-.slide{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:var(--bg);transition:background .4s;}
+.slide{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:var(–bg);transition:background .4s;}
 .slide.active{display:flex;}
 
 .canvas{width:1280px;height:720px;position:relative;overflow:hidden;flex-shrink:0;}
-.canvas-glow::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 110%,rgba(8,35,65,0.4) 0%,transparent 60%);pointer-events:none;z-index:0;}
+.canvas-glow::before{content:’’;position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 110%,rgba(8,35,65,0.4) 0%,transparent 60%);pointer-events:none;z-index:0;}
 .light .canvas-glow::before{background:radial-gradient(ellipse 70% 45% at 50% 110%,rgba(160,200,240,0.25) 0%,transparent 60%);}
 .canvas>*{position:relative;z-index:1;}
 
 /* ═══════════════════════════════════════
-   SHARED — upgraded sizes for readability
+SHARED — upgraded sizes for readability
 ═══════════════════════════════════════ */
-.lbl{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.44em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;}
-.ttl{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:42px;letter-spacing:.05em;color:var(--text1);line-height:1.2;}
-.ttl em{font-style:italic;color:var(--accent);}
-.hdr{position:absolute;top:28px;left:56px;right:56px;border-bottom:1px solid var(--border2);padding-bottom:8px;}
-.fnt{position:absolute;bottom:8px;left:56px;right:56px;font-family:'Barlow',sans-serif;font-weight:300;font-size:14px;letter-spacing:.2em;color:var(--text3);text-transform:uppercase;}
+.lbl{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.44em;color:var(–text3);text-transform:uppercase;margin-bottom:8px;}
+.ttl{font-family:‘Cormorant Garamond’,serif;font-weight:300;font-size:42px;letter-spacing:.05em;color:var(–text1);line-height:1.2;}
+.ttl em{font-style:italic;color:var(–accent);}
+.hdr{position:absolute;top:28px;left:56px;right:56px;border-bottom:1px solid var(–border2);padding-bottom:8px;}
+.fnt{position:absolute;bottom:8px;left:56px;right:56px;font-family:‘Barlow’,sans-serif;font-weight:300;font-size:14px;letter-spacing:.2em;color:var(–text3);text-transform:uppercase;}
 
 /* body text upgrade — min 14px everywhere */
-.btext{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;line-height:1.45;color:var(--text2);}
-.btext strong{color:var(--text1);font-weight:400;}
+.btext{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;line-height:1.45;color:var(–text2);}
+.btext strong{color:var(–text1);font-weight:400;}
 
 /* ═══════════════════════════════════════
-   NAV
+NAV
 ═══════════════════════════════════════ */
-#nav{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:9999;background:var(--nav-bg);border:1px solid var(--nav-border);border-radius:40px;padding:8px 20px;backdrop-filter:blur(10px);}
-.nbtn{background:none;border:none;cursor:pointer;color:var(--text2);font-size:24px;padding:4px 10px;transition:color .2s;font-family:'Barlow',sans-serif;}
-.nbtn:hover{color:var(--text1);}
-.nbtn:disabled{color:var(--text3);opacity:.4;cursor:default;}
-#ctr{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.28em;color:var(--text3);min-width:52px;text-align:center;}
-#toggle{background:none;border:1px solid var(--border);border-radius:20px;cursor:pointer;color:var(--text2);font-size:22px;padding:4px 12px;transition:all .2s;font-family:'Barlow',sans-serif;}
-#toggle:hover{color:var(--text1);border-color:var(--accent);}
+#nav{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:9999;background:var(–nav-bg);border:1px solid var(–nav-border);border-radius:40px;padding:8px 20px;backdrop-filter:blur(10px);}
+.nbtn{background:none;border:none;cursor:pointer;color:var(–text2);font-size:24px;padding:4px 10px;transition:color .2s;font-family:‘Barlow’,sans-serif;}
+.nbtn:hover{color:var(–text1);}
+.nbtn:disabled{color:var(–text3);opacity:.4;cursor:default;}
+#ctr{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.28em;color:var(–text3);min-width:52px;text-align:center;}
+#toggle{background:none;border:1px solid var(–border);border-radius:20px;cursor:pointer;color:var(–text2);font-size:22px;padding:4px 12px;transition:all .2s;font-family:‘Barlow’,sans-serif;}
+#toggle:hover{color:var(–text1);border-color:var(–accent);}
 
 /* ═══════════════════════════════════════
-   ANIMATED SLIDE ELEMENTS
+ANIMATED SLIDE ELEMENTS
 ═══════════════════════════════════════ */
-
-
-
-
 
 .adl.vis{opacity:1;transform:translateY(0);}
 
 /* WCAG: animated lines min 20px, high contrast */
 
-
-
-
-
-
-
-
-
-
-.light 
+.light
 .anote.vis{opacity:1;}
 
+.light
 
-
-
-.light 
-
-
-
-
-.light 
+.light
 8%{opacity:1;}92%{opacity:.25;}100%{transform:translateY(-40px);opacity:0;}}
 
-
-.light 
-
+.light
 
 /* Quote — WCAG large text */
 
-
-
-
-.aqt strong{font-style:italic;font-weight:400;color:var(--anim-acc);}
-
-
+.aqt strong{font-style:italic;font-weight:400;color:var(–anim-acc);}
 
 /* ═══════════════════════════════════════
-   S1 — TITLE
+S1 — TITLE
 ═══════════════════════════════════════ */
-#c1{background:var(--bg);}
+#c1{background:var(–bg);}
 #c1 .t-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-#c1 .t-eyebrow{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.5em;color:var(--text3);text-transform:uppercase;margin-bottom:28px;}
-#c1 .t-main{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:58px;letter-spacing:.06em;color:var(--text1);text-align:center;line-height:1.25;max-width:900px;margin-bottom:10px;}
-#c1 .t-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:30px;color:var(--accent);letter-spacing:.04em;text-align:center;margin-bottom:52px;}
-#c1 .t-rule{width:60px;height:1px;background:var(--border);margin:0 auto 44px;}
-#c1 .t-name{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;color:var(--text1);letter-spacing:.06em;margin-bottom:10px;}
-#c1 .t-inst{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.28em;color:var(--text3);text-transform:uppercase;}
+#c1 .t-eyebrow{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.5em;color:var(–text3);text-transform:uppercase;margin-bottom:28px;}
+#c1 .t-main{font-family:‘Cormorant Garamond’,serif;font-weight:300;font-size:58px;letter-spacing:.06em;color:var(–text1);text-align:center;line-height:1.25;max-width:900px;margin-bottom:10px;}
+#c1 .t-sub{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:30px;color:var(–accent);letter-spacing:.04em;text-align:center;margin-bottom:52px;}
+#c1 .t-rule{width:60px;height:1px;background:var(–border);margin:0 auto 44px;}
+#c1 .t-name{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:26px;color:var(–text1);letter-spacing:.06em;margin-bottom:10px;}
+#c1 .t-inst{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.28em;color:var(–text3);text-transform:uppercase;}
 
 /* ═══════════════════════════════════════
-   S3 — OUTLINE
+S3 — OUTLINE
 ═══════════════════════════════════════ */
 #c3 .flow{position:absolute;top:0;bottom:52px;left:0;right:0;display:flex;align-items:stretch;height:calc(100% - 52px);}
 #c3 .oarr{width:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-#c3 .ocard{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:0;padding:32px 24px 24px;position:relative;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;}
-#c3 .ocard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
-#c3 .ocard:nth-child(1)::before{background:var(--rule);opacity:1.0;}
-#c3 .ocard:nth-child(3)::before{background:var(--rule);opacity:.85;}
-#c3 .ocard:nth-child(5)::before{background:var(--rule);opacity:.7;}
-#c3 .ocard:nth-child(7)::before{background:var(--rule);opacity:.55;}
-#c3 .ocard:nth-child(9)::before{background:var(--rule);opacity:.4;}
-#c3 .onum{position:absolute;bottom:12px;right:16px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:96px;font-weight:300;color:var(--ghost);line-height:1;user-select:none;}
-#c3 .ostag{font-family:'Barlow',sans-serif;font-weight:300;font-size:16px;letter-spacing:.32em;color:var(--text3);text-transform:uppercase;margin-bottom:12px;}
-#c3 .otitle{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;color:var(--text1);line-height:1.25;margin-bottom:16px;}
-#c3 .odiv{width:40px;height:1px;background:var(--border2);margin-bottom:16px;flex-shrink:0;}
+#c3 .ocard{flex:1;background:var(–bg2);border:1px solid var(–border);border-radius:0;padding:32px 24px 24px;position:relative;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;}
+#c3 .ocard::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;}
+#c3 .ocard:nth-child(1)::before{background:var(–rule);opacity:1.0;}
+#c3 .ocard:nth-child(3)::before{background:var(–rule);opacity:.85;}
+#c3 .ocard:nth-child(5)::before{background:var(–rule);opacity:.7;}
+#c3 .ocard:nth-child(7)::before{background:var(–rule);opacity:.55;}
+#c3 .ocard:nth-child(9)::before{background:var(–rule);opacity:.4;}
+#c3 .onum{position:absolute;bottom:12px;right:16px;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:96px;font-weight:300;color:var(–ghost);line-height:1;user-select:none;}
+#c3 .ostag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:16px;letter-spacing:.32em;color:var(–text3);text-transform:uppercase;margin-bottom:12px;}
+#c3 .otitle{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:32px;color:var(–text1);line-height:1.25;margin-bottom:16px;}
+#c3 .odiv{width:40px;height:1px;background:var(–border2);margin-bottom:16px;flex-shrink:0;}
 #c3 ul{list-style:none;width:100%;}
-#c3 ul li{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.6;padding-left:16px;position:relative;margin-bottom:6px;}
-#c3 ul li::before{content:'–';position:absolute;left:0;color:var(--text3);}
+#c3 ul li{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.6;padding-left:16px;position:relative;margin-bottom:6px;}
+#c3 ul li::before{content:’–’;position:absolute;left:0;color:var(–text3);}
 
 /* ═══════════════════════════════════════
-   S4 — BIO AGE
+S4 — BIO AGE
 ═══════════════════════════════════════ */
 #c4 .body{position:absolute;top:118px;bottom:44px;left:56px;right:56px;display:flex;gap:28px;overflow:hidden;}
 #c4 .lft{width:330px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;}
 #c4 .avis{position:relative;height:290px;display:flex;flex-direction:column;justify-content:space-between;}
-#c4 .atrk{position:absolute;left:22px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border) 20%,var(--border) 80%,transparent);}
+#c4 .atrk{position:absolute;left:22px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(–border) 20%,var(–border) 80%,transparent);}
 #c4 .arow{display:flex;align-items:center;gap:11px;}
 #c4 .adot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-left:17px;}
-#c4 .dc{background:var(--accent2);border:1px solid var(--accent);}
+#c4 .dc{background:var(–accent2);border:1px solid var(–accent);}
 #c4 .db{background:rgba(200,130,80,.6);border:1px solid rgba(220,160,100,.8);}
-#c4 .dg{background:transparent;border:1px dashed var(--border);}
-#c4 .atyp{font-family:'Barlow',sans-serif;font-weight:400;font-size:22px;letter-spacing:.18em;text-transform:uppercase;}
-#c4 .tc{color:var(--accent);}
+#c4 .dg{background:transparent;border:1px dashed var(–border);}
+#c4 .atyp{font-family:‘Barlow’,sans-serif;font-weight:400;font-size:22px;letter-spacing:.18em;text-transform:uppercase;}
+#c4 .tc{color:var(–accent);}
 #c4 .tb{color:#c8905a;}
 .light #c4 .tb{color:#a06030;}
-#c4 .tg{color:var(--text3);}
-#c4 .adsc{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:24px;color:var(--text2);line-height:1.4;}
-#c4 
+#c4 .tg{color:var(–text3);}
+#c4 .adsc{font-family:‘Cormorant Garamond’,serif;font-weight:300;font-style:italic;font-size:24px;color:var(–text2);line-height:1.4;}
+#c4
 #c4 .rgt{flex:1;display:flex;flex-direction:column;justify-content:center;}
-#c4 .pt{display:flex;gap:18px;padding:8px 0;border-bottom:1px solid var(--border2);align-items:flex-start;}
-#c4 .pt:first-child{border-top:1px solid var(--border2);}
-#c4 .pn{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:40px;color:var(--border);line-height:1;flex-shrink:0;width:36px;padding-top:2px;}
-#c4 .ptit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:var(--text1);margin-bottom:4px;line-height:1.3;}
-#c4 .pdet{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.4;}
-#c4 .pdet strong{color:var(--text1);font-weight:400;}
+#c4 .pt{display:flex;gap:18px;padding:8px 0;border-bottom:1px solid var(–border2);align-items:flex-start;}
+#c4 .pt:first-child{border-top:1px solid var(–border2);}
+#c4 .pn{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:40px;color:var(–border);line-height:1;flex-shrink:0;width:36px;padding-top:2px;}
+#c4 .ptit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:24px;color:var(–text1);margin-bottom:4px;line-height:1.3;}
+#c4 .pdet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.4;}
+#c4 .pdet strong{color:var(–text1);font-weight:400;}
 #c4 .opills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-#c4 .opl{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.18em;text-transform:uppercase;color:var(--text2);border:1px solid var(--border);border-radius:2px;padding:4px 10px;}
+#c4 .opl{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.18em;text-transform:uppercase;color:var(–text2);border:1px solid var(–border);border-radius:2px;padding:4px 10px;}
 
 /* ═══════════════════════════════════════
-   S5 — WHY KDM
+S5 — WHY KDM
 ═══════════════════════════════════════ */
 #c5 .cols{position:absolute;top:118px;bottom:44px;left:56px;right:56px;display:flex;gap:16px;overflow:hidden;}
-#c5 .kcol{flex:1;border:1px solid var(--border2);border-radius:2px;padding:14px 20px;display:flex;flex-direction:column;gap:10px;background:var(--bg2);justify-content:center;}
-#c5 .kcol.hl{background:var(--bg3);border-top:2px solid var(--accent);}
+#c5 .kcol{flex:1;border:1px solid var(–border2);border-radius:2px;padding:14px 20px;display:flex;flex-direction:column;gap:10px;background:var(–bg2);justify-content:center;}
+#c5 .kcol.hl{background:var(–bg3);border-top:2px solid var(–accent);}
 #c5 .kcol.dim{opacity:.75;}
-#c5 .kh{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:var(--text1);margin-bottom:4px;}
-#c5 .kdiv{width:28px;height:1px;background:var(--border2);margin-bottom:4px;}
-#c5 .krow{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border2);}
-#c5 .krow:first-of-type{border-top:1px solid var(--border2);}
-#c5 .kicon{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text3);flex-shrink:0;padding-top:1px;}
-#c5 .kt{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.4;}
-#c5 .kt strong{color:var(--text1);font-weight:400;}
-#c5 .kt.good{color:var(--text2);}
-#c5 .kt strong.good{color:var(--text1);}
+#c5 .kh{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:24px;color:var(–text1);margin-bottom:4px;}
+#c5 .kdiv{width:28px;height:1px;background:var(–border2);margin-bottom:4px;}
+#c5 .krow{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(–border2);}
+#c5 .krow:first-of-type{border-top:1px solid var(–border2);}
+#c5 .kicon{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text3);flex-shrink:0;padding-top:1px;}
+#c5 .kt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.4;}
+#c5 .kt strong{color:var(–text1);font-weight:400;}
+#c5 .kt.good{color:var(–text2);}
+#c5 .kt strong.good{color:var(–text1);}
 
 /* ═══════════════════════════════════════
-   S6 — DIETARY LENSES
+S6 — DIETARY LENSES
 ═══════════════════════════════════════ */
 #c6 .cols{position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;gap:0;overflow:hidden;}
-#c6 .dcol{flex:1;background:var(--bg2);border:1px solid var(--border2);border-radius:2px;padding:10px 12px;}
-#c6 .dcol.hei{border-top:2px solid var(--accent);}
+#c6 .dcol{flex:1;background:var(–bg2);border:1px solid var(–border2);border-radius:2px;padding:10px 12px;}
+#c6 .dcol.hei{border-top:2px solid var(–accent);}
 #c6 .dcol.dii{border-top:2px solid rgba(200,100,80,.5);}
 .light #c6 .dcol.dii{border-top:2px solid rgba(160,60,30,.5);}
-#c6 .dctag{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.42em;color:var(--text3);text-transform:uppercase;margin-bottom:4px;}
-#c6 .dch{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;color:var(--text1);margin-bottom:4px;}
-#c6 .dcsh{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:24px;color:var(--text2);margin-bottom:11px;}
-#c6 .dcdiv{width:32px;height:1px;background:var(--border2);margin-bottom:10px;}
-#c6 .dcd{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.45;margin-bottom:12px;}
-#c6 .dcd strong{color:var(--text1);font-weight:400;}
-#c6 .dbt{position:absolute;bottom:62px;left:72px;right:72px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:23px;color:var(--text2);text-align:center;line-height:1.4;}
+#c6 .dctag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.42em;color:var(–text3);text-transform:uppercase;margin-bottom:4px;}
+#c6 .dch{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:32px;color:var(–text1);margin-bottom:4px;}
+#c6 .dcsh{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:24px;color:var(–text2);margin-bottom:11px;}
+#c6 .dcdiv{width:32px;height:1px;background:var(–border2);margin-bottom:10px;}
+#c6 .dcd{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.45;margin-bottom:12px;}
+#c6 .dcd strong{color:var(–text1);font-weight:400;}
+#c6 .dbt{position:absolute;bottom:62px;left:72px;right:72px;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:23px;color:var(–text2);text-align:center;line-height:1.4;}
 
 /* ═══════════════════════════════════════
-   S7 — LIT GAP
+S7 — LIT GAP
 ═══════════════════════════════════════ */
 #c7 .studies{position:absolute;top:150px;left:72px;right:72px;display:flex;flex-direction:column;}
-#c7 .srow{display:flex;gap:20px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border2);}
-#c7 .srow:first-child{border-top:1px solid var(--border2);}
-#c7 .scite{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:22px;color:var(--text2);white-space:nowrap;flex-shrink:0;width:200px;padding-top:2px;}
-#c7 .sdesc{font-family:'Barlow',sans-serif;font-weight:300;font-size:19px;color:var(--text2);line-height:1.35;}
-#c7 .sdesc strong{color:var(--text1);font-weight:400;}
-#c7 .gap-box{position:absolute;bottom:58px;left:72px;right:72px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:10px 18px;}
-#c7 .gap-text{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px;color:var(--text1);line-height:1.45;}
-#c7 .gap-text em{font-style:italic;color:var(--accent);}
+#c7 .srow{display:flex;gap:20px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(–border2);}
+#c7 .srow:first-child{border-top:1px solid var(–border2);}
+#c7 .scite{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:22px;color:var(–text2);white-space:nowrap;flex-shrink:0;width:200px;padding-top:2px;}
+#c7 .sdesc{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:19px;color:var(–text2);line-height:1.35;}
+#c7 .sdesc strong{color:var(–text1);font-weight:400;}
+#c7 .gap-box{position:absolute;bottom:58px;left:72px;right:72px;background:var(–bg2);border:1px solid var(–border);border-left:3px solid var(–accent);border-radius:2px;padding:10px 18px;}
+#c7 .gap-text{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:22px;color:var(–text1);line-height:1.45;}
+#c7 .gap-text em{font-style:italic;color:var(–accent);}
 
 /* ═══════════════════════════════════════
-   S8 — AIMS
+S8 — AIMS
 ═══════════════════════════════════════ */
 #c8 .aims{position:absolute;top:118px;bottom:44px;left:56px;right:56px;display:flex;flex-direction:column;overflow:hidden;}
-#c8 .aim{display:flex;gap:20px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border2);}
-#c8 .aim:first-child{border-top:1px solid var(--border2);}
-#c8 .anum{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.22em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:56px;padding-top:5px;}
-#c8 .atit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:var(--text1);margin-bottom:4px;line-height:1.35;}
-#c8 .adet{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.4;}
-#c8 .adet strong{color:var(--text1);font-weight:400;}
-#c8 .hyp{margin-top:10px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:10px 16px;}
-#c8 .hyp-tag{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.4em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;}
-#c8 .hyp-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:22px;color:var(--text1);line-height:1.4;}
+#c8 .aim{display:flex;gap:20px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(–border2);}
+#c8 .aim:first-child{border-top:1px solid var(–border2);}
+#c8 .anum{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.22em;color:var(–text3);text-transform:uppercase;flex-shrink:0;width:56px;padding-top:5px;}
+#c8 .atit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:24px;color:var(–text1);margin-bottom:4px;line-height:1.35;}
+#c8 .adet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.4;}
+#c8 .adet strong{color:var(–text1);font-weight:400;}
+#c8 .hyp{margin-top:10px;background:var(–bg2);border:1px solid var(–border);border-left:3px solid var(–accent);border-radius:2px;padding:10px 16px;}
+#c8 .hyp-tag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.4em;color:var(–text3);text-transform:uppercase;margin-bottom:8px;}
+#c8 .hyp-text{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:22px;color:var(–text1);line-height:1.4;}
 
 /* ═══════════════════════════════════════
-   S9 — NHANES + ETHICS
+S9 — NHANES + ETHICS
 ═══════════════════════════════════════ */
 #c9 .body{position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;gap:0;overflow:hidden;}
 #c9 .ctl{width:200px;flex-shrink:0;display:flex;flex-direction:column;padding-top:8px;position:relative;}
-#c9 .cllbl{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;}
-#c9 .ttrk{position:absolute;left:10px;top:40px;bottom:80px;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
+#c9 .cllbl{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;color:var(–text3);text-transform:uppercase;margin-bottom:10px;}
+#c9 .ttrk{position:absolute;left:10px;top:40px;bottom:80px;width:1px;background:linear-gradient(to bottom,var(–accent),transparent);}
 #c9 .cyc{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-#c9 .cdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-left:6px;background:var(--border);border:1px solid var(--text3);}
-#c9 .cdot.on{background:var(--accent);border-color:var(--accent);box-shadow:0 0 6px rgba(90,158,200,.4);}
-#c9 .ctxt{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.4;}
-#c9 .ctxt strong{color:var(--text1);font-weight:400;}
-#c9 .cnote{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text3);margin-top:2px;}
-#c9 .fevn{margin-top:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:22px;color:var(--text2);border-left:1px solid var(--border2);padding-left:12px;line-height:1.4;}
+#c9 .cdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-left:6px;background:var(–border);border:1px solid var(–text3);}
+#c9 .cdot.on{background:var(–accent);border-color:var(–accent);box-shadow:0 0 6px rgba(90,158,200,.4);}
+#c9 .ctxt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.4;}
+#c9 .ctxt strong{color:var(–text1);font-weight:400;}
+#c9 .cnote{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text3);margin-top:2px;}
+#c9 .fevn{margin-top:10px;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:22px;color:var(–text2);border-left:1px solid var(–border2);padding-left:12px;line-height:1.4;}
 #c9 .cmid{flex:1;display:flex;flex-direction:column;padding-top:8px;}
-#c9 .dblk{padding:6px 0;border-bottom:1px solid var(--border2);}
-#c9 .dblk:first-child{border-top:1px solid var(--border2);}
-#c9 .dtag{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.34em;color:var(--text3);text-transform:uppercase;margin-bottom:5px;}
-#c9 .dtxt{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.4;}
-#c9 .dtxt strong{color:var(--text1);font-weight:400;}
-#c9 .ceth{width:278px;flex-shrink:0;background:var(--bg2);border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:2px;padding:11px 15px 18px;display:flex;flex-direction:column;}
-#c9 .etit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px;color:var(--text1);margin-bottom:8px;line-height:1.3;}
-#c9 .ediv{width:28px;height:1px;background:var(--border2);margin-bottom:8px;}
+#c9 .dblk{padding:6px 0;border-bottom:1px solid var(–border2);}
+#c9 .dblk:first-child{border-top:1px solid var(–border2);}
+#c9 .dtag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.34em;color:var(–text3);text-transform:uppercase;margin-bottom:5px;}
+#c9 .dtxt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.4;}
+#c9 .dtxt strong{color:var(–text1);font-weight:400;}
+#c9 .ceth{width:278px;flex-shrink:0;background:var(–bg2);border:1px solid var(–border);border-top:2px solid var(–accent);border-radius:2px;padding:11px 15px 18px;display:flex;flex-direction:column;}
+#c9 .etit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:22px;color:var(–text1);margin-bottom:8px;line-height:1.3;}
+#c9 .ediv{width:28px;height:1px;background:var(–border2);margin-bottom:8px;}
 #c9 .eit{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;}
-#c9 .edot{width:6px;height:6px;border-radius:50%;background:var(--accent2);border:1px solid var(--accent);flex-shrink:0;margin-top:6px;}
-#c9 .etxt{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.4;}
-#c9 .etxt strong{color:var(--text1);font-weight:400;}
+#c9 .edot{width:6px;height:6px;border-radius:50%;background:var(–accent2);border:1px solid var(–accent);flex-shrink:0;margin-top:6px;}
+#c9 .etxt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.4;}
+#c9 .etxt strong{color:var(–text1);font-weight:400;}
 
 /* ═══════════════════════════════════════
-   S10 — EXPOSURES
+S10 — EXPOSURES
 ═══════════════════════════════════════ */
 #c10 .cols{position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;gap:0;overflow:hidden;}
-#c10 .ecol{flex:1;background:var(--bg2);border:1px solid var(--border2);border-radius:2px;padding:13px 15px;}
-#c10 .ecol.exp{border-top:2px solid var(--accent);}
+#c10 .ecol{flex:1;background:var(–bg2);border:1px solid var(–border2);border-radius:2px;padding:13px 15px;}
+#c10 .ecol.exp{border-top:2px solid var(–accent);}
 #c10 .ecol.out{border-top:2px solid rgba(200,160,80,.5);}
 .light #c10 .ecol.out{border-top:2px solid rgba(140,100,20,.5);}
 #c10 .ecol.cov{border-top:2px solid rgba(80,160,100,.4);}
-#c10 .ectag{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;}
-#c10 .ech{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:var(--text1);margin-bottom:8px;line-height:1.3;}
-#c10 .edivr{width:28px;height:1px;background:var(--border2);margin-bottom:8px;}
-#c10 .erow{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.45;padding:6px 0;border-bottom:1px solid var(--border2);}
-#c10 .erow:first-of-type{border-top:1px solid var(--border2);}
-#c10 .erow strong{color:var(--text1);font-weight:400;}
-#c10 .enote{margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:23px;color:var(--text2);line-height:1.4;}
-#c10 .covlist{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.9;}
+#c10 .ectag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;color:var(–text3);text-transform:uppercase;margin-bottom:10px;}
+#c10 .ech{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:24px;color:var(–text1);margin-bottom:8px;line-height:1.3;}
+#c10 .edivr{width:28px;height:1px;background:var(–border2);margin-bottom:8px;}
+#c10 .erow{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.45;padding:6px 0;border-bottom:1px solid var(–border2);}
+#c10 .erow:first-of-type{border-top:1px solid var(–border2);}
+#c10 .erow strong{color:var(–text1);font-weight:400;}
+#c10 .enote{margin-top:14px;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:23px;color:var(–text2);line-height:1.4;}
+#c10 .covlist{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.9;}
 #c10 .covlist span{display:block;}
 
 /* ═══════════════════════════════════════
-   S11 — ANALYSIS
+S11 — ANALYSIS
 ═══════════════════════════════════════ */
 #c11 .steps{position:absolute;top:118px;bottom:44px;left:56px;right:56px;display:flex;flex-direction:column;overflow:hidden;}
-#c11 .step{display:flex;gap:24px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border2);}
-#c11 .step:first-child{border-top:1px solid var(--border2);}
-#c11 .sn{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:40px;color:var(--border);line-height:1;flex-shrink:0;width:44px;}
-#c11 .stit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:23px;color:var(--text1);margin-bottom:5px;line-height:1.3;}
-#c11 .sdet{font-family:'Barlow',sans-serif;font-weight:300;font-size:19px;color:var(--text2);line-height:1.35;}
-#c11 .sdet strong{color:var(--text1);font-weight:400;}
+#c11 .step{display:flex;gap:24px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(–border2);}
+#c11 .step:first-child{border-top:1px solid var(–border2);}
+#c11 .sn{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:40px;color:var(–border);line-height:1;flex-shrink:0;width:44px;}
+#c11 .stit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:23px;color:var(–text1);margin-bottom:5px;line-height:1.3;}
+#c11 .sdet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:19px;color:var(–text2);line-height:1.35;}
+#c11 .sdet strong{color:var(–text1);font-weight:400;}
 #c11 .sw-bar{position:absolute;bottom:44px;left:72px;right:72px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
-#c11 .sw-item{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.26em;color:var(--text2);text-transform:uppercase;border:1px solid var(--border);padding:5px 12px;border-radius:2px;}
+#c11 .sw-item{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.26em;color:var(–text2);text-transform:uppercase;border:1px solid var(–border);padding:5px 12px;border-radius:2px;}
 
 /* ═══════════════════════════════════════
-   S12 — SENSITIVITY
+S12 — SENSITIVITY
 ═══════════════════════════════════════ */
 #c12 .cols{position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;gap:0;overflow:hidden;}
-#c12 .scol{flex:1;border:1px solid var(--border2);border-radius:2px;padding:10px 12px;background:var(--bg2);}
-#c12 .scol.pri{border-top:2px solid var(--accent);}
+#c12 .scol{flex:1;border:1px solid var(–border2);border-radius:2px;padding:10px 12px;background:var(–bg2);}
+#c12 .scol.pri{border-top:2px solid var(–accent);}
 #c12 .scol.sen{border-top:2px solid rgba(200,160,80,.5);}
 .light #c12 .scol.sen{border-top:2px solid rgba(140,100,20,.5);}
-#c12 .sctag{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;}
-#c12 .sch{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:25px;color:var(--text1);margin-bottom:9px;}
-#c12 .sdivr{width:28px;height:1px;background:var(--border2);margin-bottom:9px;}
+#c12 .sctag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;color:var(–text3);text-transform:uppercase;margin-bottom:8px;}
+#c12 .sch{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:25px;color:var(–text1);margin-bottom:9px;}
+#c12 .sdivr{width:28px;height:1px;background:var(–border2);margin-bottom:9px;}
 #c12 .sblk{margin-bottom:6px;}
-#c12 .sbtag{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.34em;color:var(--text3);text-transform:uppercase;margin-bottom:4px;}
-#c12 .sbtxt{font-family:'Barlow',sans-serif;font-weight:300;font-size:19px;color:var(--text2);line-height:1.35;}
-#c12 .sbtxt strong{color:var(--text1);font-weight:400;}
-#c12 .conc{position:absolute;bottom:48px;left:72px;right:72px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:16px 22px;}
-#c12 .conc-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:23px;color:var(--text1);line-height:1.4;}
+#c12 .sbtag{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.34em;color:var(–text3);text-transform:uppercase;margin-bottom:4px;}
+#c12 .sbtxt{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:19px;color:var(–text2);line-height:1.35;}
+#c12 .sbtxt strong{color:var(–text1);font-weight:400;}
+#c12 .conc{position:absolute;bottom:48px;left:72px;right:72px;background:var(–bg2);border:1px solid var(–border);border-left:3px solid var(–accent);border-radius:2px;padding:16px 22px;}
+#c12 .conc-text{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:23px;color:var(–text1);line-height:1.4;}
 
 /* ═══════════════════════════════════════
-   S13 — RESULTS + IMPLICATIONS
+S13 — RESULTS + IMPLICATIONS
 ═══════════════════════════════════════ */
-#c13 .crule{position:absolute;top:148px;bottom:48px;left:50%;width:1px;background:linear-gradient(to bottom,transparent,var(--border2) 15%,var(--border2) 85%,transparent);}
+#c13 .crule{position:absolute;top:148px;bottom:48px;left:50%;width:1px;background:linear-gradient(to bottom,transparent,var(–border2) 15%,var(–border2) 85%,transparent);}
 #c13 .cols{position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;overflow:hidden;}
 #c13 .col{flex:1;display:flex;flex-direction:column;padding-top:18px;}
 #c13 .cl{padding-right:56px;padding-left:40px;}
 #c13 .cr{padding-left:56px;padding-right:40px;}
-#c13 .ch{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;text-transform:uppercase;margin-bottom:9px;color:var(--text3);}
-#c13 .res{display:flex;gap:9px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border2);}
-#c13 .res:first-of-type{border-top:1px solid var(--border2);}
-#c13 .rnum{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:28px;color:var(--border);line-height:1;flex-shrink:0;width:24px;padding-top:1px;}
-#c13 .rtit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:var(--text1);margin-bottom:4px;line-height:1.35;}
-#c13 .rdet{font-family:'Barlow',sans-serif;font-weight:300;font-size:18px;color:var(--text2);line-height:1.35;}
-#c13 .rdet strong{color:var(--text1);font-weight:400;}
-#c13 .imp{display:flex;gap:12px;align-items:flex-start;padding:4px 0;border-bottom:1px solid var(--border2);}
-#c13 .imp:first-of-type{border-top:1px solid var(--border2);}
-#c13 .idot{width:7px;height:7px;border-radius:50%;background:var(--accent2);border:1px solid var(--accent);flex-shrink:0;margin-top:7px;}
-#c13 .itit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:var(--text1);margin-bottom:4px;line-height:1.35;}
-#c13 .idet{font-family:'Barlow',sans-serif;font-weight:300;font-size:18px;color:var(--text2);line-height:1.35;}
-#c13 .idet strong{color:var(--text1);font-weight:400;}
+#c13 .ch{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;text-transform:uppercase;margin-bottom:9px;color:var(–text3);}
+#c13 .res{display:flex;gap:9px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(–border2);}
+#c13 .res:first-of-type{border-top:1px solid var(–border2);}
+#c13 .rnum{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-weight:300;font-size:28px;color:var(–border);line-height:1;flex-shrink:0;width:24px;padding-top:1px;}
+#c13 .rtit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:24px;color:var(–text1);margin-bottom:4px;line-height:1.35;}
+#c13 .rdet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:18px;color:var(–text2);line-height:1.35;}
+#c13 .rdet strong{color:var(–text1);font-weight:400;}
+#c13 .imp{display:flex;gap:12px;align-items:flex-start;padding:4px 0;border-bottom:1px solid var(–border2);}
+#c13 .imp:first-of-type{border-top:1px solid var(–border2);}
+#c13 .idot{width:7px;height:7px;border-radius:50%;background:var(–accent2);border:1px solid var(–accent);flex-shrink:0;margin-top:7px;}
+#c13 .itit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:24px;color:var(–text1);margin-bottom:4px;line-height:1.35;}
+#c13 .idet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:18px;color:var(–text2);line-height:1.35;}
+#c13 .idet strong{color:var(–text1);font-weight:400;}
 
 /* ═══════════════════════════════════════
-   S14 — STRENGTHS + LIMITATIONS
+S14 — STRENGTHS + LIMITATIONS
 ═══════════════════════════════════════ */
-#c14 .crule{position:absolute;top:148px;bottom:48px;left:50%;width:1px;background:linear-gradient(to bottom,transparent,var(--border2) 15%,var(--border2) 85%,transparent);}
+#c14 .crule{position:absolute;top:148px;bottom:48px;left:50%;width:1px;background:linear-gradient(to bottom,transparent,var(–border2) 15%,var(–border2) 85%,transparent);}
 #c14 .cols{position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;overflow:hidden;}
 #c14 .col{flex:1;display:flex;flex-direction:column;padding-top:18px;}
 #c14 .cl{padding-right:56px;padding-left:40px;}
 #c14 .cr{padding-left:56px;padding-right:40px;}
-#c14 .ch{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;text-transform:uppercase;margin-bottom:9px;color:var(--text3);}
-#c14 .str{display:flex;gap:14px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border2);}
-#c14 .str:first-of-type{border-top:1px solid var(--border2);}
+#c14 .ch{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;letter-spacing:.40em;text-transform:uppercase;margin-bottom:9px;color:var(–text3);}
+#c14 .str{display:flex;gap:14px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(–border2);}
+#c14 .str:first-of-type{border-top:1px solid var(–border2);}
 #c14 .sdot{width:7px;height:7px;border-radius:50%;background:rgba(60,160,80,.6);border:1px solid rgba(80,200,100,.6);flex-shrink:0;margin-top:6px;}
-#c14 .stit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:var(--text1);margin-bottom:4px;line-height:1.3;}
-#c14 .sdet{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.4;}
-#c14 .sdet strong{color:var(--text1);font-weight:400;}
-#c14 .lim{display:flex;gap:14px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border2);}
-#c14 .lim:first-of-type{border-top:1px solid var(--border2);}
+#c14 .stit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:24px;color:var(–text1);margin-bottom:4px;line-height:1.3;}
+#c14 .sdet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.4;}
+#c14 .sdet strong{color:var(–text1);font-weight:400;}
+#c14 .lim{display:flex;gap:14px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(–border2);}
+#c14 .lim:first-of-type{border-top:1px solid var(–border2);}
 #c14 .ldot{width:7px;height:7px;border-radius:50%;background:rgba(200,100,60,.5);border:1px solid rgba(220,130,80,.5);flex-shrink:0;margin-top:6px;}
-#c14 .ltit{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:var(--text1);margin-bottom:4px;line-height:1.3;}
-#c14 .ldet{font-family:'Barlow',sans-serif;font-weight:300;font-size:22px;color:var(--text2);line-height:1.4;}
-#c14 .ldet strong{color:var(--text1);font-weight:400;}
+#c14 .ltit{font-family:‘Cormorant Garamond’,serif;font-weight:400;font-size:24px;color:var(–text1);margin-bottom:4px;line-height:1.3;}
+#c14 .ldet{font-family:‘Barlow’,sans-serif;font-weight:300;font-size:22px;color:var(–text2);line-height:1.4;}
+#c14 .ldet strong{color:var(–text1);font-weight:400;}
 </style>
+
 </head>
 <body>
 
 <!-- ══ S1 TITLE ══ -->
+
 <div class="slide" id="slide-1">
  <div class="canvas" id="c1">
   <div class="t-wrap">
@@ -405,6 +382,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S2 CLINICAL MOTIVATION ══ -->
+
 <div class="slide" id="slide-2">
  <div class="canvas canvas-glow" id="c2">
   <div class="hdr"><div class="lbl">Background</div><div class="ttl">Aging is the shared risk factor. Chronological age is a poor predictor.</div></div>
@@ -420,7 +398,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
     </div>
     <div style="padding:9px 0;display:flex;gap:11px;align-items:flex-start;">
      <div style="font-family:Georgia,serif;font-style:italic;font-size:38px;color:var(--border);flex-shrink:0;width:36px;">3</div>
-     <div><div style="font-family:Georgia,serif;font-size:23px;color:var(--text1);margin-bottom:4px;">Diet is the logical exposure</div><div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">Diet is modifiable, measurable, and already linked to disease outcomes. Whether it shapes aging across multiple systems simultaneously is an open question.</div></div>
+     <div><div style="font-family:Georgia,serif;font-size:23px;color:var(--text1);margin-bottom:4px;">Diet is a key modifiable exposure</div><div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">Diet is modifiable, measurable, and already linked to disease outcomes. Whether it shapes aging across multiple systems simultaneously is an open question.</div></div>
     </div>
    </div>
    <div style="width:290px;flex-shrink:0;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;">
@@ -433,6 +411,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S3 OUTLINE ══ -->
+
 <div class="slide" id="slide-3">
  <div class="canvas canvas-glow" id="c3" style="display:flex;flex-direction:column;padding:0;">
   <div class="hdr"><div class="lbl">NUTR 701 · MS Thesis Proposal</div><div class="ttl" style="font-size:40px">Presentation outline</div></div>
@@ -453,11 +432,13 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
   </div>
 
   <!-- Arrow -->
+
   <div style="width:24px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bg);">
    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="rgba(90,158,200,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
   <!-- Card 2 -->
+
   <div style="flex:1;display:flex;flex-direction:column;padding:36px 22px 28px;background:var(--bg2);border-right:1px solid var(--border);position:relative;overflow:hidden;">
    <div style="position:absolute;bottom:8px;right:12px;font-family:Georgia,serif;font-style:italic;font-size:100px;color:rgba(255,255,255,0.03);line-height:1;user-select:none;">02</div>
    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Section 02</div>
@@ -472,11 +453,13 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
   </div>
 
   <!-- Arrow -->
+
   <div style="width:24px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bg);">
    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="rgba(90,158,200,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
   <!-- Card 3 -->
+
   <div style="flex:1;display:flex;flex-direction:column;padding:36px 22px 28px;background:var(--bg2);border-right:1px solid var(--border);position:relative;overflow:hidden;">
    <div style="position:absolute;bottom:8px;right:12px;font-family:Georgia,serif;font-style:italic;font-size:100px;color:rgba(255,255,255,0.03);line-height:1;user-select:none;">03</div>
    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Section 03</div>
@@ -491,11 +474,13 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
   </div>
 
   <!-- Arrow -->
+
   <div style="width:24px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bg);">
    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="rgba(90,158,200,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
   <!-- Card 4 -->
+
   <div style="flex:1;display:flex;flex-direction:column;padding:36px 22px 28px;background:var(--bg2);border-right:1px solid var(--border);position:relative;overflow:hidden;">
    <div style="position:absolute;bottom:8px;right:12px;font-family:Georgia,serif;font-style:italic;font-size:100px;color:rgba(255,255,255,0.03);line-height:1;user-select:none;">04</div>
    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Section 04</div>
@@ -509,11 +494,13 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
   </div>
 
   <!-- Arrow -->
+
   <div style="width:24px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bg);">
    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="rgba(90,158,200,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
   <!-- Card 5 -->
+
   <div style="flex:1;display:flex;flex-direction:column;padding:36px 22px 28px;background:var(--bg2);position:relative;overflow:hidden;">
    <div style="position:absolute;bottom:8px;right:12px;font-family:Georgia,serif;font-style:italic;font-size:100px;color:rgba(255,255,255,0.03);line-height:1;user-select:none;">05</div>
    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:.38em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Section 05</div>
@@ -544,96 +531,96 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 
 /* TIME AXIS LINE */
 #s4-axis {
-  position:absolute;
-  bottom:220px;
-  left:120px;right:120px;
-  height:1px;
-  background:rgba(90,158,200,0);
-  transition:background 1.2s ease;
+position:absolute;
+bottom:220px;
+left:120px;right:120px;
+height:1px;
+background:rgba(90,158,200,0);
+transition:background 1.2s ease;
 }
 #s4-axis.vis { background:rgba(90,158,200,0.25); }
 #s4-axis-label {
-  position:absolute;
-  right:-10px;
-  top:10px;
-  font-family:'Helvetica Neue',Arial,sans-serif;
-  font-size:22px;
-  letter-spacing:.28em;
-  color:rgba(90,158,200,0);
-  text-transform:uppercase;
-  transition:color 1s ease;
-  white-space:nowrap;
+position:absolute;
+right:-10px;
+top:10px;
+font-family:‘Helvetica Neue’,Arial,sans-serif;
+font-size:22px;
+letter-spacing:.28em;
+color:rgba(90,158,200,0);
+text-transform:uppercase;
+transition:color 1s ease;
+white-space:nowrap;
 }
 #s4-axis-label.vis { color:rgba(90,158,200,0.5); }
 
 /* SLICES — vertical planes stacked along time axis */
 #s4-slices {
-  position:absolute;
-  bottom:190px;
-  left:130px;right:130px;
-  height:180px;
-  display:flex;
-  align-items:flex-end;
-  gap:10px;
-  opacity:0;
-  transition:opacity 0.4s ease;
+position:absolute;
+bottom:190px;
+left:130px;right:130px;
+height:180px;
+display:flex;
+align-items:flex-end;
+gap:10px;
+opacity:0;
+transition:opacity 0.4s ease;
 }
 #s4-slices.vis { opacity:1; }
 
 .s4-page {
-  flex:1;
-  height:100%;
-  border:1px solid rgba(90,158,200,0.12);
-  background:linear-gradient(to top, rgba(90,158,200,0.04), rgba(90,158,200,0.10));
-  border-radius:1px;
-  opacity:0;
-  transform:scaleY(0.3);
-  transform-origin:bottom center;
-  transition:opacity 0.5s ease, transform 0.6s cubic-bezier(.22,1,.36,1);
+flex:1;
+height:100%;
+border:1px solid rgba(90,158,200,0.12);
+background:linear-gradient(to top, rgba(90,158,200,0.04), rgba(90,158,200,0.10));
+border-radius:1px;
+opacity:0;
+transform:scaleY(0.3);
+transform-origin:bottom center;
+transition:opacity 0.5s ease, transform 0.6s cubic-bezier(.22,1,.36,1);
 }
 .s4-page.vis {
-  opacity:1;
-  transform:scaleY(1);
+opacity:1;
+transform:scaleY(1);
 }
 
 /* HIGHLIGHTED SLICE */
 .s4-page.highlight {
-  background:linear-gradient(to top, rgba(90,158,200,0.18), rgba(90,158,200,0.38));
-  border-color:rgba(90,158,200,0.7);
-  box-shadow:0 0 20px rgba(90,158,200,0.18);
+background:linear-gradient(to top, rgba(90,158,200,0.18), rgba(90,158,200,0.38));
+border-color:rgba(90,158,200,0.7);
+box-shadow:0 0 20px rgba(90,158,200,0.18);
 }
 
 /* YOU ARE HERE marker */
 #s4-marker {
-  position:absolute;
-  bottom:375px;
-  opacity:0;
-  transition:opacity 0.8s ease;
-  text-align:center;
-  pointer-events:none;
+position:absolute;
+bottom:375px;
+opacity:0;
+transition:opacity 0.8s ease;
+text-align:center;
+pointer-events:none;
 }
 #s4-marker.vis { opacity:1; }
 #s4-marker-line {
-  width:1px;height:30px;
-  background:rgba(90,158,200,0.5);
-  margin:0 auto;
+width:1px;height:30px;
+background:rgba(90,158,200,0.5);
+margin:0 auto;
 }
 #s4-marker-text {
-  font-family:'Helvetica Neue',Arial,sans-serif;
-  font-size:22px;
-  letter-spacing:.3em;
-  color:rgba(90,158,200,0.8);
-  text-transform:uppercase;
-  white-space:nowrap;
-  margin-top:6px;
+font-family:‘Helvetica Neue’,Arial,sans-serif;
+font-size:22px;
+letter-spacing:.3em;
+color:rgba(90,158,200,0.8);
+text-transform:uppercase;
+white-space:nowrap;
+margin-top:6px;
 }
 
 /* FINAL EXPLANATION */
 #s4-explain {
-  position:absolute;inset:0;
-  opacity:0;
-  transition:opacity 1.2s ease;
-  pointer-events:none;
+position:absolute;inset:0;
+opacity:0;
+transition:opacity 1.2s ease;
+pointer-events:none;
 }
 #s4-explain.vis { opacity:1; pointer-events:auto; }
 </style>
@@ -658,6 +645,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- final explanation -->
+
 <div id="s4-explain">
  <div class="canvas canvas-glow" id="c4">
   <div class="hdr"><div class="lbl">Background: Conceptual Framework</div><div class="ttl">Chronological age versus biological age</div></div>
@@ -672,48 +660,52 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
   </div>
 
   <!-- Mini replay of the visual on the right -->
+
   <div style="position:absolute;top:118px;bottom:44px;right:40px;width:680px;display:flex;flex-direction:column;justify-content:center;align-items:center;">
    <svg viewBox="0 0 680 340" width="680" height="340" style="overflow:visible;">
     <!-- Time axis -->
     <line x1="20" y1="290" x2="650" y2="290" stroke="rgba(90,158,200,0.3)" stroke-width="1.5"/>
     <text x="658" y="294" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(90,158,200,0.5)" letter-spacing="1">time</text>
 
-    <!-- Past slices — faded -->
-    <rect x="30"  y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
-    <rect x="80"  y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
-    <rect x="130" y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
-    <rect x="180" y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
-    <rect x="230" y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
-    <rect x="280" y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
+```
+<!-- Past slices — faded -->
+<rect x="30"  y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
+<rect x="80"  y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
+<rect x="130" y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
+<rect x="180" y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
+<rect x="230" y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
+<rect x="280" y="80" width="38" height="205" fill="rgba(90,158,200,0.04)" stroke="rgba(90,158,200,0.14)" stroke-width="1" rx="1"/>
 
-    <!-- NOW slice — highlighted, full height -->
-    <rect x="340" y="60" width="48" height="225" fill="rgba(90,158,200,0.20)" stroke="rgba(90,158,200,0.70)" stroke-width="1.5" rx="1"/>
-    <!-- Biological age marker inside NOW slice — shorter, different color -->
-    <rect x="340" y="130" width="48" height="100" fill="rgba(200,130,80,0.45)" stroke="rgba(220,160,100,0.8)" stroke-width="1.5" rx="1"/>
+<!-- NOW slice — highlighted, full height -->
+<rect x="340" y="60" width="48" height="225" fill="rgba(90,158,200,0.20)" stroke="rgba(90,158,200,0.70)" stroke-width="1.5" rx="1"/>
+<!-- Biological age marker inside NOW slice — shorter, different color -->
+<rect x="340" y="130" width="48" height="100" fill="rgba(200,130,80,0.45)" stroke="rgba(220,160,100,0.8)" stroke-width="1.5" rx="1"/>
 
-    <!-- NOW label -->
-    <line x1="364" y1="60" x2="364" y2="36" stroke="rgba(90,158,200,0.6)" stroke-width="1" stroke-dasharray="4,3"/>
-    <text x="364" y="28" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(90,158,200,0.9)" text-anchor="middle" letter-spacing="2" font-weight="bold">NOW</text>
+<!-- NOW label -->
+<line x1="364" y1="60" x2="364" y2="36" stroke="rgba(90,158,200,0.6)" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="364" y="28" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(90,158,200,0.9)" text-anchor="middle" letter-spacing="2" font-weight="bold">NOW</text>
 
-    <!-- Future slices — very faded -->
-    <rect x="404" y="100" width="38" height="185" fill="rgba(90,158,200,0.02)" stroke="rgba(90,158,200,0.07)" stroke-width="1" rx="1"/>
-    <rect x="454" y="100" width="38" height="185" fill="rgba(90,158,200,0.01)" stroke="rgba(90,158,200,0.04)" stroke-width="1" rx="1"/>
+<!-- Future slices — very faded -->
+<rect x="404" y="100" width="38" height="185" fill="rgba(90,158,200,0.02)" stroke="rgba(90,158,200,0.07)" stroke-width="1" rx="1"/>
+<rect x="454" y="100" width="38" height="185" fill="rgba(90,158,200,0.01)" stroke="rgba(90,158,200,0.04)" stroke-width="1" rx="1"/>
 
-    <!-- Chronological age bracket -->
-    <line x1="30" y1="310" x2="364" y2="310" stroke="rgba(90,158,200,0.3)" stroke-width="1"/>
-    <line x1="30" y1="306" x2="30" y2="314" stroke="rgba(90,158,200,0.3)" stroke-width="1"/>
-    <line x1="364" y1="306" x2="364" y2="314" stroke="rgba(90,158,200,0.3)" stroke-width="1"/>
-    <text x="197" y="328" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(90,158,200,0.5)" text-anchor="middle" letter-spacing="1">chronological age</text>
+<!-- Chronological age bracket -->
+<line x1="30" y1="310" x2="364" y2="310" stroke="rgba(90,158,200,0.3)" stroke-width="1"/>
+<line x1="30" y1="306" x2="30" y2="314" stroke="rgba(90,158,200,0.3)" stroke-width="1"/>
+<line x1="364" y1="306" x2="364" y2="314" stroke="rgba(90,158,200,0.3)" stroke-width="1"/>
+<text x="197" y="328" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(90,158,200,0.5)" text-anchor="middle" letter-spacing="1">chronological age</text>
 
-    <!-- Biological age label — points into the amber section -->
-    <line x1="392" y1="180" x2="440" y2="160" stroke="rgba(200,130,80,0.5)" stroke-width="1"/>
-    <text x="444" y="156" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(200,130,80,0.8)" letter-spacing="0.5">biological age</text>
+<!-- Biological age label — points into the amber section -->
+<line x1="392" y1="180" x2="440" y2="160" stroke="rgba(200,130,80,0.5)" stroke-width="1"/>
+<text x="444" y="156" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(200,130,80,0.8)" letter-spacing="0.5">biological age</text>
 
-    <!-- Residual bracket — placed further right, separate from bio age label -->
-    <line x1="560" y1="130" x2="560" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-    <line x1="556" y1="130" x2="564" y2="130" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-    <line x1="556" y1="230" x2="564" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-    <text x="570" y="185" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(255,255,255,0.32)" letter-spacing="0.5">residual</text>
+<!-- Residual bracket — placed further right, separate from bio age label -->
+<line x1="560" y1="130" x2="560" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<line x1="556" y1="130" x2="564" y2="130" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<line x1="556" y1="230" x2="564" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<text x="570" y="185" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="rgba(255,255,255,0.32)" letter-spacing="0.5">residual</text>
+```
+
    </svg>
   </div>
 
@@ -724,167 +716,182 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S5 WHY KDM ══ -->
+
 <div class="slide" id="slide-5">
  <div class="canvas canvas-glow" id="c5">
   <div class="hdr"><div class="lbl">Background: Biological Age Methods</div><div class="ttl">Rationale for the KDM-based Biological Age Index</div></div>
   <!-- Two-panel layout: rejected left, selected right -->
   <div style="position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;gap:0;overflow:hidden;">
 
-    <!-- LEFT: rejected methods stacked -->
-    <div style="flex:1;display:flex;flex-direction:column;gap:9px;justify-content:center;">
+```
+<!-- LEFT: rejected methods stacked -->
+<div style="flex:1;display:flex;flex-direction:column;gap:9px;justify-content:center;">
 
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;letter-spacing:.42em;color:rgba(180,70,70,.7);text-transform:uppercase;margin-bottom:4px;">Not used in this study</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;letter-spacing:.42em;color:rgba(180,70,70,.7);text-transform:uppercase;margin-bottom:4px;">Not used in this study</div>
 
-      <!-- Epigenetic clocks — greyed, crossed out feel -->
-      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:10px 15px;opacity:.55;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:12px;right:14px;font-size:32px;color:rgba(180,60,60,.4);line-height:1;">✗</div>
-        <div style="font-family:Georgia,serif;font-size:24px;color:var(--text2);margin-bottom:10px;">Epigenetic Clocks</div>
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text3);line-height:1.4;">DNA methylation not collected in NHANES. Cannot be applied here.</div>
-      </div>
+  <!-- Epigenetic clocks — greyed, crossed out feel -->
+  <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:10px 15px;opacity:.55;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:12px;right:14px;font-size:32px;color:rgba(180,60,60,.4);line-height:1;">✗</div>
+    <div style="font-family:Georgia,serif;font-size:24px;color:var(--text2);margin-bottom:10px;">Epigenetic Clocks</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text3);line-height:1.4;">DNA methylation not collected in NHANES. Cannot be applied here.</div>
+  </div>
 
-      <!-- PhenoAge — greyed, crossed out feel -->
-      <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:10px 15px;opacity:.55;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:12px;right:14px;font-size:32px;color:rgba(180,60,60,.4);line-height:1;">✗</div>
-        <div style="font-family:Georgia,serif;font-size:24px;color:var(--text2);margin-bottom:10px;">PhenoAge</div>
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text3);line-height:1.4;">Outputs one composite score optimized for mortality prediction. Cannot identify which organ system is driving the result.</div>
-      </div>
+  <!-- PhenoAge — greyed, crossed out feel -->
+  <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:10px 15px;opacity:.55;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:12px;right:14px;font-size:32px;color:rgba(180,60,60,.4);line-height:1;">✗</div>
+    <div style="font-family:Georgia,serif;font-size:24px;color:var(--text2);margin-bottom:10px;">PhenoAge</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text3);line-height:1.4;">Outputs one composite score optimized for mortality prediction. Cannot identify which organ system is driving the result.</div>
+  </div>
 
+</div>
+
+<!-- Vertical divider -->
+<div style="width:1px;background:linear-gradient(to bottom,transparent,var(--border) 20%,var(--border) 80%,transparent);flex-shrink:0;"></div>
+
+<!-- RIGHT: KDM — dominant, bright, selected -->
+<div style="flex:1.4;display:flex;flex-direction:column;justify-content:center;">
+
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;letter-spacing:.42em;color:var(--accent);text-transform:uppercase;margin-bottom:9px;">This study</div>
+
+  <div style="font-family:Georgia,serif;font-size:32px;color:var(--text1);margin-bottom:4px;">KDM-based Biological Age Index</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);margin-bottom:12px;">Klemera &amp; Doubal, 2006; applied to NHANES by Levine, 2013</div>
+
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <div style="padding:6px 0;border-bottom:1px solid var(--border2);display:flex;gap:14px;align-items:flex-start;">
+      <div style="color:var(--accent);font-size:24px;flex-shrink:0;margin-top:1px;">✓</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.4;">Built from routine NHANES biomarkers. No specialized assays.</div>
     </div>
-
-    <!-- Vertical divider -->
-    <div style="width:1px;background:linear-gradient(to bottom,transparent,var(--border) 20%,var(--border) 80%,transparent);flex-shrink:0;"></div>
-
-    <!-- RIGHT: KDM — dominant, bright, selected -->
-    <div style="flex:1.4;display:flex;flex-direction:column;justify-content:center;">
-
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;letter-spacing:.42em;color:var(--accent);text-transform:uppercase;margin-bottom:9px;">This study</div>
-
-      <div style="font-family:Georgia,serif;font-size:32px;color:var(--text1);margin-bottom:4px;">KDM-based Biological Age Index</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);margin-bottom:12px;">Klemera &amp; Doubal, 2006; applied to NHANES by Levine, 2013</div>
-
-      <div style="display:flex;flex-direction:column;gap:0;">
-        <div style="padding:6px 0;border-bottom:1px solid var(--border2);display:flex;gap:14px;align-items:flex-start;">
-          <div style="color:var(--accent);font-size:24px;flex-shrink:0;margin-top:1px;">✓</div>
-          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.4;">Built from routine NHANES biomarkers. No specialized assays.</div>
-        </div>
-        <div style="padding:6px 0;border-bottom:1px solid var(--border2);display:flex;gap:14px;align-items:flex-start;">
-          <div style="color:var(--accent);font-size:24px;flex-shrink:0;margin-top:1px;">✓</div>
-          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.4;">Each biomarker retains its own weight across six systems. This study uses 8 of the 10 Miner et al. (2023) biomarkers; CMV IgG and CRP excluded from the primary analysis.</div>
-        </div>
-        <div style="padding:8px 0;display:flex;gap:14px;align-items:flex-start;">
-          <div style="color:var(--accent);font-size:24px;flex-shrink:0;margin-top:1px;">✓</div>
-          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.4;">Predicts mortality independently of chronological age (Levine, 2013; Miner et al., 2023).</div>
-        </div>
-      </div>
-
+    <div style="padding:6px 0;border-bottom:1px solid var(--border2);display:flex;gap:14px;align-items:flex-start;">
+      <div style="color:var(--accent);font-size:24px;flex-shrink:0;margin-top:1px;">✓</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.4;">Each biomarker retains its own weight across six systems. This study uses 8 of the 10 Miner et al. (2023) biomarkers; CMV IgG and CRP excluded from the primary analysis.</div>
     </div>
+    <div style="padding:8px 0;display:flex;gap:14px;align-items:flex-start;">
+      <div style="color:var(--accent);font-size:24px;flex-shrink:0;margin-top:1px;">✓</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.4;">Predicts mortality independently of chronological age (Levine, 2013; Miner et al., 2023).</div>
+    </div>
+  </div>
+
+</div>
+```
+
   </div>
   <div class="fnt">Klemera &amp; Doubal, 2006 · Levine, 2013 · Levine et al., 2018 (PhenoAge) · Miner et al., 2023</div>
  </div>
 </div>
 
 <!-- ══ S6 DIETARY LENSES ══ -->
+
 <div class="slide" id="slide-6">
  <div class="canvas canvas-glow" id="c6">
 
   <!-- Header -->
+
   <div class="hdr"><div class="lbl">Background: Dietary Indices</div><div class="ttl">Dietary exposure variables: HEI-2020 and DII</div></div>
 
   <!-- Two-panel layout fills slide below header -->
+
   <div style="position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;overflow:hidden;">
 
    <!-- ══ HEI PANEL ══ -->
+
    <div style="flex:1;display:flex;flex-direction:column;padding:24px 48px 16px 56px;border-right:1px solid var(--border2);gap:14px;">
 
-    <!-- Index identity -->
-    <div style="display:flex;align-items:baseline;gap:18px;">
-     <div style="font-family:Georgia,serif;font-size:52px;color:#a8d4f0;line-height:1;">HEI-2020</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.3em;color:rgba(90,158,200,0.6);text-transform:uppercase;padding-bottom:6px;">Exposure 01</div>
-    </div>
+```
+<!-- Index identity -->
+<div style="display:flex;align-items:baseline;gap:18px;">
+ <div style="font-family:Georgia,serif;font-size:52px;color:#a8d4f0;line-height:1;">HEI-2020</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.3em;color:rgba(90,158,200,0.6);text-transform:uppercase;padding-bottom:6px;">Exposure 01</div>
+</div>
 
-    <!-- Scale visual -->
-    <div style="display:flex;align-items:center;gap:12px;">
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:rgba(90,158,200,0.5);letter-spacing:.18em;white-space:nowrap;">0</div>
-     <div style="flex:1;height:8px;border-radius:4px;background:linear-gradient(to right,rgba(90,158,200,0.08),rgba(90,158,200,0.6));border:1px solid rgba(90,158,200,0.2);position:relative;">
-      <div style="position:absolute;right:0;top:-6px;width:2px;height:20px;background:rgba(90,158,200,0.7);"></div>
-     </div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:rgba(90,158,200,0.9);letter-spacing:.18em;white-space:nowrap;">100 &nbsp;↑ better</div>
-    </div>
+<!-- Scale visual -->
+<div style="display:flex;align-items:center;gap:12px;">
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:rgba(90,158,200,0.5);letter-spacing:.18em;white-space:nowrap;">0</div>
+ <div style="flex:1;height:8px;border-radius:4px;background:linear-gradient(to right,rgba(90,158,200,0.08),rgba(90,158,200,0.6));border:1px solid rgba(90,158,200,0.2);position:relative;">
+  <div style="position:absolute;right:0;top:-6px;width:2px;height:20px;background:rgba(90,158,200,0.7);"></div>
+ </div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:rgba(90,158,200,0.9);letter-spacing:.18em;white-space:nowrap;">100 &nbsp;↑ better</div>
+</div>
 
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Scores alignment with the 2020–2025 Dietary Guidelines. Does not capture inflammatory potential.</div>
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Scores alignment with the 2020–2025 Dietary Guidelines. Does not capture inflammatory potential.</div>
 
-    <!-- Components as a 2-column list -->
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:rgba(90,158,200,0.55);text-transform:uppercase;margin-bottom:2px;">13 components</div>
-    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(7,1fr);gap:0;">
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Total fruits</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Whole fruits</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Total vegetables</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Greens &amp; beans</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Whole grains</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Dairy</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Total protein foods</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Seafood &amp; plant proteins</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Fatty acid ratio</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Refined grains</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Sodium</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Added sugars</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Saturated fats</div>
-     <div></div>
-    </div>
+<!-- Components as a 2-column list -->
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:rgba(90,158,200,0.55);text-transform:uppercase;margin-bottom:2px;">13 components</div>
+<div style="flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(7,1fr);gap:0;">
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Total fruits</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Whole fruits</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Total vegetables</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Greens &amp; beans</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Whole grains</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Dairy</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Total protein foods</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Seafood &amp; plant proteins</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Fatty acid ratio</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Refined grains</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Sodium</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;border-bottom:1px solid rgba(90,158,200,0.10);display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Added sugars</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#b8d8f0;padding:5px 0;display:flex;align-items:center;gap:8px;"><span style="font-size:12px;color:rgba(90,158,200,0.35);">▸</span>Saturated fats</div>
+ <div></div>
+</div>
+```
+
    </div>
 
    <!-- ══ DII PANEL ══ -->
+
    <div style="flex:1;display:flex;flex-direction:column;padding:24px 56px 16px 48px;gap:14px;">
 
-    <!-- Index identity -->
-    <div style="display:flex;align-items:baseline;gap:18px;">
-     <div style="font-family:Georgia,serif;font-size:52px;color:#d4a070;line-height:1;">DII</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.3em;color:rgba(200,140,90,0.6);text-transform:uppercase;padding-bottom:6px;">Exposure 02</div>
-    </div>
+```
+<!-- Index identity -->
+<div style="display:flex;align-items:baseline;gap:18px;">
+ <div style="font-family:Georgia,serif;font-size:52px;color:#d4a070;line-height:1;">DII</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.3em;color:rgba(200,140,90,0.6);text-transform:uppercase;padding-bottom:6px;">Exposure 02</div>
+</div>
 
-    <!-- Bipolar scale -->
-    <div style="display:flex;align-items:center;gap:10px;">
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:rgba(90,158,200,0.7);letter-spacing:.14em;white-space:nowrap;">↓ anti-inflammatory</div>
-     <div style="flex:1;height:8px;border-radius:4px;background:linear-gradient(to right,rgba(90,158,200,0.5),rgba(200,140,90,0.08) 50%,rgba(200,140,90,0.6));border:1px solid rgba(200,140,90,0.15);position:relative;">
-      <div style="position:absolute;left:50%;top:-6px;width:2px;height:20px;background:rgba(255,255,255,0.25);transform:translateX(-50%);"></div>
-     </div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:rgba(200,140,90,0.8);letter-spacing:.13em;white-space:nowrap;">pro-inflammatory ↑</div>
-    </div>
+<!-- Bipolar scale -->
+<div style="display:flex;align-items:center;gap:10px;">
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:rgba(90,158,200,0.7);letter-spacing:.14em;white-space:nowrap;">↓ anti-inflammatory</div>
+ <div style="flex:1;height:8px;border-radius:4px;background:linear-gradient(to right,rgba(90,158,200,0.5),rgba(200,140,90,0.08) 50%,rgba(200,140,90,0.6));border:1px solid rgba(200,140,90,0.15);position:relative;">
+  <div style="position:absolute;left:50%;top:-6px;width:2px;height:20px;background:rgba(255,255,255,0.25);transform:translateX(-50%);"></div>
+ </div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:rgba(200,140,90,0.8);letter-spacing:.13em;white-space:nowrap;">pro-inflammatory ↑</div>
+</div>
 
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Scores inflammatory potential against IL-6, CRP, and TNF-α. Does not measure nutritional adequacy.</div>
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Scores inflammatory potential against IL-6, CRP, and TNF-α. Does not measure nutritional adequacy.</div>
 
-    <!-- Parameters as 3-column grid -->
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:rgba(200,140,90,0.55);text-transform:uppercase;margin-bottom:2px;">28 of 45 parameters available in NHANES</div>
-    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;grid-auto-rows:1fr;gap:0;">
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Alcohol</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Beta-carotene</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Caffeine</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Carbohydrate</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Cholesterol</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Energy</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Total fat</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Fiber</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Folic acid</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Iron</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Magnesium</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>MUFA</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Niacin</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>n-3 fatty acids</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>n-6 fatty acids</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>PUFA</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Protein</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Riboflavin</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Saturated fat</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Selenium</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Thiamin</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Trans fat</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin A</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin B6</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin B12</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin C</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin D</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Zinc</div>
-    </div>
+<!-- Parameters as 3-column grid -->
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:rgba(200,140,90,0.55);text-transform:uppercase;margin-bottom:2px;">28 of 45 parameters available in NHANES</div>
+<div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;grid-auto-rows:1fr;gap:0;">
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Alcohol</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Beta-carotene</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Caffeine</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Carbohydrate</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Cholesterol</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Energy</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Total fat</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Fiber</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Folic acid</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Iron</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Magnesium</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>MUFA</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Niacin</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>n-3 fatty acids</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>n-6 fatty acids</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>PUFA</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Protein</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Riboflavin</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Saturated fat</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Selenium</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Thiamin</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Trans fat</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin A</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin B6</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin B12</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin C</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;border-bottom:1px solid rgba(200,140,90,0.09);display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Vitamin D</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:#d4b090;padding:4px 0;display:flex;align-items:center;gap:7px;"><span style="font-size:11px;color:rgba(200,140,90,0.35);">▸</span>Zinc</div>
+</div>
+```
+
    </div>
 
   </div>
@@ -900,49 +907,54 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
   <div style="position:absolute;top:118px;bottom:44px;left:56px;right:56px;display:flex;gap:24px;overflow:hidden;">
 
    <!-- LEFT: study rows -->
+
    <div style="flex:1.4;display:flex;flex-direction:column;justify-content:center;gap:0;">
 
-    <div style="display:flex;gap:0;padding:10px 0;border-bottom:1px solid var(--border2);">
-     <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text2);flex-shrink:0;width:195px;padding-top:2px;">Xie et al., 2023</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">DII vs. biological age + PhenoAge in NHANES 1999–2018. 0.07-yr increase per DII unit. Whether the biological age outcome is KDM-derived requires verification. <span style="color:var(--text3);font-size:18px;">DII only. No HEI.</span></div>
-    </div>
+```
+<div style="display:flex;gap:0;padding:10px 0;border-bottom:1px solid var(--border2);">
+ <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text2);flex-shrink:0;width:195px;padding-top:2px;">Xie et al., 2023</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">DII vs. biological age + PhenoAge in NHANES 1999–2018. 0.07-yr increase per DII unit. Whether the biological age outcome is KDM-derived requires verification. <span style="color:var(--text3);font-size:18px;">DII only. No HEI.</span></div>
+</div>
 
-    <div style="display:flex;gap:0;padding:10px 0;border-bottom:1px solid var(--border2);">
-     <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text2);flex-shrink:0;width:195px;padding-top:2px;">Xu et al., 2025</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">DII associated with accelerated PhenoAge in NHANES after full adjustment. Outcome is PhenoAge. <span style="color:var(--text3);font-size:18px;">DII only. No HEI. No KDM.</span></div>
-    </div>
+<div style="display:flex;gap:0;padding:10px 0;border-bottom:1px solid var(--border2);">
+ <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text2);flex-shrink:0;width:195px;padding-top:2px;">Xu et al., 2025</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">DII associated with accelerated PhenoAge in NHANES after full adjustment. Outcome is PhenoAge. <span style="color:var(--text3);font-size:18px;">DII only. No HEI. No KDM.</span></div>
+</div>
 
-    <div style="display:flex;gap:0;padding:10px 0;border-bottom:1px solid var(--border2);">
-     <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text2);flex-shrink:0;width:195px;padding-top:2px;">Kresovich et al., 2022</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">Four eating indices vs. four epigenetic clocks in the Sister Study. Associations depended on which clock was used. <span style="color:var(--text3);font-size:18px;">No DII. No KDM.</span></div>
-    </div>
+<div style="display:flex;gap:0;padding:10px 0;border-bottom:1px solid var(--border2);">
+ <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text2);flex-shrink:0;width:195px;padding-top:2px;">Kresovich et al., 2022</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">Four eating indices vs. four epigenetic clocks in the Sister Study. Associations depended on which clock was used. <span style="color:var(--text3);font-size:18px;">No DII. No KDM.</span></div>
+</div>
 
-    <div style="display:flex;gap:0;padding:10px 0;">
-     <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text2);flex-shrink:0;width:195px;padding-top:2px;">Chen et al., 2024</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">HEI, DASH, Mediterranean vs. DunedinPACE in WHI (n≈4,500). Diet quality associated with slower aging. <span style="color:var(--text3);font-size:18px;">No DII. No KDM.</span></div>
-    </div>
+<div style="display:flex;gap:0;padding:10px 0;">
+ <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text2);flex-shrink:0;width:195px;padding-top:2px;">Chen et al., 2024</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">HEI, DASH, Mediterranean vs. DunedinPACE in WHI (n≈4,500). Diet quality associated with slower aging. <span style="color:var(--text3);font-size:18px;">No DII. No KDM.</span></div>
+</div>
+```
 
    </div>
 
    <!-- RIGHT: two gaps -->
+
    <div style="width:310px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;justify-content:center;">
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:16px 18px;">
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">Gap 1</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.55;">Based on my review, no study has used KDM-based biological age as an outcome with a dietary exposure.</div>
-    </div>
+```
+<div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:16px 18px;">
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">Knowledge gap 1</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.55;">Based on my review, no study has used KDM-based biological age as an outcome with a dietary exposure.</div>
+</div>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:16px 18px;">
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">Gap 2</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.55;">I have not identified a study entering both HEI and DII in the same model against any biological aging outcome.</div>
-    </div>
-
-
+<div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:2px;padding:16px 18px;">
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">Knowledge gap 2</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.55;">I have not identified a study entering both HEI and DII in the same model against any biological aging outcome.</div>
+</div>
+```
 
    </div>
   </div>
 
   <!-- Transition overlay — fades in on hover/click of a button -->
+
   <div id="s7-transition" style="
     position:absolute;inset:0;
     background:rgba(4,16,29,0.92);
@@ -964,34 +976,21 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S8 AIMS ══ -->
+
 <div class="slide" id="slide-8">
  <div class="canvas canvas-glow" id="c8">
   <div class="hdr"><div class="lbl">Study Objectives</div><div class="ttl">Specific Aim 1: Total dietary index scores</div></div>
 
   <div style="position:absolute;top:118px;bottom:44px;left:56px;right:56px;display:flex;flex-direction:column;justify-content:center;gap:0;overflow:hidden;">
 
-   <!-- AIM STATEMENT -->
-   <div style="padding:16px 0;border-bottom:1px solid var(--border2);">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.32em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;">Aim</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text1);line-height:1.55;">Do HEI-2020 and DII each independently predict KDM biological age residuals? Does each contribute information the other does not?</div>
+   <div style="padding:20px 0;border-bottom:1px solid var(--border2);">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:var(--text3);text-transform:uppercase;margin-bottom:12px;">Aim</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text1);line-height:1.55;">Examine whether HEI-2020 and DII total scores are each independently associated with KDM biological age residuals, and whether each contributes information the other does not.</div>
    </div>
 
-   <!-- REASONING -->
-   <div style="padding:16px 0;border-bottom:1px solid var(--border2);">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.32em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;">Rationale</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text2);line-height:1.55;">A high HEI does not guarantee low inflammatory burden. A low DII does not guarantee nutritional adequacy. Chronic inflammation can deteriorate organs regardless of whether guidelines are met.</div>
-   </div>
-
-   <!-- MEASUREMENT -->
-   <div style="padding:16px 0;border-bottom:1px solid var(--border2);">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.32em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;">Measurement</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text2);line-height:1.55;">Two 24-hour dietary recalls on nonconsecutive days, averaged before scoring. HEI-2020: population ratio method. DII: 28 parameters from NHANES.</div>
-   </div>
-
-   <!-- HYPOTHESIS -->
-   <div style="padding:16px 0;">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.32em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;">Hypothesis</div>
-    <div style="font-family:Georgia,serif;font-style:italic;font-size:24px;color:var(--text1);line-height:1.6;">Both indices independently predict lower biological age residuals and capture distinct dietary dimensions: DII via inflammatory pathways, HEI via broader nutritional adequacy.</div>
+   <div style="padding:20px 0;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;">Hypothesis</div>
+    <div style="font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--text1);line-height:1.65;">Both higher diet quality and lower dietary inflammatory potential are independently associated with lower biological age residuals. These indices capture distinct dietary dimensions: DII via inflammatory pathways, HEI via broader nutritional adequacy.</div>
    </div>
 
   </div>
@@ -1001,6 +1000,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S9 NHANES + ETHICS ══ -->
+
 <div class="slide" id="slide-9">
  <div class="canvas canvas-glow" id="c9">
   <div class="hdr"><div class="lbl">Methods: Data Source</div><div class="ttl">NHANES 2007–2012</div></div>
@@ -1008,83 +1008,61 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
   <div style="position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;overflow:hidden;">
 
    <!-- LEFT: data source story -->
+
    <div style="flex:1.4;display:flex;flex-direction:column;padding:20px 40px 16px 56px;border-right:1px solid var(--border2);gap:0;">
 
-    <!-- Cycle timeline -->
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.26em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Cycles included</div>
+```
+<!-- Cycle timeline -->
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.26em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Cycles included</div>
 
-    <div style="display:flex;flex-direction:column;gap:0;margin-bottom:18px;">
-     <!-- 2007-08 -->
-     <div style="display:flex;align-items:center;gap:16px;padding:9px 0;border-bottom:1px solid var(--border2);">
-      <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text1);font-weight:500;flex-shrink:0;width:80px;">2007–08</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:rgba(90,158,200,0.7);">FEV1 ✓ &nbsp; CRP ✓</div>
-     </div>
-     <!-- 2009-10 -->
-     <div style="display:flex;align-items:center;gap:16px;padding:9px 0;border-bottom:1px solid var(--border2);">
-      <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text1);font-weight:500;flex-shrink:0;width:80px;">2009–10</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:rgba(90,158,200,0.7);">FEV1 ✓ &nbsp; CRP ✓</div>
-     </div>
-     <!-- 2011-12 -->
-     <div style="display:flex;align-items:center;gap:16px;padding:9px 0;border-bottom:1px solid var(--border2);">
-      <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text1);font-weight:500;flex-shrink:0;width:80px;">2011–12</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:rgba(90,158,200,0.7);">FEV1 ✓ &nbsp; <span style="color:rgba(200,100,80,0.7);">CRP not collected</span></div>
-     </div>
-     <!-- 2013-14 discontinued -->
-     <div style="display:flex;align-items:center;gap:16px;padding:9px 0;">
-      <div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12);flex-shrink:0;"></div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text3);flex-shrink:0;width:80px;">2013–14</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text3);">Spirometry discontinued — FEV1 no longer available</div>
-     </div>
-    </div>
+<div style="display:flex;flex-direction:column;gap:0;margin-bottom:18px;">
+ <!-- 2007-08 -->
+ <div style="display:flex;align-items:center;gap:16px;padding:9px 0;border-bottom:1px solid var(--border2);">
+  <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text1);font-weight:500;flex-shrink:0;width:80px;">2007–08</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:rgba(90,158,200,0.7);">FEV1 ✓ &nbsp; CRP ✓</div>
+ </div>
+ <!-- 2009-10 -->
+ <div style="display:flex;align-items:center;gap:16px;padding:9px 0;border-bottom:1px solid var(--border2);">
+  <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text1);font-weight:500;flex-shrink:0;width:80px;">2009–10</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:rgba(90,158,200,0.7);">FEV1 ✓ &nbsp; CRP ✓</div>
+ </div>
+ <!-- 2011-12 -->
+ <div style="display:flex;align-items:center;gap:16px;padding:9px 0;border-bottom:1px solid var(--border2);">
+  <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text1);font-weight:500;flex-shrink:0;width:80px;">2011–12</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:rgba(90,158,200,0.7);">FEV1 ✓ &nbsp; <span style="color:rgba(200,100,80,0.7);">CRP not collected</span></div>
+ </div>
+ <!-- 2013-14 discontinued -->
+ <div style="display:flex;align-items:center;gap:16px;padding:9px 0;">
+  <div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12);flex-shrink:0;"></div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;color:var(--text3);flex-shrink:0;width:80px;">2013–14</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text3);">Spirometry discontinued — FEV1 no longer available</div>
+ </div>
+</div>
 
-    <!-- FEV1 constraint note -->
-    <div style="padding:12px 16px;background:var(--bg2);border-left:3px solid var(--accent);border-radius:2px;margin-bottom:18px;">
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.55;">FEV1 required for KDM. These are the only three cycles where all eight biomarkers are available.</div>
-    </div>
+<!-- FEV1 constraint note -->
+<div style="padding:12px 16px;background:var(--bg2);border-left:3px solid var(--accent);border-radius:2px;margin-bottom:18px;">
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.55;">FEV1 required for KDM. These are the only three cycles where all eight biomarkers are available.</div>
+</div>
 
-    <!-- Design details -->
-    <div style="display:flex;flex-direction:column;gap:0;flex:1;">
-     <div style="display:flex;gap:16px;padding:6px 0;border-bottom:1px solid var(--border2);">
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.24em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:150px;padding-top:2px;">Survey design</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Multistage probability sample · nationally representative · 6-year pooled weights</div>
-     </div>
-     <div style="display:flex;gap:16px;padding:6px 0;border-bottom:1px solid var(--border2);">
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.24em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:150px;padding-top:2px;">Study population</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Non-pregnant adults aged <strong style="color:var(--text1);">30–75</strong> · complete data for all 8 biomarkers, two recalls, covariates</div>
-     </div>
-     <div style="display:flex;gap:16px;padding:8px 0;">
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.24em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:150px;padding-top:2px;">8 KDM biomarkers</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Albumin · ALP · BUN · Creatinine · HbA1c · Total cholesterol · SBP · <strong style="color:var(--text1);">FEV1</strong></div>
-     </div>
-    </div>
-   </div>
-
-   <!-- RIGHT: ethics -->
-   <div style="flex:1;display:flex;flex-direction:column;padding:20px 48px 16px 40px;gap:0;justify-content:center;">
-
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.26em;color:var(--text3);text-transform:uppercase;margin-bottom:18px;">Ethical considerations</div>
-
-    <div style="display:flex;flex-direction:column;gap:0;">
-     <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border2);">
-      <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px;"></div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.55;">Publicly available secondary dataset; no new data collection was conducted</div>
-     </div>
-     <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border2);">
-      <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px;"></div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.55;">Approved by the NCHS Research Ethics Review Board</div>
-     </div>
-     <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border2);">
-      <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px;"></div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.55;">Informed consent obtained at time of examination</div>
-     </div>
-     <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 0;">
-      <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px;"></div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.55;">Qualifies for exempt status — secondary, de-identified data</div>
-     </div>
-    </div>
+<!-- Design details -->
+<div style="display:flex;flex-direction:column;gap:0;flex:1;">
+ <div style="display:flex;gap:16px;padding:6px 0;border-bottom:1px solid var(--border2);">
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.24em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:150px;padding-top:2px;">Survey design</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Multistage probability sample · nationally representative · 6-year pooled weights</div>
+ </div>
+ <div style="display:flex;gap:16px;padding:6px 0;border-bottom:1px solid var(--border2);">
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.24em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:150px;padding-top:2px;">Study population</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Non-pregnant adults aged <strong style="color:var(--text1);">30–75</strong> · complete data for all 8 biomarkers, two recalls, covariates</div>
+ </div>
+ <div style="display:flex;gap:16px;padding:8px 0;">
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.24em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:150px;padding-top:2px;">8 KDM biomarkers</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Albumin · ALP · BUN · Creatinine · HbA1c · Total cholesterol · SBP · <strong style="color:var(--text1);">FEV1</strong></div>
+ </div>
+</div>
+```
 
    </div>
 
@@ -1095,6 +1073,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S10 EXPOSURES ══ -->
+
 <div class="slide" id="slide-10">
  <div class="canvas canvas-glow" id="c10">
   <div class="hdr"><div class="lbl">Methods: Variables</div><div class="ttl">Exposures, outcome, and covariates</div></div>
@@ -1102,54 +1081,66 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
   <div style="position:absolute;top:118px;bottom:44px;left:0;right:0;display:flex;overflow:hidden;">
 
    <!-- EXPOSURES -->
+
    <div style="flex:1;display:flex;flex-direction:column;padding:20px 36px 16px 56px;border-right:1px solid var(--border2);gap:0;justify-content:center;">
     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.26em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Exposures</div>
 
-    <div style="padding:12px 0;border-bottom:1px solid var(--border2);">
-     <div style="font-family:Georgia,serif;font-size:22px;color:#a8d4f0;margin-bottom:6px;">HEI-2020</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Score 0–100 · higher = better diet quality · population ratio method</div>
-    </div>
+```
+<div style="padding:12px 0;border-bottom:1px solid var(--border2);">
+ <div style="font-family:Georgia,serif;font-size:22px;color:#a8d4f0;margin-bottom:6px;">HEI-2020</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">Score 0–100 · higher = better diet quality · population ratio method</div>
+</div>
 
-    <div style="padding:12px 0;">
-     <div style="font-family:Georgia,serif;font-size:22px;color:#d4a070;margin-bottom:6px;">DII</div>
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">28 parameters from NHANES · higher = more pro-inflammatory</div>
-    </div>
+<div style="padding:12px 0;">
+ <div style="font-family:Georgia,serif;font-size:22px;color:#d4a070;margin-bottom:6px;">DII</div>
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.5;">28 parameters from NHANES · higher = more pro-inflammatory</div>
+</div>
+```
+
    </div>
 
    <!-- OUTCOME -->
+
    <div style="flex:1;display:flex;flex-direction:column;padding:20px 36px 16px 36px;border-right:1px solid var(--border2);gap:0;justify-content:center;">
     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.26em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Outcome</div>
 
-    <div style="font-family:Georgia,serif;font-size:22px;color:var(--text1);margin-bottom:12px;">KDM Biological Age Residual</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.55;margin-bottom:14px;">Survey-weighted regression of KDM biological age on chronological age.</div>
+```
+<div style="font-family:Georgia,serif;font-size:22px;color:var(--text1);margin-bottom:12px;">KDM Biological Age Residual</div>
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.55;margin-bottom:14px;">Survey-weighted regression of KDM biological age on chronological age.</div>
 
-    <div style="display:flex;flex-direction:column;gap:0;margin-bottom:14px;">
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.4;"><strong style="color:var(--text1);">Positive</strong> — body looks older than calendar age predicts</div>
-     <div style="padding:8px 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.4;"><strong style="color:var(--text1);">Negative</strong> — body looks younger</div>
-    </div>
+<div style="display:flex;flex-direction:column;gap:0;margin-bottom:14px;">
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.4;"><strong style="color:var(--text1);">Positive</strong> — body looks older than calendar age predicts</div>
+ <div style="padding:8px 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.4;"><strong style="color:var(--text1);">Negative</strong> — body looks younger</div>
+</div>
 
-    <div style="padding:10px 14px;background:var(--bg2);border-left:3px solid var(--accent);border-radius:2px;">
-     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:var(--text3);line-height:1.5;">"Residual," not "acceleration." This is a point-in-time difference, not a rate of change.</div>
-    </div>
+<div style="padding:10px 14px;background:var(--bg2);border-left:3px solid var(--accent);border-radius:2px;">
+ <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:19px;color:var(--text3);line-height:1.5;">"Residual," not "acceleration." This is a point-in-time difference, not a rate of change.</div>
+</div>
+```
+
    </div>
 
    <!-- COVARIATES -->
+
    <div style="flex:1;display:flex;flex-direction:column;padding:20px 48px 16px 36px;gap:0;justify-content:center;">
     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;letter-spacing:.26em;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Covariates</div>
 
-    <div style="display:flex;flex-direction:column;gap:0;margin-bottom:14px;">
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Age (continuous, years)</div>
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Sex (male / female)</div>
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Race / ethnicity (5 categories)</div>
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Education (3 levels)</div>
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Income-to-poverty ratio (continuous)</div>
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">BMI* (continuous, kg/m²)</div>
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Smoking status (never / former / current)</div>
-     <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Physical activity (federal guidelines: yes/no)</div>
-     <div style="padding:6px 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Total energy intake (kcal/day)</div>
-    </div>
+```
+<div style="display:flex;flex-direction:column;gap:0;margin-bottom:14px;">
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Age (continuous, years)</div>
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Sex (male / female)</div>
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Race / ethnicity (5 categories)</div>
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Education (3 levels)</div>
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Income-to-poverty ratio (continuous)</div>
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">BMI* (continuous, kg/m²)</div>
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Smoking status (never / former / current)</div>
+ <div style="padding:6px 0;border-bottom:1px solid var(--border2);font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Physical activity (federal guidelines: yes/no)</div>
+ <div style="padding:6px 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);">Total energy intake (kcal/day)</div>
+</div>
 
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;color:var(--text3);line-height:1.5;font-style:italic;">*BMI may partially mediate the diet–aging relationship. Cannot resolve in a cross-sectional design.</div>
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;color:var(--text3);line-height:1.5;font-style:italic;">*BMI may partially mediate the diet–aging relationship. Cannot resolve in a cross-sectional design.</div>
+```
+
    </div>
 
   </div>
@@ -1159,6 +1150,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S11 ANALYSIS ══ -->
+
 <div class="slide" id="slide-11">
  <div class="canvas canvas-glow" id="c11">
   <div class="hdr"><div class="lbl">Methods: Statistical Analysis</div><div class="ttl">Analytical approach</div></div>
@@ -1174,6 +1166,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S12 SENSITIVITY ══ -->
+
 <div class="slide" id="slide-12">
  <div class="canvas canvas-glow" id="c12">
   <div class="hdr"><div class="lbl">Methods: Sensitivity Analysis</div><div class="ttl">Sensitivity analysis: 8-biomarker versus 9-biomarker KDM</div></div>
@@ -1197,9 +1190,10 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S13 RESULTS + IMPLICATIONS ══ -->
+
 <div class="slide" id="slide-13">
  <div class="canvas canvas-glow" id="c13">
-  <div class="hdr"><div class="lbl">Expected Results &amp; Implications</div><div class="ttl">Expected results and implications</div></div>
+  <div class="hdr"><div class="lbl">Expected Outcomes</div><div class="ttl">Expected outcomes and limitations</div></div>
   <div class="crule"></div>
   <div class="cols">
    <div class="col cl">
@@ -1221,6 +1215,7 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
 </div>
 
 <!-- ══ S14 STRENGTHS + LIMITATIONS ══ -->
+
 <div class="slide" id="slide-14">
  <div class="canvas canvas-glow" id="c14">
   <div class="hdr"><div class="lbl">Appraisal</div><div class="ttl">Strengths &amp; Limitations</div></div>
@@ -1245,36 +1240,11 @@ html{width:100%;height:100%;}body{width:100%;height:100%;min-height:100vh;backgr
  </div>
 </div>
 
-<!-- ══ S15 CONTRIBUTION STATEMENT ══ -->
-<div class="slide" id="slide-15">
- <div class="canvas canvas-glow" id="c15">
-  <div class="hdr"><div class="lbl">Summary</div><div class="ttl">Study contribution and scope</div></div>
-  <div style="position:absolute;top:118px;bottom:44px;left:56px;right:56px;display:flex;flex-direction:column;justify-content:center;gap:0;overflow:hidden;">
-   <div style="padding:10px 0;border-bottom:1px solid var(--border2);display:flex;gap:28px;align-items:flex-start;">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;letter-spacing:.18em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:180px;padding-top:3px;">What this study does</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">Tests whether HEI-2020 and DII are each independently associated with KDM biological age residuals in U.S. adults aged 30–75 (NHANES 2007–2012).</div>
-   </div>
-   <div style="padding:10px 0;border-bottom:1px solid var(--border2);display:flex;gap:28px;align-items:flex-start;">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;letter-spacing:.18em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:180px;padding-top:3px;">What it does not do</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">Cross-sectional design. Cannot establish causal direction or rule out unmeasured confounding. Findings are descriptive and associative.</div>
-   </div>
-   <div style="padding:10px 0;border-bottom:1px solid var(--border2);display:flex;gap:28px;align-items:flex-start;">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;letter-spacing:.18em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:180px;padding-top:3px;">Methodological gap addressed</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">The existing literature uses PhenoAge or epigenetic clocks. KDM preserves organ-system contributions. HEI-2020 and DII have not been tested together against this outcome.</div>
-   </div>
-   <div style="padding:10px 0;display:flex;gap:28px;align-items:flex-start;">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;letter-spacing:.18em;color:var(--text3);text-transform:uppercase;flex-shrink:0;width:180px;padding-top:3px;">Next steps warranted</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;color:var(--text2);line-height:1.45;">If HEI-2020 and DII show differential associations with biological age residuals, this would provide descriptive evidence supporting the rationale for longitudinal investigation: tracking whether dietary change produces corresponding changes in KDM-based biological age over time.</div>
-   </div>
-  </div>
-  <div class="fnt">NHANES 2007–2012 · Cross-sectional · Descriptive and hypothesis-generating</div>
- </div>
-</div>
-
 <!-- ══ NAV ══ -->
+
 <div id="nav">
  <button class="nbtn" id="bp">&#8592;</button>
- <div id="ctr">1 / 15</div>
+ <div id="ctr">1 / 14</div>
  <button class="nbtn" id="bn">&#8594;</button>
  <button id="toggle">☀ Light</button>
 </div>
@@ -1360,7 +1330,7 @@ function startA4(){
 }
 
 let cur=1;
-const TOTAL=15;
+const TOTAL=14;
 function showSlide(n){
   if(cur===7){
     s7seen=false;
@@ -1405,5 +1375,6 @@ document.addEventListener('keydown',e=>{
 document.getElementById('slide-1').classList.add('active');
 document.getElementById('bp').disabled=true;
 </script>
+
 </body>
 </html>
