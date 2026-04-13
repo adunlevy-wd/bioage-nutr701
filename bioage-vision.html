@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioAge — Clinical Nutrition Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,300;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Newsreader', 'Georgia', serif;
+  background: #dceaf5;
+  color: #1A1A1A;
+  overflow-x: hidden;
+  transition: background 0.2s linear, color 0.2s linear;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 36px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.label {
+  font-size: 10px;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 3px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: rgba(0,0,0,0.38);
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.35;
+  max-width: 340px;
+  margin-bottom: 24px;
+  color: #1A1A1A;
+}
+
+.big {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 340px;
+  color: #1A1A1A;
+}
+
+.body {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.65;
+  max-width: 340px;
+  margin-top: 16px;
+  color: rgba(0,0,0,0.58);
+}
+
+.italic {
+  font-style: italic;
+  font-weight: 400;
+  color: #1A1A1A;
+}
+
+.callout {
+  margin-top: 28px;
+  padding: 20px 22px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.05);
+  max-width: 340px;
+}
+
+.callout p {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #1A1A1A;
+}
+
+.ruled-list p {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(0,0,0,0.58);
+  line-height: 1.6;
+  max-width: 330px;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  border-left: 2px solid rgba(0,0,0,0.1);
+}
+
+.scroll-hint {
+  margin-top: 48px;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(0,0,0,0.38);
+  letter-spacing: 1px;
+}
+
+.depth-marker {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  font-size: 10px;
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(0,0,0,0.3);
+  letter-spacing: 1px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.name-block {
+  font-size: 34px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: #1A1A1A;
+}
+
+.tagline {
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: rgba(0,0,0,0.38);
+  margin-top: 8px;
+}
+
+.footer-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(0,0,0,0.55);
+  margin-top: 32px;
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+hr.rule {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  max-width: 340px;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+
+<div class="depth-marker" id="depth">0m</div>
+
+<!-- ═══ SURFACE ═══ -->
+<section class="center">
+  <div class="label">SURFACE</div>
+  <h1>"You can do anything you set your mind to."</h1>
+  <p class="body" style="text-align:center; max-width:300px;">At the surface, this sounds like encouragement.</p>
+  <div class="scroll-hint">↓ scroll to descend ↓</div>
+</section>
+
+<!-- ═══ TIME IS RELATIVE ═══ -->
+<section>
+  <p class="big">Time is relative.</p>
+  <p class="body">The calendar says Maria is 52.</p>
+  <p class="body">Her cells are experiencing 61.</p>
+  <p class="body">No one has ever told her the rate is something she can change.</p>
+</section>
+
+<!-- ═══ SHALLOW WATER ═══ -->
+<section>
+  <div class="label">SHALLOW WATER</div>
+  <p class="big">A woman with diabetes walks into a clinic. She sits across from a dietitian.</p>
+  <p class="body">The dietitian says: "Eat more fruits and vegetables."</p>
+  <p class="body">This is correct. It is also useless.</p>
+</section>
+
+<!-- ═══ THE LARGEST FIRE ═══ -->
+<section>
+  <div class="label">100 METERS</div>
+  <p class="big">The system was designed to put out the largest fire.</p>
+  <p class="body">The cardiologist says cut sodium. The endocrinologist says manage carbs. The nephrologist says watch protein. The gastroenterologist says more fiber.</p>
+  <p class="body">Each one is correct. For their fire.</p>
+  <p class="body italic" style="margin-top:16px;">No one is holding all of her fires at the same time.</p>
+</section>
+
+<!-- ═══ THE GROCERY STORE ═══ -->
+<section>
+  <p class="big">Then Maria walks into a grocery store.</p>
+  <p class="body">She is holding four sets of instructions that sometimes contradict each other.</p>
+  <p class="body">Aisle 4. A can of beans. Her wallet says one thing. Her taste says another. Her health says another.</p>
+  <p class="body">None of the specialists are here.</p>
+  <p class="body italic" style="margin-top:24px;">This is where every dietary intervention dies. Not in the doctor's office. In the split-decision moment where the patient is alone.</p>
+</section>
+
+<!-- ═══ 200 METERS ═══ -->
+<section>
+  <div class="label">200 METERS — RED LIGHT DISAPPEARS HERE</div>
+  <p class="big">What the encounter never sees:</p>
+  <div class="ruled-list" style="margin-top:24px;">
+    <p>Her corner store has three aisles of soda and half a shelf of produce.</p>
+    <p>The mango her grandmother taught her to cut is spiking her blood sugar.</p>
+    <p>The adobo she seasons everything with is driving her blood pressure.</p>
+    <p>The "healthy" foods on the pamphlet don't account for the disease inside her body.</p>
+    <p>She has never been shown what her own blood is actually telling her.</p>
+  </div>
+  <p class="body italic" style="margin-top:12px;">These things are red at depth. The system wasn't built to see them.</p>
+</section>
+
+<!-- ═══ THE ONUS ═══ -->
+<section>
+  <p class="big" style="font-size:24px;">When the plan fails, everyone assumes it was the patient.</p>
+  <p class="body" style="margin-top:24px;">She didn't try hard enough. She didn't want it enough. She didn't set her mind to it.</p>
+  <div class="callout" style="margin-top:32px;">
+    <p>The patient is not the obstacle.<br><br>The patient is navigating obstacles that are invisible to the system treating her.</p>
+  </div>
+</section>
+
+<!-- ═══ DEEP WATER ═══ -->
+<section>
+  <div class="label">DEEP WATER</div>
+  <p class="big">What if the tool could see what the system can't?</p>
+  <p class="body" style="margin-top:28px;">What if it read her existing blood work — labs she already has — and showed her that time is moving differently inside her body?</p>
+  <p class="body">What if it held all of her fires at once — and resolved the conflicts between them before the dietitian opens her mouth?</p>
+  <p class="body">What if it followed her into aisle 4 — not as an app on a screen, but as clarity that was already there, because the guidance was built for her body and her budget and her kitchen?</p>
+  <p class="body italic" style="margin-top:16px;">What if the technology did all of that — and then disappeared?</p>
+</section>
+
+<!-- ═══ COUNTERILLUMINATION ═══ -->
+<section>
+  <div class="label">COUNTERILLUMINATION</div>
+  <p class="big">Deep sea creatures survive by producing light that matches the water around them.</p>
+  <p class="body">They don't project their light outward to be seen. They calibrate it so precisely to the surrounding conditions that they become invisible.</p>
+  <p class="body">The sophistication isn't in the brightness.</p>
+  <p class="big" style="margin-top:20px;">It's in the matching.</p>
+  <div class="callout" style="margin-top:36px;">
+    <p style="font-size:15px; font-weight:300; color:rgba(0,0,0,0.6); line-height:1.65;">When the recommendation matches the patient's environment — her disease state, her biomarkers, her food culture, her life — it doesn't feel like medical advice imposed from outside.<br><br>It feels like common sense. It feels obvious.<br><br><span style="font-weight:500; color:#1A1A1A;">The intervention disappears into her life.</span></p>
+  </div>
+</section>
+
+<!-- ═══ WHAT SHE SAYS ═══ -->
+<section class="center">
+  <p class="body" style="text-align:center; max-width:300px;">Maria walks out of the office.</p>
+  <p class="body" style="text-align:center; max-width:300px;">She doesn't say "she showed me a cool app."</p>
+  <p class="body" style="text-align:center; max-width:300px;">She doesn't mention an algorithm or a biomarker index.</p>
+  <p class="big" style="max-width:320px; margin-top:28px; font-weight:500;">"For the first time, someone explained why I need to eat differently — and it made sense."</p>
+</section>
+
+<!-- ═══ WHAT WE BELIEVE ═══ -->
+<section class="center">
+  <div class="label">WHAT WE BELIEVE</div>
+  <div style="max-width:320px;">
+    <p class="big" style="font-weight:500; margin-bottom:20px;">You can't be what you can't see.</p>
+    <p class="body" style="text-align:left; margin-top:0;">A patient who has never seen her own biological age can't fight to change it.</p>
+    <p class="body" style="text-align:left;">A dietitian who can't see the conflict between standard guidance and disease state will deliver advice that dies in the grocery aisle.</p>
+    <p class="body" style="text-align:left;">A system that puts out one fire at a time will always leave the patient holding the hose alone.</p>
+    <p class="body" style="text-align:left;">A system that places the burden of failure on the patient will always fail the patient.</p>
+  </div>
+  <div class="callout" style="margin-top:28px; max-width:320px;">
+    <p style="line-height:1.55;">We build tools that make people visible — to their clinicians and to themselves.<br><br>Tools that read the full depth of a patient's biology, resolve the conflicts that generic guidance ignores, and then disappear into care.<br><br><strong>Making light to disappear into light.</strong></p>
+  </div>
+</section>
+
+<!-- ═══ THE NAME ═══ -->
+<section class="center">
+  <div class="name-block">BIOAGE</div>
+  <div class="tagline">CLINICAL NUTRITION INTELLIGENCE</div>
+  <p class="footer-body" style="text-align:center;">
+    Built on a KDM-based Biological Age Index derived from routine clinical labs — the only biological age method shown to respond to dietary manipulation in randomized trial data.<br><br>
+    Grounded in peer-reviewed methodology and validated through ongoing research using NHANES 2007–2012.<br><br>
+    Founded by a registered dietitian nutritionist who built the model, understands the science, and has sat across from the patient.
+  </p>
+</section>
+
+<script>
+  const totalHeight = () => document.body.scrollHeight - window.innerHeight;
+  const depthEl = document.getElementById('depth');
+
+  function updateDepth() {
+    const progress = window.scrollY / totalHeight();
+    const meters = Math.round(progress * 6400);
+    depthEl.textContent = meters + 'm';
+
+    // Gradually darken background as you descend
+    const r = Math.round(220 - progress * 208);
+    const g = Math.round(234 - progress * 221);
+    const b = Math.round(245 - progress * 222);
+    document.body.style.background = `rgb(${r},${g},${b})`;
+
+    // Flip text colors past ~40% depth
+    const dark = progress > 0.4;
+    document.body.style.color = dark ? '#E2E8F0' : '#1A1A1A';
+
+    // Update muted text inline via CSS variable
+    document.documentElement.style.setProperty(
+      '--mute', dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.58)'
+    );
+    document.documentElement.style.setProperty(
+      '--label-color', dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.38)'
+    );
+    document.documentElement.style.setProperty(
+      '--callout-bg', dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.05)'
+    );
+    document.documentElement.style.setProperty(
+      '--border-color', dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)'
+    );
+
+    // Apply dynamic colors
+    document.querySelectorAll('.body').forEach(el => {
+      el.style.color = dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.58)';
+    });
+    document.querySelectorAll('.label').forEach(el => {
+      el.style.color = dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.38)';
+    });
+    document.querySelectorAll('.callout').forEach(el => {
+      el.style.background = dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.05)';
+    });
+    document.querySelectorAll('.ruled-list p').forEach(el => {
+      el.style.color = dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.58)';
+      el.style.borderLeftColor = dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)';
+    });
+    document.querySelectorAll('.scroll-hint').forEach(el => {
+      el.style.color = dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.38)';
+    });
+    depthEl.style.color = dark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)';
+    document.querySelectorAll('.footer-body').forEach(el => {
+      el.style.color = dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.55)';
+    });
+    document.querySelectorAll('.tagline').forEach(el => {
+      el.style.color = dark ? 'rgba(255,255,255,0.38)' : 'rgba(0,0,0,0.38)';
+    });
+  }
+
+  window.addEventListener('scroll', updateDepth, { passive: true });
+  updateDepth();
+</script>
+</body>
+</html>
